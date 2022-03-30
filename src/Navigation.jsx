@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navigation() {
   const [location, setLocation] = useState("/");
   const activeTabStyle = "text-black bg-white bg-opacity-75";
   const activeTabCondition = (hash) => (location === hash ? activeTabStyle : "");
   useEffect(() => {
+    setLocation(window.location.hash);
     window.addEventListener("hashchange", function () {
       setLocation(window.location.hash);
     });
@@ -20,7 +22,7 @@ export default function Navigation() {
   }
 
   return (
-    <>
+    <div className="absolute top-0 z-20 w-full ">
       <header className="flex flex-col md:flex-row justify-between pt-4 px-8 bg-black ">
         <h1 className="text-5xl font-sans pb-2">
           <span className={`hover:text-blue-400 ${stdSpanStyle}`}>K</span>
@@ -38,21 +40,21 @@ export default function Navigation() {
           <span className={`hover:text-yellow-300 ${stdSpanStyle}`}>r</span>
         </h1>
         <nav className="grid grid-cols-4 gap-[2px] rainbow rounded-t px-[2px] pt-[2px]">
-          <a href="#my-little-bio" className={activeTabCondition("#my-little-bio")}>
+          <Link to="/my-little-bio" className={activeTabCondition("#my-little-bio")}>
             home
-          </a>
-          <a href="#say-whats-up" className={activeTabCondition("#say-whats-up")}>
+          </Link>
+          <Link to="/say-whats-up" className={activeTabCondition("#say-whats-up")}>
             contact
-          </a>
-          <a href="#check-it-out" className={activeTabCondition("#check-it-out")}>
+          </Link>
+          <Link to="/check-it-out" className={activeTabCondition("#check-it-out")}>
             projects
-          </a>
-          <a href="#peep-my-stack" className={activeTabCondition("#peep-my-stack")}>
+          </Link>
+          <Link to="/peep-my-stack" className={activeTabCondition("#peep-my-stack")}>
             stack
-          </a>
+          </Link>
         </nav>
       </header>
       <div className="rainbow w-full h-[2px]" />
-    </>
+    </div>
   );
 }

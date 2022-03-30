@@ -8,22 +8,18 @@ import Projects from "./Project";
 import Stack from "./Stack";
 
 function App() {
-  useEffect(() => {
-    console.log(window.location.hash);
-    if (!window.location.hash) {
-      window.location.href = window.location.href + "#my-little-bio";
-    }
-  }, []);
 
   return (
     <div className="App relative w-full h-full">
-      <Navigation />
       <Router>
+        <Navigation />
         <Routes>
-          <Route path="/#my-little-bio" element={Home} />
-          <Route path="/#say-whats-up" element={ContactMe} />
-          <Route path="/#check-it-out" element={Projects} />
-          <Route path="/#peep-my-stack" element={Stack} />
+          <Route path="/">
+            <Route path="my-little-bio" element={<Home />} />
+            <Route path="say-whats-up" element={<ContactMe />} />
+            <Route path="check-it-out" element={<Projects />} />
+            <Route path="peep-my-stack" element={<Stack />} />
+          </Route>
         </Routes>
       </Router>
     </div>
