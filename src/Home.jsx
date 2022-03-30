@@ -1,38 +1,50 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Home() {
-  const contacts = (
-    <Link className="text-green-600 hover:text-purple-700" to="/say-whats-up">
-      contact
-    </Link>
-  );
-  const projects = (
-    <Link className="text-cyan-600 hover:text-blue-700" to="/check-it-out">
-      projects
-    </Link>
-  );
-  const stack = (
-    <Link className="text-orange-600 hover:text-yellow-200" to="/peep-my-stack">
-      stack
-    </Link>
-  );
+  const [fadeInBG, setFadeInBG] = useState(false);
+  const [fadeInContent, setFadeInContent] = useState(false);
 
-  const bioParagraph = `I am a developer with a long-time interest
-    in learning all things computer; web development has been a natural interest of mine.
-    I also like to tinker with product engineering, love to cook, and love spending time with my family. 
-    Check out my projects and stack through the navigation links, and feel free to reach out via my `;
+  useEffect(() => {
+    setFadeInBG(true);
+    setTimeout(() => {
+      setFadeInContent(true);
+    }, 250);
+  }, []);
 
   return (
-    <div className="absolute top-0 w-full h-full homeBG" id="home">
-      <div className="flex w-full h-full items-center md:px-[30rem] md:text-lg lg:text-xl font-light">
-        <p>
-          <span>
-            I am a developer with a long-time interest in learning all things computer; web development has been a natural interest of mine. I also like to tinker with product
-            engineering, love to cook, and love spending time with my family. Check out my
-          </span>{" "}
-          <span>{projects}</span> and <span>{stack}</span> through the navigation links, and feel free to reach out via my <span>{contacts}</span> links
-        </p>
-      </div>
-    </div>
+    <p
+      className={`${
+        fadeInContent ? "opacity-100" : "opacity-0"
+      } transition-all duration-[2000ms] px-12 md:px-0 absolute top-1/2 w-full md:w-2/3 lg:w-2/5 left-1/2 -translate-x-1/2 ${
+        fadeInContent ? "-translate-y-1/2" : "-translate-y-0"
+      }`}
+    >
+      <span>
+        I am a developer with a long-time interest in learning all things computer; web development has been a natural interest of mine. I also like to tinker with product
+        engineering, love to cook, and love spending time with my family. Check out my
+      </span>{" "}
+      <span>
+        {" "}
+        <Link className="text-cyan-600 hover:text-blue-700" to="/check-it-out">
+          projects
+        </Link>
+      </span>{" "}
+      and{" "}
+      <span>
+        {" "}
+        <Link className="text-orange-600 hover:text-yellow-200" to="/peep-my-stack">
+          stack
+        </Link>
+      </span>{" "}
+      through the navigation links above, and feel free to reach out via my{" "}
+      <span>
+        {" "}
+        <Link className="text-green-600 hover:text-purple-700" to="/say-whats-up">
+          contact
+        </Link>
+      </span>{" "}
+      links.
+    </p>
   );
 }

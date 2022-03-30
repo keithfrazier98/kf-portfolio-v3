@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-export default function Navigation() {
-  const [location, setLocation] = useState("/");
+export default function Navigation({pathname, setPathname}) {
   const activeTabStyle = "text-black bg-white bg-opacity-75";
-  const activeTabCondition = (hash) => (location === hash ? activeTabStyle : "");
+  const location = useLocation()
+  const activeTabCondition = (path) => (path === pathname ? activeTabStyle : "");
+
   useEffect(() => {
-    setLocation(window.location.hash);
-    window.addEventListener("hashchange", function () {
-      setLocation(window.location.hash);
-    });
-  }, []);
+    setPathname(location.pathname);
+  }, [location]);
 
   const colors = ["red", "green", "orange", "blue", "yellow", "purple", "cyan", "pink", "rose", "violet"];
   const hues = ["500", "600", "700", "800", "900"];
@@ -22,7 +20,7 @@ export default function Navigation() {
   }
 
   return (
-    <div className="absolute top-0 z-20 w-full ">
+    <div className="absolute top-0 z-30 w-full ">
       <header className="flex flex-col md:flex-row justify-between pt-4 px-8 bg-black ">
         <h1 className="text-5xl font-sans pb-2">
           <span className={`hover:text-blue-400 ${stdSpanStyle}`}>K</span>
@@ -40,16 +38,16 @@ export default function Navigation() {
           <span className={`hover:text-yellow-300 ${stdSpanStyle}`}>r</span>
         </h1>
         <nav className="grid grid-cols-4 gap-[2px] rainbow rounded-t px-[2px] pt-[2px]">
-          <Link to="/my-little-bio" className={activeTabCondition("#my-little-bio")}>
+          <Link to="/my-little-bio" className={activeTabCondition("/my-little-bio")}>
             home
           </Link>
-          <Link to="/say-whats-up" className={activeTabCondition("#say-whats-up")}>
+          <Link to="/say-whats-up" className={activeTabCondition("/say-whats-up")}>
             contact
           </Link>
-          <Link to="/check-it-out" className={activeTabCondition("#check-it-out")}>
+          <Link to="/check-it-out" className={activeTabCondition("/check-it-out")}>
             projects
           </Link>
-          <Link to="/peep-my-stack" className={activeTabCondition("#peep-my-stack")}>
+          <Link to="/peep-my-stack" className={activeTabCondition("/peep-my-stack")}>
             stack
           </Link>
         </nav>
