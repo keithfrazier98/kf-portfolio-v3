@@ -1,13 +1,34 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn,
+nav > a {
+  @apply flex h-full justify-center items-center bg-black;
+  @apply hover:text-black hover:bg-white hover:bg-opacity-40;
+  @apply active:text-black active:bg-white active:bg-opacity-50;
+  @apply focus:text-black focus:bg-white focus:bg-opacity-75;
+  @apply rounded-t py-2 px-4 text-white text-base md:text-lg font-light;
+  @apply transition-colors duration-300;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html,
+body,
+#root {
+  @apply w-full h-full font-sans font-light;
+}
+
+.rainbow {
+  background: rgb(146, 255, 0);
+  background: linear-gradient(
+    270deg,
+    rgba(146, 255, 0, 1) 0%,
+    rgba(255, 252, 0, 1) 16%,
+    rgba(255, 124, 0, 1) 35%,
+    rgba(0, 49, 191, 1) 56%,
+    rgba(255, 0, 215, 1) 79%,
+    rgba(255, 0, 0, 1) 100%
+  );
 }
