@@ -8,6 +8,14 @@ export default function ContactMe() {
   const [state, handleSubmit] = useForm("xnqlryyy");
   const [somethingCopied, setSomethingCopied] = useState(null);
   const [showSnackbar, setShowSnackbar] = useState(false);
+  const [fadeInContent, setFadeInContent] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFadeInContent(true);
+    }, 500);
+  }, []);
+
   useEffect(() => {
     if (somethingCopied) {
       setTimeout(() => {
@@ -24,7 +32,7 @@ export default function ContactMe() {
   return (
     <div className="absolute top-0 z-20 w-full h-full py-24 px-16 hide-scrollbar 2xl:px-32 overflow-scroll">
       <div className="w-full h-full flex items-center justify-around flex-col xl:flex-row">
-        <div className="flex flex-col items-center justify-center mb-6 pt-96 xl:pt-0">
+        <div className={`${fadeInContent ? "opacity-100" : "opacity-0"} transition-opacity duration-300 flex flex-col items-center justify-center mb-6 pt-96 xl:pt-0`}>
           <div className="pb-2 relative">
             <div
               className={`absolute -top-20 left-10  ${somethingCopied ? "block" : "hidden"} ${
@@ -101,7 +109,7 @@ export default function ContactMe() {
           </div>
         </div>
         <div className="pb-28 xl:pb-0">
-          <div className="rounded-lg p-[2px] redBlue">
+          <div className={`rounded-lg p-[2px] redBlue transition-opacity duration-500 ${fadeInContent ? "opacity-100" : "opacity-0"}`}>
             <div className="bg-black rounded-lg">
               <div className="flex flex-col items-center rounded burgersAndFries p-4">
                 <p className="pb-2 text-xl font-bold text-white">My Locality</p>

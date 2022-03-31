@@ -10,28 +10,21 @@ export default function FadeBG({ pathname }) {
   const [inner, setInner] = useState(contact);
   const [outerActive, setOuterActive] = useState(true);
 
-  const outerCondition = `${outerActive ? "opacity-100 duration-300" : "opacity-0 duration-500"} transition-opacity`;
-  const innerCondition = `${!outerActive ? "opacity-100 duration-500" : "opacity-0 duration-300"} transition-opacity`;
+  const outerCondition = `${outerActive ? "opacity-100 duration-700" : "opacity-0 duration-1000"} transition-opacity`;
+  const innerCondition = `${!outerActive ? "opacity-100 duration-1000" : "opacity-0 duration-700"} transition-opacity`;
 
   useEffect(() => {
     switch (pathname) {
       case "/peep-my-stack":
-        console.log(1);
         outerActive ? setInner(stack) : setOuter(stack);
         break;
       case "/say-whats-up":
-        console.log(2);
-
         outerActive ? setInner(contact) : setOuter(contact);
         break;
       case "/check-it-out":
-        console.log(3);
-
         outerActive ? setInner(projects) : setOuter(projects);
         break;
       default:
-        console.log(4);
-
         outerActive ? setInner(home) : setOuter(home);
         break;
     }

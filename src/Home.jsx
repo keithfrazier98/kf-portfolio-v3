@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Home() {
-  const [fadeInBG, setFadeInBG] = useState(false);
   const [fadeInContent, setFadeInContent] = useState(false);
 
   useEffect(() => {
-    setFadeInBG(true);
     setTimeout(() => {
       setFadeInContent(true);
     }, 250);
