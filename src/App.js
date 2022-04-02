@@ -15,7 +15,7 @@ function App() {
     <>
       {" "}
       <FadeBG pathname={pathname} />
-      <div className="aboslute top-0 left-0 z-20">
+      <div className="absolute top-0 left-0 z-20 w-full h-full">
         <Router>
           <Navigation pathname={pathname} setPathname={setPathname} />
           <Routes>
