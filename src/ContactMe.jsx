@@ -91,7 +91,7 @@ export default function ContactMe() {
           </div>
           <div className="rainbow-bwds p-[2px] rounded-lg min-w-[30rem] shadow-2xl">
             <div className="rounded-lg bg-black">
-              <form onSubmit={handleSubmit} className="flex flex-col burgersAndFries w-full pb-4 px-4 pt-2 rounded-lg">
+              <form onSubmit={handleSubmit} className="flex flex-col topography w-full pb-4 px-4 pt-2 rounded-lg">
                 <p className="text-white w-full text-center font-semibold mb-2">Email me right away!</p>
                 <input id="email" className="mb-4 p-2 rounded" type="email" name="email" placeholder="email address" />
                 <ValidationError prefix="Email" field="email" errors={state.errors} />
@@ -111,11 +111,11 @@ export default function ContactMe() {
         <div className="pb-28 xl:pb-0">
           <div className={`rounded-lg p-[2px] redBlue transition-opacity duration-500 ${fadeInContent ? "opacity-100" : "opacity-0"}`}>
             <div className="bg-black rounded-lg">
-              <div className="flex flex-col items-center rounded burgersAndFries p-4">
+              <div className="flex flex-col items-center rounded topography p-4">
                 <p className="pb-2 text-xl font-bold text-white">My Locality</p>
                 <div className="rainbow-sdws p-[2px] rounded-lg">
                   <div className="bg-black rounded-lg">
-                    <div className="burgersAndFries rounded-lg">
+                    <div className="topography rounded-lg">
                       <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d845781.5973462377!2d-118.17143572126591!3d34.09938342269121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xdbd6107807ace273!2zMzTCsDA1JzU3LjgiTiAxMTfCsDM2JzQwLjEiVw!5e0!3m2!1sen!2sus!4v1648765505015!5m2!1sen!2sus"
                         className="rounded-lg border-0 w-[400px] h-[300px] lg:w-[600px] lg:h-[450px]"

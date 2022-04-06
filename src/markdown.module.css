@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .reactMarkDown {
-  @apply bg-black rounded-lg p-4 my-2 max-w-full whitespace-normal break-words text-white text-left;
+  @apply bg-zinc-700 bg-opacity-90 rounded-lg p-4 mx-8 my-2 max-w-full whitespace-normal break-words text-white text-left;
 }
 
 .reactMarkDown ul {
@@ -16,16 +16,44 @@
 }
 
 .reactMarkDown a {
-  @apply bg-blue-500;
+  @apply text-blue-500 active:text-green-700 hover:text-red-600 focus:text-pink-400;
 }
 .reactMarkDown h3 {
-  @apply text-blue-300 text-xl my-0;
+  @apply text-blue-300 text-xl my-0 my-3;
+}
+
+.reactMarkDown h1 {
+  @apply text-2xl text-green-400 my-3
+}
+
+.reactMarkDown h2 {
+  @apply text-xl font-semibold text-green-300 my-3
 }
 
 .reactMarkDown p {
-  @apply my-1 text-sm md:text-base;
+  @apply my-2 text-sm md:text-base;
 }
 
 .reactMarkDown h1 {
   @apply text-xl font-bold;
+}
+
+.reactMarkDown pre, .reactMarkDown code {
+  @apply min-w-full whitespace-normal bg-opacity-50 bg-zinc-800 p-1 rounded text-sm my-2;
+}
+
+.reactMarkDown ol {
+  @apply list-decimal px-6 bg-lime-400 bg-opacity-10 py-3 rounded;
+}
+
+.reactMarkDown ol li {
+ @apply my-2
+}
+
+.reactMarkDown blockquote {
+  @apply  px-4;
+}
+
+.reactMarkDown blockquote p {
+  @apply bg-zinc-900 bg-opacity-25 p-2 rounded;
 }

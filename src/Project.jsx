@@ -73,8 +73,8 @@ export default function Projects() {
       <div className="absolute w-full h-full z-20">
         <div className="flex w-full h-full justify-center items-center">
           <div className="max-w-3xl bg-gradient-to-tl from-green-400 via-yellow-500 to-indigo-700 p-[2px] rounded-lg mr-12">
-            <div className="w-full max-h-[30rem] rounded text-left bg-zinc-700">
-              <div className="burgersAndFries text-center px-2 rounded-lg">
+            <div className="w-full max-h-[35rem] rounded text-left bg-zinc-700">
+              <div className="topography text-center px-2 rounded-lg">
                   <h2 className="text-2xl text-white pt-1">Spotlight Projects</h2>
                   {pinnedRepos ? (
                     // autoPlay={true} interval={5000} stopOnHover={true}
