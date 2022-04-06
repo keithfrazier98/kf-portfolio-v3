@@ -78,7 +78,7 @@ export default function Projects() {
                   <h2 className="text-2xl text-white pt-1">Spotlight Projects</h2>
                   {pinnedRepos ? (
                     // autoPlay={true} interval={5000} stopOnHover={true}
-                    <Carousel axis="horizontal" className="flex flex-col">
+                    <Carousel axis="horizontal" className="">
                       {pinnedRepos?.map((repo) => {
                         console.log(repo);
                         return <ProjectItem data={repo} />;
