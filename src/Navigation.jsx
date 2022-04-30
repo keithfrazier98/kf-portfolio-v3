@@ -5,17 +5,17 @@ export default function Navigation({ pathname, setPathname }) {
   const activeTabStyle = "text-black bg-white bg-opacity-75";
   const location = useLocation();
   const activeTabCondition = (path) => (path === pathname ? activeTabStyle : "");
-  const [transition, setTransition] = useState(false)
+  const [transition, setTransition] = useState(false);
   useEffect(() => {
     setPathname(location.pathname);
   }, [location]);
 
-  useEffect(()=>{
-    setTransition(true)
+  useEffect(() => {
+    setTransition(true);
     setTimeout(() => {
-      setTransition(false)
+      setTransition(false);
     }, 1000);
-  }, [location])
+  }, [location]);
 
   const colors = ["red", "green", "orange", "blue", "yellow", "purple", "cyan", "pink", "rose", "violet"];
   const hues = ["500", "600", "700", "800", "900"];
@@ -27,9 +27,9 @@ export default function Navigation({ pathname, setPathname }) {
   }
 
   return (
-    <>
+    <div className="relative w-full">
       {" "}
-      <div className="absolute top-0 z-30 w-full h-full overflow-clip ">
+      <div className="absolute top-0 z-30 w-full overflow-clip ">
         <header className="flex flex-col md:flex-row justify-between pt-4 px-8 bg-black ">
           <h1 className="text-5xl font-sans pb-2">
             <span className={`hover:text-blue-400 ${stdSpanStyle}`}>K</span>
@@ -61,22 +61,9 @@ export default function Navigation({ pathname, setPathname }) {
             </Link>
           </nav>
         </header>
-        <div className="rainbow w-full h-[2px] relative"/>
-
-
+        <div className="rainbow w-full h-[2px] relative" />
       </div>
-        <div className="relative w-full h-full overflow-clip hide-scrollbar">
-        <div className={`absolute z-30 left-0 bg-black h-full rounded-r w-[2px] transition-transform ${transition? "translate-y-48" : "translate-y-0"} duration-1000`} />
-        <div className={`absolute z-20 left-0 bg-gradient-to-b from-red-500 via-emerald-500 to-blue-600 h-1/4 rounded-r w-[2px]`} />
-        <div className={`absolute z-30 left-0 bottom-[98.4%] bg-black rounded-r h-full w-[2px] transition-transform ${transition? "translate-y-48" : "translate-y-0"} duration-[1500ms]`} />
-
-        <div className={`absolute z-30 right-0 bg-black h-full w-[2px] rounded-l transition-transform ${transition? "-translate-y-[8rem]" : "translate-y-0"} duration-1000`} />
-        <div className={`absolute z-20 right-0 bottom-0 bg-gradient-to-b from-red-500 via-emerald-500 to-blue-600 h-1/4 rounded-r w-[2px]`} />
-        <div className={`absolute z-30 right-0 top-[103%] rounded-l bg-black h-full w-[2px]  transition-transform ${transition? "-translate-y-[8rem]" : "translate-y-0"} duration-[1500ms]`} />
-
-        <div className={`absolute bottom-0 bg-black w-full h-[2px] rounded-t transition-transform ${transition? "translate-x-[8rem]" : "translate-x-0"} duration-1000`} />
-        <div className={`absolute bottom-0 right-[100.3%] bg-black w-full rounded-t h-[2px] transition-transform ${transition? "translate-x-[8rem]" : "translate-x-0"} duration-[1500ms]`} />
-        </div>
-    </>
+  
+    </div>
   );
 }

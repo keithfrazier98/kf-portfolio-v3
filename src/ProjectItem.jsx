@@ -8,7 +8,6 @@ import axios from "axios";
 import rehypeRaw from 'rehype-raw'
 export default function ProjectItem({ data }) {
   const [readme, setReadme] = useState("");
-  console.log(data);
   useEffect(() => {
     axios
       .get(readmeUrl(data.owner.login ,data.name, "main"))
