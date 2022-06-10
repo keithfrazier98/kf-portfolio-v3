@@ -93,12 +93,22 @@ export default function Projects() {
   function makeLanguageChart() {
     if (!languagePercent || !languagePercent.percentages) return;
     let elements = [];
+    let totalPerc = 0
+    let totalLang = 0
+    for (let [language, percent] of Object.entries(languagePercent.percentages)) {
+      console.log(language, percent);
+      totalPerc += percent
+      totalLang += 1
+    }
+
+    const offset = (100 - totalPerc) / totalLang
+    
     for (let [language, percent] of Object.entries(languagePercent.percentages)) {
       console.log(language, percent);
       elements.push(
-        <div className={`h-full group relative overflow-visible`} style={{ backgroundColor: languagePercent.colors[language], width: `${percent}%` }}>
+        <div className={`h-full group relative overflow-visible first:rounded-l-full last:rounded-r-full`} style={{ backgroundColor: languagePercent.colors[language], width: `${percent + offset}%` }}>
           <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 hidden opacity-0 group-hover:opacity-100 duration-300 transition-opacity group-hover:block z-30">
-            <p className="">{language}</p>
+            <p className="w-max">{language} {Math.floor(percent)}%</p>
           </div>
         </div>
       );
@@ -114,7 +124,7 @@ export default function Projects() {
       repositoryOwner(login:"keithfrazier98"){
       login
       id
-      repositories(last:50, orderBy:{direction: DESC, field:CREATED_AT} ){
+      repositories(last:100, orderBy:{direction: DESC, field:UPDATED_AT} ){
       nodes{
       ${nodes}
             }
@@ -135,7 +145,7 @@ export default function Projects() {
           <div className="max-w-3xl bg-gradient-to-tl from-green-400 via-yellow-500 to-indigo-700 p-[2px] rounded-lg mr-12">
             <div className="w-full max-h-[35rem] rounded text-left bg-zinc-700">
               <div className="topography text-center px-2 rounded-lg">
-                <h2 className="text-2xl text-white pt-1">Pinned Repository Readmes</h2>
+                <h2 className="text-2xl text-white pt-1">Pinned Repository READMEs</h2>
                 {pinnedRepos ? (
                   <Carousel axis="horizontal" infiniteLoop={true} stopOnHover={true} swipeable={true} showStatus={false}>
                     {pinnedRepos?.map((repo) => {
@@ -152,7 +162,7 @@ export default function Projects() {
           <div>
             <div className=" p-[2px] bg-gradient-to-bl from-blue-700 to-indigo-800 via-fuchsia-700 rounded-lg">
               <div className="rounded-lg bg-zinc-700 text-white p-2 text-center">
-                <h3 className="w-full text-center bg-zinc-900 p-1 rounded">GitHub Repositories</h3>
+                <h3 className="w-full text-center bg-zinc-900 p-1 rounded">GitHub Repositories ({allRepos.length})</h3>
                 <ul className="max-h-96 overflow-scroll hide-scrollbar max-w-sm my-1 text-left">
                   {allRepos?.map((data) => {
                     if (!data.isPrivate) {
