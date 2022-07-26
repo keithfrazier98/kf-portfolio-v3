@@ -111,7 +111,7 @@ export default function ContactMe() {
         <div className="pb-28 xl:pb-0">
           <div className={`rounded-lg p-[2px] redBlue transition-opacity duration-500 ${fadeInContent ? "opacity-100" : "opacity-0"}`}>
             <div className="bg-black rounded-lg">
-              <div className="flex flex-col items-center rounded topography p-4">
+              <div className="flex flex-col items-center rounded-lg topography p-4">
                 <p className="pb-2 text-xl font-bold text-white">My Locality</p>
                 <div className="rainbow-sdws p-[2px] rounded-lg">
                   <div className="bg-black rounded-lg">

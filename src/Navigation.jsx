@@ -46,17 +46,17 @@ export default function Navigation({ pathname, setPathname }) {
             <span className={`hover:text-green-400 ${stdSpanStyle}`}>e</span>
             <span className={`hover:text-yellow-300 ${stdSpanStyle}`}>r</span>
           </h1>
-          <nav className="grid grid-cols-4 gap-[2px] rainbow rounded-t px-[2px] pt-[2px]">
-            <Link to="/my-little-bio" className={activeTabCondition("/my-little-bio")}>
+          <nav className="grid grid-cols-4 gap-[2px] rainbow rounded-t-xl px-[2px] pt-[2px]">
+            <Link to="/my-little-bio" className={`rounded-tl-xl ${activeTabCondition("/my-little-bio")}`}>
               home
             </Link>
-            <Link to="/say-whats-up" className={activeTabCondition("/say-whats-up")}>
+            <Link to="/say-whats-up" className={`rounded-none ${activeTabCondition("/my-little-bio")}`}>
               contact
             </Link>
-            <Link to="/check-it-out" className={activeTabCondition("/check-it-out")}>
+            <Link to="/check-it-out" className={`rounded-none ${activeTabCondition("/my-little-bio")}`}>
               projects
             </Link>
-            <Link to="/peep-my-stack" className={activeTabCondition("/peep-my-stack")}>
+            <Link to="/peep-my-stack" className={`rounded-tr-xl ${activeTabCondition("/my-little-bio")}`}>
               stack
             </Link>
           </nav>

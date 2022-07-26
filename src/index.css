@@ -10,7 +10,7 @@ nav > a {
   @apply hover:text-black hover:bg-white hover:bg-opacity-40;
   @apply active:text-black active:bg-white active:bg-opacity-50;
   @apply focus:text-black focus:bg-white focus:bg-opacity-75;
-  @apply rounded-t py-2 px-4 text-white text-base md:text-lg font-light;
+  @apply py-2 px-4 text-white text-base md:text-lg font-light;
   @apply transition-colors duration-300;
 }
 
