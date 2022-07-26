@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
@@ -6,8 +7,6 @@ import MiddleContainer from "./MiddleContainer";
 import ProjectItem from "./ProjectItem";
 import RepoItem from "./RepoItem";
 export default function Projects() {
-  const [allRepos, setAllRepos] = useState([]);
-  const [pinnedRepos, setPinnedRepos] = useState();
   const [languagePercent, setLanguagePercent] = useState({
     colors: null,
     percentages: null,
@@ -34,7 +33,13 @@ export default function Projects() {
       color
   }`;
 
+  const pinnedReposQuery = useQuery(["pinned_repos"], fetchPinnedRepos, { staleTime: 300000, cacheTime: 300000 });
+
   useEffect(() => {
+    console.log(pinnedReposQuery);
+  }, [pinnedReposQuery.isLoading]);
+
+  async function fetchPinnedRepos() {
     const body = {
       query: `query {
         user(login: "keithfrazier98") { 
@@ -49,18 +54,38 @@ export default function Projects() {
       }`,
     };
 
-    axios.post(githubUrl, body, config).then((res) => {
-      setPinnedRepos(res.data.data.user.pinnedItems.nodes);
-    });
-  }, []);
+    const response = await axios.post(githubUrl, body, config);
+    return response.data.data.user.pinnedItems.nodes;
+  }
+
+  const allReposQuery = useQuery(["all_repos"], fetchAllRepos, { staleTime: 300000, cacheTime: 300000 });
+
+  async function fetchAllRepos() {
+    const body = {
+      query: `query {
+      repositoryOwner(login:"keithfrazier98"){
+      login
+      id
+      repositories(last:100, orderBy:{direction: DESC, field:UPDATED_AT} ){
+      nodes{
+      ${nodes}
+            }
+          }
+        }
+      }`,
+    };
+
+    const response = await axios.post(githubUrl, body, config);
+    return response.data.data.repositoryOwner.repositories.nodes;
+  }
+
 
   useEffect(() => {
     const langCount = {};
     const langColor = {};
     const langPerc = {};
-    if (allRepos.length > 0) {
-      allRepos.forEach((repo) => {
-        console.log(repo.primaryLanguage);
+    if (allReposQuery.data.length > 0) {
+      allReposQuery.data.forEach((repo) => {
         const langObject = repo.primaryLanguage;
         if (langObject) {
           const color = langObject.color;
@@ -77,7 +102,7 @@ export default function Projects() {
       console.log(langCount, langColor);
       let totalPerc = 0;
       for (let [language, value] of Object.entries(langCount)) {
-        const percentage = (value / allRepos.length) * 100;
+        const percentage = (value / allReposQuery.data.length) * 100;
         langPerc[language] = percentage;
         totalPerc += percentage;
       }
@@ -88,55 +113,38 @@ export default function Projects() {
         percentages: langPerc,
       });
     }
-  }, [allRepos]);
+  }, [allReposQuery.data]);
 
   function makeLanguageChart() {
     if (!languagePercent || !languagePercent.percentages) return;
     let elements = [];
-    let totalPerc = 0
-    let totalLang = 0
+    let totalPerc = 0;
+    let totalLang = 0;
     for (let [language, percent] of Object.entries(languagePercent.percentages)) {
       console.log(language, percent);
-      totalPerc += percent
-      totalLang += 1
+      totalPerc += percent;
+      totalLang += 1;
     }
 
-    const offset = (100 - totalPerc) / totalLang
-    
+    const offset = (100 - totalPerc) / totalLang;
+
     for (let [language, percent] of Object.entries(languagePercent.percentages)) {
-      console.log(language, percent);
       elements.push(
-        <div className={`h-full group relative overflow-visible first:rounded-l-full last:rounded-r-full`} style={{ backgroundColor: languagePercent.colors[language], width: `${percent + offset}%` }}>
+        <div
+          className={`h-full group relative overflow-visible first:rounded-l-full last:rounded-r-full`}
+          style={{ backgroundColor: languagePercent.colors[language], width: `${percent + offset}%` }}
+        >
           <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 hidden opacity-0 group-hover:opacity-100 duration-300 transition-opacity group-hover:block z-30">
-            <p className="w-max">{language} {Math.floor(percent)}%</p>
+            <p className="w-max">
+              {language} {Math.floor(percent)}%
+            </p>
           </div>
         </div>
       );
     }
 
-    console.log(elements);
     return elements;
   }
-
-  useEffect(() => {
-    const body = {
-      query: `query {
-      repositoryOwner(login:"keithfrazier98"){
-      login
-      id
-      repositories(last:100, orderBy:{direction: DESC, field:UPDATED_AT} ){
-      nodes{
-      ${nodes}
-            }
-          }
-        }
-      }`,
-    };
-
-    axios.post(githubUrl, body, config).then((res) => {
-      setAllRepos(res.data.data.repositoryOwner.repositories.nodes);
-    });
-  }, []);
 
   return (
     <div className="w-full h-full relative">
@@ -146,9 +154,9 @@ export default function Projects() {
             <div className="w-full max-h-[35rem] rounded text-left bg-zinc-700">
               <div className="topography text-center px-2 rounded-lg">
                 <h2 className="text-2xl text-white pt-1">Pinned Repository READMEs</h2>
-                {pinnedRepos ? (
+                {pinnedReposQuery.data ? (
                   <Carousel axis="horizontal" infiniteLoop={true} stopOnHover={true} swipeable={true} showStatus={false}>
-                    {pinnedRepos?.map((repo) => {
+                    {pinnedReposQuery?.data?.map((repo) => {
                       console.log(repo);
                       return <ProjectItem data={repo} />;
                     })}
@@ -162,9 +170,9 @@ export default function Projects() {
           <div>
             <div className=" p-[2px] bg-gradient-to-bl from-blue-700 to-indigo-800 via-fuchsia-700 rounded-lg">
               <div className="rounded-lg bg-zinc-700 text-white p-2 text-center">
-                <h3 className="w-full text-center bg-zinc-900 p-1 rounded">GitHub Repositories ({allRepos.length})</h3>
+                <h3 className="w-full text-center bg-zinc-900 p-1 rounded">GitHub Repositories ({allReposQuery.data.length})</h3>
                 <ul className="max-h-96 overflow-scroll hide-scrollbar max-w-sm my-1 text-left">
-                  {allRepos?.map((data) => {
+                  {allReposQuery.data?.map((data) => {
                     if (!data.isPrivate) {
                       return <RepoItem data={data} />;
                     }

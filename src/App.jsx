@@ -6,10 +6,11 @@ import FadeBG from "./FadeBG";
 import Home from "./Home";
 import "./index.css";
 import Navigation from "./Navigation";
-import Projects from "./Project";
+import Projects from "./Projects";
 import Stack from "./Stack";
 import ReactGA from "react-ga4";
 import { useEffect } from "react";
+
 function App() {
   const [pathname, setPathname] = useState("my-little-bio");
 
