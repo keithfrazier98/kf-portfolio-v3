@@ -79,12 +79,11 @@ export default function Projects() {
     return response.data.data.repositoryOwner.repositories.nodes;
   }
 
-
   useEffect(() => {
     const langCount = {};
     const langColor = {};
     const langPerc = {};
-    if (allReposQuery.data.length > 0) {
+    if (allReposQuery?.data?.length > 0) {
       allReposQuery.data.forEach((repo) => {
         const langObject = repo.primaryLanguage;
         if (langObject) {
@@ -102,7 +101,7 @@ export default function Projects() {
       console.log(langCount, langColor);
       let totalPerc = 0;
       for (let [language, value] of Object.entries(langCount)) {
-        const percentage = (value / allReposQuery.data.length) * 100;
+        const percentage = (value / allReposQuery?.data?.length) * 100;
         langPerc[language] = percentage;
         totalPerc += percentage;
       }
@@ -147,47 +146,60 @@ export default function Projects() {
   }
 
   return (
-    <div className="w-full h-full relative">
-      <div className="absolute w-full h-full z-20">
-        <div className="flex w-full h-full justify-center items-center">
-          <div className="max-w-3xl bg-gradient-to-tl from-green-400 via-yellow-500 to-indigo-700 p-[2px] rounded-lg mr-12">
-            <div className="w-full max-h-[35rem] rounded text-left bg-zinc-700">
-              <div className="topography text-center px-2 rounded-lg">
-                <h2 className="text-2xl text-white pt-1">Pinned Repository READMEs</h2>
-                {pinnedReposQuery.data ? (
-                  <Carousel axis="horizontal" infiniteLoop={true} stopOnHover={true} swipeable={true} showStatus={false}>
-                    {pinnedReposQuery?.data?.map((repo) => {
-                      console.log(repo);
-                      return <ProjectItem data={repo} />;
-                    })}
-                  </Carousel>
-                ) : (
-                  <></>
-                )}
-              </div>
-            </div>
+    <div className="flex w-full h-full justify-center items-center">
+      <div className="max-w-3xl bg-gradient-to-tl from-green-400 via-yellow-500 to-indigo-700 p-[2px] rounded-lg mr-12">
+        <div className="w-full rounded text-left bg-zinc-700">
+          <div className="topography text-center px-2 rounded-lg flex flex-col">
+            <h2 className="text-2xl text-white pt-1">Pinned Repository READMEs</h2>
+            {pinnedReposQuery.data ? (
+              <Carousel showThumbs={false} axis="horizontal" infiniteLoop={true} stopOnHover={true} swipeable={true} showStatus={false}>
+                {pinnedReposQuery?.data?.map((repo) => {
+                  console.log(repo);
+                  return <ProjectItem data={repo} />;
+                })}
+              </Carousel>
+            ) : (
+              <></>
+            )}
           </div>
-          <div>
-            <div className=" p-[2px] bg-gradient-to-bl from-blue-700 to-indigo-800 via-fuchsia-700 rounded-lg">
-              <div className="rounded-lg bg-zinc-700 text-white p-2 text-center">
-                <h3 className="w-full text-center bg-zinc-900 p-1 rounded">GitHub Repositories ({allReposQuery.data.length})</h3>
-                <ul className="max-h-96 overflow-scroll hide-scrollbar max-w-sm my-1 text-left">
-                  {allReposQuery.data?.map((data) => {
-                    if (!data.isPrivate) {
-                      return <RepoItem data={data} />;
-                    }
-                  })}
-                </ul>
-                <span className="text-zinc-400">Powered by GitHub GraphQL API</span>
-              </div>
-            </div>
-            <div className="w-full flex flex-col text-center mt-4">
-              <p className="">Language Analysis</p>
-              <div className="w-full h-5 p-[2px] bg-gradient-to-tr from-indigo-800 to-blue-700 via-fuchsia-700 rounded-full">
-                <div className="w-full h-full bg-zinc-700 rounded-full first:rounded-l-full last:rounded-r-full flex">
-                  {languagePercent ? makeLanguageChart()?.map((element) => element) : <></>}
-                </div>
-              </div>
+        </div>
+      </div>
+      <div>
+        <div className="w-full flex justify-center items-center flex-col ">
+          <a
+            href="https://skyline.github.com/keithfrazier98/2021"
+            target={"_blank"}
+            className="w-full border border-blue-600 text-center p-1 rounded-full my-1 hover:bg-blue-400 hover:bg-opacity-20"
+          >
+            Checkout my commit history!
+          </a>{" "}
+          <a
+            href="https://github.com/keithfrazier98"
+            className="w-full border border-blue-600 text-center p-1 rounded-full my-1 hover:bg-blue-400 hover:bg-opacity-20"
+            target={"_blank"}
+          >
+            Checkout my GitHub!
+          </a>
+        </div>
+
+        <div className=" p-[2px] bg-gradient-to-bl from-blue-700 to-indigo-800 via-fuchsia-700 rounded-lg">
+          <div className="rounded-lg bg-zinc-700 text-white p-2 text-center">
+            <h3 className="w-full text-center bg-zinc-900 p-1 rounded">GitHub Repositories ({allReposQuery?.data?.length})</h3>
+            <ul className="max-h-96 overflow-scroll hide-scrollbar max-w-sm my-1 text-left">
+              {allReposQuery.data?.map((data) => {
+                if (!data.isPrivate) {
+                  return <RepoItem data={data} />;
+                }
+              })}
+            </ul>
+            <span className="text-zinc-400">Powered by GitHub GraphQL API</span>
+          </div>
+        </div>
+        <div className="w-full flex flex-col text-center mt-4">
+          <p className="">Language Analysis</p>
+          <div className="w-full h-5 p-[2px] bg-gradient-to-tr from-indigo-800 to-blue-700 via-fuchsia-700 rounded-full">
+            <div className="w-full h-full bg-zinc-700 rounded-full first:rounded-l-full last:rounded-r-full flex">
+              {languagePercent ? makeLanguageChart()?.map((element) => element) : <></>}
             </div>
           </div>
         </div>

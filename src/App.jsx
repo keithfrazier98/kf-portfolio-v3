@@ -5,7 +5,7 @@ import Cookies from "./Cookies";
 import FadeBG from "./FadeBG";
 import Home from "./Home";
 import "./index.css";
-import Navigation from "./Navigation";
+import Navigation from "./Header";
 import Projects from "./Projects";
 import Stack from "./Stack";
 import ReactGA from "react-ga4";
@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="relative w-full h-full overflow-hidden">
       <FadeBG pathname={pathname} />
-      <div className="absolute top-0 left-0 z-20 w-full h-full hide-scrollbar">
+      <div className="absolute top-0 left-0 z-10 w-full h-full hide-scrollbar">
         <div className="w-full h-full flex flex-col">
           <Router>
             <Navigation pathname={pathname} setPathname={setPathname} />
