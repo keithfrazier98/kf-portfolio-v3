@@ -48,13 +48,13 @@ export default function Navigation({ pathname, setPathname }) {
           <Link to="/my-little-bio" className={`rounded-tl-xl ${activeTabCondition("/my-little-bio")}`}>
             home
           </Link>
-          <Link to="/say-whats-up" className={`rounded-none ${activeTabCondition("/my-little-bio")}`}>
+          <Link to="/say-whats-up" className={`rounded-none ${activeTabCondition("/say-whats-up")}`}>
             contact
           </Link>
-          <Link to="/check-it-out" className={`rounded-none ${activeTabCondition("/my-little-bio")}`}>
+          <Link to="/check-it-out" className={`rounded-none ${activeTabCondition("/check-it-out")}`}>
             projects
           </Link>
-          <Link to="/peep-my-stack" className={`rounded-tr-xl ${activeTabCondition("/my-little-bio")}`}>
+          <Link to="/peep-my-stack" className={`rounded-tr-xl ${activeTabCondition("/peep-my-stack")}`}>
             stack
           </Link>
         </nav>
