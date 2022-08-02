@@ -16,23 +16,27 @@ export default function Cookies() {
   function thatsOkayHandler() {
     setShowCookies(false);
   }
-  
 
   return (
     <div
-      className={`w-full h-12 pt-[2px] z-30 items-center bg-gradient-to-tr from-blue-700 to-red-600 absolute bottom-0 left-0 ${
+      className={`w-full h-12 pt-[2px] z-30 items-center pb-[4.5rem] md:pb-0 bg-gradient-to-tr from-blue-700 to-red-600 absolute bottom-0 left-0 ${
         showCookies ? "" : "translate-y-full"
       } transition-transform transform duration-150`}
     >
-      <div className="w-full h-full flex items-center px-12 bg-black text-white text-xs">
-        <p>Hello I am keith, glad to see you here! Just to let you know, my website uses google analytics to help me better track visitation and other key metrics.</p>
-        <button className="mx-2 rounded-full text-xs px-4 pt-[2px] border border-green-400 hover:bg-green-700 " onClick={thatsOkayHandler}>
-          Thats okay!
+      <div className="w-full h-full bg-black flex items-center justify-center md pt-2">
+        <div className="grid grid-flow-col px-12 gap-3 bg-black text-white text-xs m-auto ">
+        <p>
+          Hello I am keith, glad to see you here! My website uses google analytics to help me better track visitation.
+        </p>
+        <button className="h-fit self-center rounded-full text-xs px-4 pt-[2px] border border-green-400 hover:bg-green-700 bg-green-200 bg-opacity-25 " onClick={thatsOkayHandler}>
+          Okay
         </button>
-        <button className="mx-2 rounded-full text-xs px-4 pt-[2px] border border-red-500 hover:bg-red-700" onClick={howDareYouHandler}>
-          How dare you!
+        <button className="h-fit self-center rounded-full text-xs px-4 pt-[2px] border border-red-500 hover:bg-red-700" onClick={howDareYouHandler}>
+          No!
         </button>
       </div>
+      </div>
+      
     </div>
   );
 }
