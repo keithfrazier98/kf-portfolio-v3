@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ContactMe from "./ContactMe";
 import Cookies from "./Cookies";
 import FadeBG from "./FadeBG";
@@ -36,6 +37,7 @@ function App() {
         </div>
       </div>
       <Cookies />
+      <ReactQueryDevtools initialIsOpen={false} />
     </div>
   );
 }

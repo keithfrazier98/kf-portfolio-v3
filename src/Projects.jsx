@@ -98,7 +98,6 @@ export default function Projects() {
         }
       });
 
-      console.log(langCount, langColor);
       let totalPerc = 0;
       for (let [language, value] of Object.entries(langCount)) {
         const percentage = (value / allReposQuery?.data?.length) * 100;
@@ -120,7 +119,6 @@ export default function Projects() {
     let totalPerc = 0;
     let totalLang = 0;
     for (let [language, percent] of Object.entries(languagePercent.percentages)) {
-      console.log(language, percent);
       totalPerc += percent;
       totalLang += 1;
     }
@@ -154,7 +152,6 @@ export default function Projects() {
             {pinnedReposQuery.data ? (
               <Carousel showThumbs={false} axis="horizontal" infiniteLoop={true} stopOnHover={true} swipeable={true} showStatus={false}>
                 {pinnedReposQuery?.data?.map((repo) => {
-                  console.log(repo);
                   return <ProjectItem data={repo} />;
                 })}
               </Carousel>

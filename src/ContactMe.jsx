@@ -33,7 +33,7 @@ export default function ContactMe() {
   return (
     <MiddleContainer>
       <div className="w-full h-full flex items-center justify-around flex-col xl:flex-row overflow-y-scroll overflow-x-hidden">
-        <div className={`${fadeInContent ? "opacity-100" : "opacity-0"} transition-opacity duration-300 flex flex-col items-center justify-center mb-6 pt-96 xl:pt-0 w-full px-2`}>
+        <div className={`${fadeInContent ? "opacity-100" : "opacity-0"} transition-opacity duration-300 flex flex-col items-center justify-center mb-6 pt-64 xl:pt-0 w-full md:w-auto px-2`}>
           <div className="pb-2 relative">
             <div
               className={`absolute -top-20 left-10  ${somethingCopied ? "block" : "hidden"} ${
@@ -97,8 +97,8 @@ export default function ContactMe() {
             </div>
           </div>
           <div className="rainbow-bwds p-[2px] rounded-lg min-w-full md:min-w-[30rem] shadow-2xl">
-            <div className="rounded-lg bg-black w-full">
-              <form onSubmit={handleSubmit} className="flex flex-col topography w-full pb-4 px-4 pt-2 rounded-lg">
+            <div className="rounded-lg bg-black w-full mg:w-auto">
+              <form onSubmit={handleSubmit} className="flex flex-col topography md:w-auto w-full pb-4 px-4 pt-2 rounded-lg">
                 <p className="text-white w-full text-center font-semibold mb-2">Email me right away!</p>
                 <input id="email" className="mb-4 p-2 rounded" type="email" name="email" placeholder="email address" />
                 <ValidationError prefix="Email" field="email" errors={state.errors} />
@@ -114,7 +114,7 @@ export default function ContactMe() {
             </div>
           </div>
         </div>
-        <div className="pb-28 xl:pb-0 w-full px-2">
+        <div className="pb-12 xl:pb-0 w-full md:w-auto px-2">
           <div className={`rounded-lg p-[2px] redBlue transition-opacity duration-500 ${fadeInContent ? "opacity-100" : "opacity-0"}`}>
             <div className="bg-black rounded-lg">
               <div className="flex flex-col items-center rounded-lg topography p-4">
