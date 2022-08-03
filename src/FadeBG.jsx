@@ -33,10 +33,10 @@ export default function FadeBG({ pathname }) {
 
   return (
     <>
-      <div className={`absolute top-0 w-full h-full ${outer[0]} ${outerCondition}`} />
-      <div className={`absolute top-0 w-full h-full ${outer[1]} ${outerCondition}`} />
-      <div className={`absolute top-0 w-full h-full ${inner[0]} ${innerCondition}`} />
-      <div className={`absolute top-0 w-full h-full ${inner[1]} ${innerCondition}`} />
+      <div className={`absolute top-0 w-full h-full z-0 ${outer[0]} ${outerCondition}`} />
+      <div className={`absolute top-0 w-full h-full z-0 ${outer[1]} ${outerCondition}`} />
+      <div className={`absolute top-0 w-full h-full z-0 ${inner[0]} ${innerCondition}`} />
+      <div className={`absolute top-0 w-full h-full z-0 ${inner[1]} ${innerCondition}`} />
       {/* <div className="relative w-full h-full overflow-clip hide-scrollbar">
     <div className={`absolute z-30 left-0 bg-black h-full rounded-r w-[2px] transition-transform ${transition ? "translate-y-48" : "translate-y-0"} duration-1000`} />
     <div className={`absolute z-20 left-0 bg-gradient-to-b from-red-500 via-emerald-500 to-blue-600 h-1/4 rounded-r w-[2px]`} />
