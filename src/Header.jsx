@@ -31,8 +31,8 @@ export default function Header({ pathname, setPathname }) {
   }
 
   return (
-    <>
-      <header className="flex flex-col md:flex-row fixed z-30 w-full justify-between pt-4 px-8 bg-black ">
+    <div className="fixed z-30 w-full ">
+      <header className="flex flex-col md:flex-row justify-between pt-4 px-8 bg-black ">
         <h1 className="text-5xl font-sans pb-2">
           <span className={`hover:text-blue-400 ${stdSpanStyle}`}>K</span>
           <span className={`hover:text-yellow-600 ${stdSpanStyle}`}>e</span>
@@ -55,10 +55,10 @@ export default function Header({ pathname, setPathname }) {
           <Link to="/say-whats-up" className={`rounded-none ${activeTabCondition("/say-whats-up")}`}>
             contact
           </Link>
-          <button onClick={() => setOpenExpMenu(!openExpMenu)} className={`btn rounded-none relative ${activeTabCondition("/check-it-out")}`}>
-            experience <BsChevronDown className={`transition-transform transofrm ${openExpMenu ? "rotate-180" : "rotate-0"} text-xs ml-2`} />
-            {openExpMenu ? (
-              <OutsideClickHandler onOutsideClick={() => setOpenExpMenu(false)}>
+          <OutsideClickHandler onOutsideClick={() => setOpenExpMenu(false)}>
+            <button onClick={() => setOpenExpMenu(!openExpMenu)} className={`btn rounded-none relative ${activeTabCondition("/check-it-out")}`}>
+              experience <BsChevronDown className={`transition-transform transofrm ${openExpMenu ? "rotate-180" : "rotate-0"} text-xs ml-2`} />
+              {openExpMenu ? (
                 <div className="absolute top-full right-0 left-0 text-sm grid grid-flow-row bg-black text-left text-white expTab">
                   <Link onClick={() => setOpenExpMenu(!false)} to="/experience/resume">
                     Online Resume
@@ -67,17 +67,17 @@ export default function Header({ pathname, setPathname }) {
                     Personal Projects
                   </Link>
                 </div>
-              </OutsideClickHandler>
-            ) : (
-              <></>
-            )}
-          </button>
+              ) : (
+                <></>
+              )}
+            </button>
+          </OutsideClickHandler>
           <Link to="/peep-my-stack" className={`rounded-tr-xl ${activeTabCondition("/peep-my-stack")}`}>
             stack
           </Link>
         </nav>
       </header>
-      <div className="rainbow w-full h-[2px] relative" />
-    </>
+      <div className="rainbow w-full h-[2px] aboslute" />
+    </div>
   );
 }
