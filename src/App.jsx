@@ -6,7 +6,7 @@ import Cookies from "./Cookies";
 import FadeBG from "./FadeBG";
 import Home from "./Home";
 import "./index.css";
-import Navigation from "./Header";
+import Header from "./Header";
 import Projects from "./Projects";
 import Stack from "./Stack";
 import ReactGA from "react-ga4";
@@ -25,13 +25,13 @@ function App() {
       <div className="absolute top-0 left-0 z-10 w-full h-full hide-scrollbar">
         <div className="w-full h-full flex flex-col">
           <Router>
-            <Navigation pathname={pathname} setPathname={setPathname} />
+            <Header pathname={pathname} setPathname={setPathname} />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/my-little-bio" element={<Home />} />
               <Route path="/say-whats-up" element={<ContactMe />} />
-              <Route path="/check-it-out" element={<Projects />} />
-              <Route path="/peep-my-stack" element={<Stack />} />
+              <Route path="/experience/check-it-out" element={<Projects />} />
+              <Route path="/check-my-stack" element={<Stack />} />
             </Routes>
           </Router>
         </div>

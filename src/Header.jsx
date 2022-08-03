@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
+import { BsChevronDown, BsChevronUp } from "react-icons/bs";
+import OutsideClickHandler from "react-outside-click-handler";
 import { Link, useLocation } from "react-router-dom";
 
-export default function Navigation({ pathname, setPathname }) {
+export default function Header({ pathname, setPathname }) {
   const activeTabStyle = "text-black bg-white bg-opacity-75";
   const location = useLocation();
   const activeTabCondition = (path) => (path === pathname ? activeTabStyle : "");
   const [transition, setTransition] = useState(false);
+  const [openExpMenu, setOpenExpMenu] = useState(false);
+
   useEffect(() => {
     setPathname(location.pathname);
   }, [location]);
@@ -28,7 +32,7 @@ export default function Navigation({ pathname, setPathname }) {
 
   return (
     <>
-      <header className="flex flex-col md:flex-row justify-between pt-4 px-8 bg-black ">
+      <header className="flex flex-col md:flex-row fixed z-30 w-full justify-between pt-4 px-8 bg-black ">
         <h1 className="text-5xl font-sans pb-2">
           <span className={`hover:text-blue-400 ${stdSpanStyle}`}>K</span>
           <span className={`hover:text-yellow-600 ${stdSpanStyle}`}>e</span>
@@ -51,9 +55,23 @@ export default function Navigation({ pathname, setPathname }) {
           <Link to="/say-whats-up" className={`rounded-none ${activeTabCondition("/say-whats-up")}`}>
             contact
           </Link>
-          <Link to="/check-it-out" className={`rounded-none ${activeTabCondition("/check-it-out")}`}>
-            projects
-          </Link>
+          <button onClick={() => setOpenExpMenu(!openExpMenu)} className={`btn rounded-none relative ${activeTabCondition("/check-it-out")}`}>
+            experience <BsChevronDown className={`transition-transform transofrm ${openExpMenu ? "rotate-180" : "rotate-0"} text-xs ml-2`} />
+            {openExpMenu ? (
+              <OutsideClickHandler onOutsideClick={() => setOpenExpMenu(false)}>
+                <div className="absolute top-full right-0 left-0 text-sm grid grid-flow-row bg-black text-left text-white expTab">
+                  <Link onClick={() => setOpenExpMenu(!false)} to="/experience/resume">
+                    Online Resume
+                  </Link>
+                  <Link onClick={() => setOpenExpMenu(!false)} to="/experience/check-it-out">
+                    Personal Projects
+                  </Link>
+                </div>
+              </OutsideClickHandler>
+            ) : (
+              <></>
+            )}
+          </button>
           <Link to="/peep-my-stack" className={`rounded-tr-xl ${activeTabCondition("/peep-my-stack")}`}>
             stack
           </Link>
