@@ -14,7 +14,7 @@ export default function Home() {
     <p
       className={`${
         fadeInContent ? "opacity-100" : "opacity-0"
-      } transition-all duration-[2000ms] px-12 md:px-0 absolute top-1/2 w-full md:w-2/3 lg:w-2/5 left-1/2 -translate-x-1/2 text-base lg:text-xl ${
+      } text-black dark:text-gray-200 transition-transform duration-[2000ms] px-12 md:px-0 absolute top-1/2 w-full md:w-2/3 lg:w-2/5 left-1/2 -translate-x-1/2 text-base lg:text-xl ${
         fadeInContent ? "-translate-y-1/2" : "-translate-y-0"
       }`}
     >

@@ -32,9 +32,13 @@ export default function ContactMe() {
   }, [somethingCopied]);
   return (
     <MiddleContainer>
-      <div className="w-full h-full flex items-center justify-around flex-col xl:flex-row overflow-y-scroll overflow-x-hidden">
-        <div className={`${fadeInContent ? "opacity-100" : "opacity-0"} transition-opacity duration-300 flex flex-col items-center justify-center mb-6 pt-64 xl:pt-0 w-full md:w-auto px-2`}>
-          <div className="pb-2 relative">
+      <div className="text-black dark:text-white w-full h-full flex items-center justify-around flex-col xl:flex-row overflow-y-scroll overflow-x-hidden">
+        <div
+          className={`${
+            fadeInContent ? "opacity-100" : "opacity-0"
+          } transition-opacity duration-300 flex flex-col items-center justify-center mb-6 pt-64 xl:pt-0 w-full md:w-auto px-2`}
+        >
+          <div className="pb-2 z-10 relative">
             <div
               className={`absolute -top-20 left-10  ${somethingCopied ? "block" : "hidden"} ${
                 showSnackbar ? "opacity-100 -translate-x-[25%]" : "opacity-0"
@@ -53,14 +57,14 @@ export default function ContactMe() {
                     <FaLinkedin className="w-16 h-16 hover:text-blue-500 transition-colors duration-300 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-30" />
                   </a>
                   <a href="https://github.com/keithfrazier98" target="_blank" className="relative group mx-6">
-                    <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-14 h-14 transition-colors duration-300 group-hover:bg-gray-800 rounded-full" />
-                    <FaGithub className="w-14 h-16 hover:text-white transition-colors duration-300 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-30" />
+                    <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-12 h-14 transition-colors duration-300 group-hover:bg-gray-800 dark:group-hover:bg-white rounded-full" />
+                    <FaGithub className="w-14 h-16 hover:text-white dark:hover:text-gray-800 transition-colors duration-300 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-30" />
                   </a>
                 </div>
               </div>
               <div className="h-48 flex flex-col items-center pt-4">
                 <span>or</span>
-                <div className="w-1 h-24 rounded-full bg-black my-6" />
+                <div className="w-1 h-24 rounded-full bg-black dark:bg-gray-100 my-6" />
                 <span>or</span>
               </div>
               <div className="flex flex-col items-center">

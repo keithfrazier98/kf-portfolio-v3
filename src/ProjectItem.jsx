@@ -2,7 +2,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import style from "./markdown.module.css";
+import style from "./styles/markdown.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import rehypeRaw from 'rehype-raw'

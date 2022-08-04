@@ -191,8 +191,8 @@ export default function Projects() {
             <span className="text-zinc-400">Powered by GitHub GraphQL API</span>
           </div>
         </div>
-        <div className="w-full flex flex-col text-center mt-4">
-          <p className="">Language Analysis</p>
+        <div className="w-full flex flex-col text-center mt-4 text-black dark:text-white">
+          <p>Language Analysis</p>
           <div className="w-full h-5 p-[2px] bg-gradient-to-tr from-indigo-800 to-blue-700 via-fuchsia-700 rounded-full">
             <div className="w-full h-full bg-zinc-700 rounded-full first:rounded-l-full last:rounded-r-full flex">
               {languagePercent ? makeLanguageChart()?.map((element) => element) : <></>}

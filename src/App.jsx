@@ -5,7 +5,6 @@ import ContactMe from "./ContactMe";
 import Cookies from "./Cookies";
 import FadeBG from "./FadeBG";
 import Home from "./Home";
-import "./index.css";
 import Header from "./Header";
 import Projects from "./Projects";
 import Stack from "./Stack";
@@ -26,10 +25,10 @@ function App() {
         <Header pathname={pathname} setPathname={setPathname} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/my-little-bio" element={<Home />} />
-          <Route path="/say-whats-up" element={<ContactMe />} />
-          <Route path="/experience/check-it-out" element={<Projects />} />
-          <Route path="/peep-my-stack" element={<Stack />} />
+          <Route path="/bio" element={<Home />} />
+          <Route path="/contact-me" element={<ContactMe />} />
+          <Route path="/experience/projects" element={<Projects />} />
+          <Route path="/stack" element={<Stack />} />
         </Routes>
       </Router>
       <Cookies />

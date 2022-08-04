@@ -8,7 +8,7 @@ import ThemeToggle from "./ThemeToggle";
 
 export default function Header({ pathname, setPathname }) {
   const { theme } = useContext(ThemeContext);
-  const activeTabStyle = "text-black bg-white bg-opacity-75";
+  const activeTabStyle = "text-black dark:text-white bg-white dark:bg-black bg-opacity-75 dark:bg-opacity-50";
   const location = useLocation();
   const activeTabCondition = (path) => (path === pathname ? activeTabStyle : "");
   const [transition, setTransition] = useState(false);
@@ -56,11 +56,11 @@ export default function Header({ pathname, setPathname }) {
           <span className={`${letterTheme("text-yellow-300")} ${stdSpanStyle}`}>r</span>
         </h1>
         <div className="grid grid-flow-col gap-4">
-          <nav className={`grid grid-cols-4 gap-[2px] rounded-t-xl px-[2px] pt-[2px] ${theme === "rainbow" ? "rainbow" : "bg-green-300"}`}>
-            <Link to="/my-little-bio" className={`rounded-tl-xl ${activeTabCondition("/my-little-bio")}`}>
+          <nav className={`grid grid-cols-4 gap-[2px] rounded-t-xl px-[2px] pt-[2px] ${theme === "rainbow" ? "rainbow" : "bg-gray-500"}`}>
+            <Link to="/bio" className={`rounded-tl-xl ${activeTabCondition("/my-little-bio")}`}>
               home
             </Link>
-            <Link to="/say-whats-up" className={`rounded-none ${activeTabCondition("/say-whats-up")}`}>
+            <Link to="/contact-me" className={`rounded-none ${activeTabCondition("/say-whats-up")}`}>
               contact
             </Link>
             <OutsideClickHandler onOutsideClick={() => setOpenExpMenu(false)}>
@@ -71,7 +71,7 @@ export default function Header({ pathname, setPathname }) {
                     <Link onClick={() => setOpenExpMenu(!false)} to="/experience/resume">
                       Online Resume
                     </Link>
-                    <Link onClick={() => setOpenExpMenu(!false)} to="/experience/check-it-out">
+                    <Link onClick={() => setOpenExpMenu(!false)} to="/experience/projects">
                       Personal Projects
                     </Link>
                   </div>
@@ -80,14 +80,14 @@ export default function Header({ pathname, setPathname }) {
                 )}
               </button>
             </OutsideClickHandler>
-            <Link to="/peep-my-stack" className={`rounded-tr-xl ${activeTabCondition("/peep-my-stack")}`}>
+            <Link to="/stack" className={`rounded-tr-xl ${activeTabCondition("/my-stack")}`}>
               stack
             </Link>
           </nav>
           <ThemeToggle />
         </div>
       </header>
-      <div className={`${theme === "rainbow" ? "rainbow" : "bg-green-300"} w-full h-[2px] aboslute`} />
+      <div className={`${theme === "rainbow" ? "rainbow" : "bg-gray-500"} w-full h-[2px] aboslute`} />
     </div>
   );
 }

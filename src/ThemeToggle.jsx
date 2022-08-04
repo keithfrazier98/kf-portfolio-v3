@@ -3,13 +3,17 @@ import { BsRainbow, BsMoonStarsFill } from "react-icons/bs";
 import { ThemeContext } from "./Context";
 
 export default function ThemeToggle() {
-  const { setTheme } = useContext(ThemeContext);
+  const { setTheme, theme } = useContext(ThemeContext);
   useEffect(() => {
     const pref = localStorage.getItem("theme");
     if (pref === "light") {
       toggleDark(false);
     } else {
       toggleDark(true);
+    }
+
+    if(theme === "regular"){
+        toggleDark(true)
     }
   }, []);
 
@@ -29,19 +33,22 @@ export default function ThemeToggle() {
     }
   }
   return (
-    <div className="grid grid-flow-row h-fit border-gray-700 ">
       <button
-        className={`rounded-t  p-1 border-t border-r  border-l hover:text-black ${!darkEnabled ? "bg-gray-700 text-gray-100 border-gray-700" : "bg-transparent border-gray-200"}`}
-        onClick={() => setTheme("rainbow")}
+      className="text-white"
+        onClick={() => {
+          if (theme === "regular") {
+            console.log("setting rainboq theme")
+            setTheme("rainbow");
+            toggleDark(false);
+          } else {
+            console.log("setting refular theme")
+
+            setTheme("regular");
+            toggleDark(true);
+          }
+        }}
       >
-        <BsRainbow size={18} />
+        {theme === "rainbow" ? <BsMoonStarsFill size={16} /> : <BsRainbow size={18} />}
       </button>
-      <button
-        className={`p-1 border-l border-b  rounded-b border-r hover:text-black ${darkEnabled ? "bg-gray-200 text-black border-gray-200" : "bg-transparent border-gray-700"}`}
-        onClick={() => setTheme("regular")}
-      >
-        <BsMoonStarsFill size={16} />
-      </button>
-    </div>
   );
 }
