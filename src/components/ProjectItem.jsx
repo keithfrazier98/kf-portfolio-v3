@@ -22,7 +22,6 @@ export default function ProjectItem({ data }) {
   }
 
   return (
-    <div className="max-w-[280px] lg:max-w-[46.5rem] w-[48rem] max-h-[35rem] hide-scrollbar overflow-scroll rounded-lg">
       <ReactMarkdown
         className={style.reactMarkDown}
         remarkPlugins={[remarkGfm]}
@@ -42,6 +41,5 @@ export default function ProjectItem({ data }) {
       >
         {readme}
       </ReactMarkdown>
-    </div>
   );
 }

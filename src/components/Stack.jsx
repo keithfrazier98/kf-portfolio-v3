@@ -72,8 +72,8 @@ export default function stack() {
   //TODO: pick a part of my stack every 5 seconds until the user engages with the screen
   return (
     <>
-        <div className="w-full h-full flex flex-wrap overflow-hidden justify-center items-center px-32 dark:text-white text-black">
-          <div className="grid grid-flow-col gap-12 z-30">
+        <div className="w-full h-full flex justify-center items-center px-32 dark:text-white text-black overflow-scroll z-10">
+          <div className="grid grid-flow-row md:grid-flow-col gap-12 z-20">
             {stack.map((subStack) => (
               <div>
                 <h4 className="mt-3">{subStack[0]}</h4>

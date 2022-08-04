@@ -39,23 +39,29 @@ export default function Header({ pathname, setPathname }) {
 
   return (
     <div className="fixed z-30 w-full ">
-      <header className="flex flex-col md:flex-row justify-between pt-4 px-8 bg-black ">
-        <h1 className="text-5xl font-sans pb-2">
-          <span className={`${letterTheme("text-blue-400")} ${stdSpanStyle}`}>K</span>
-          <span className={`${letterTheme("text-yellow-600")} ${stdSpanStyle}`}>e</span>
-          <span className={`${letterTheme("text-red-900")} ${stdSpanStyle}`}>i</span>
-          <span className={`${letterTheme("text-violet-600")} ${stdSpanStyle}`}>t</span>
-          <span className={`${letterTheme("text-green-700")} ${stdSpanStyle}`}>h</span>
-          <span className={`${letterTheme("text-blue-700")} ${stdSpanStyle}`}> </span>
-          <span className={`${letterTheme("text-purple-600")} ${stdSpanStyle}`}>F</span>
-          <span className={`${letterTheme("text-pink-400")} ${stdSpanStyle}`}>r</span>
-          <span className={`${letterTheme("text-rose-700")} ${stdSpanStyle}`}>a</span>
-          <span className={`${letterTheme("text-orange-600")} ${stdSpanStyle}`}>z</span>
-          <span className={`${letterTheme("text-cyan-500")} ${stdSpanStyle}`}>i</span>
-          <span className={`${letterTheme("text-green-400")} ${stdSpanStyle}`}>e</span>
-          <span className={`${letterTheme("text-yellow-300")} ${stdSpanStyle}`}>r</span>
-        </h1>
-        <div className="grid grid-flow-col gap-4">
+      <header className="flex flex-col md:flex-row justify-between pt-4 px-1 md:px-8 bg-black">
+        <div className="flex items-center px-4 justify-between">
+          <h1 className="text-5xl font-sans pb-2">
+            <span className={`${letterTheme("text-blue-400")} ${stdSpanStyle}`}>K</span>
+            <span className={`${letterTheme("text-yellow-600")} ${stdSpanStyle}`}>e</span>
+            <span className={`${letterTheme("text-red-900")} ${stdSpanStyle}`}>i</span>
+            <span className={`${letterTheme("text-violet-600")} ${stdSpanStyle}`}>t</span>
+            <span className={`${letterTheme("text-green-700")} ${stdSpanStyle}`}>h</span>
+            <span className={`${letterTheme("text-blue-700")} ${stdSpanStyle}`}> </span>
+            <span className={`${letterTheme("text-purple-600")} ${stdSpanStyle}`}>F</span>
+            <span className={`${letterTheme("text-pink-400")} ${stdSpanStyle}`}>r</span>
+            <span className={`${letterTheme("text-rose-700")} ${stdSpanStyle}`}>a</span>
+            <span className={`${letterTheme("text-orange-600")} ${stdSpanStyle}`}>z</span>
+            <span className={`${letterTheme("text-cyan-500")} ${stdSpanStyle}`}>i</span>
+            <span className={`${letterTheme("text-green-400")} ${stdSpanStyle}`}>e</span>
+            <span className={`${letterTheme("text-yellow-300")} ${stdSpanStyle}`}>r</span>
+          </h1>
+          <div className="md:hidden">
+            <ThemeToggle />
+          </div>
+        </div>
+
+        <div className="grid grid-flow-col gap-4 ">
           <nav className={`grid grid-cols-4 gap-[2px] rounded-t-xl px-[2px] pt-[2px] ${theme === "rainbow" ? "rainbow" : "bg-gray-500"}`}>
             <Link to="/bio" className={`rounded-tl-xl ${activeTabCondition("/my-little-bio")}`}>
               home
@@ -65,14 +71,14 @@ export default function Header({ pathname, setPathname }) {
             </Link>
             <OutsideClickHandler onOutsideClick={() => setOpenExpMenu(false)}>
               <button onClick={() => setOpenExpMenu(!openExpMenu)} className={`btn rounded-none relative ${activeTabCondition("/check-it-out")}`}>
-                experience <BsChevronDown className={`transition-transform transofrm ${openExpMenu ? "rotate-180" : "rotate-0"} text-xs ml-2`} />
+                experience <BsChevronDown className={`hidden md:block transition-transform transform ${openExpMenu ? "rotate-180" : "rotate-0"} text-xs ml-2`} />
                 {openExpMenu ? (
                   <div className="absolute top-full right-0 left-0 text-sm grid grid-flow-row bg-black text-left text-white expTab">
                     <Link onClick={() => setOpenExpMenu(!false)} to="/experience/resume">
-                      Online Resume
+                      <span className="hidden md:block">Online</span> Resume
                     </Link>
                     <Link onClick={() => setOpenExpMenu(!false)} to="/experience/projects">
-                      Personal Projects
+                      <span className="hidden md:block">Personal</span> Projects
                     </Link>
                   </div>
                 ) : (
@@ -84,7 +90,9 @@ export default function Header({ pathname, setPathname }) {
               stack
             </Link>
           </nav>
-          <ThemeToggle />
+          <div className="hidden md:block">
+            <ThemeToggle />
+          </div>
         </div>
       </header>
       <div className={`${theme === "rainbow" ? "rainbow" : "bg-gray-500"} w-full h-[2px] aboslute`} />

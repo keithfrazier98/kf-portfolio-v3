@@ -6,9 +6,9 @@
 
 .btn,
 nav > a {
-  @apply flex h-full justify-center items-center bg-black;
+  @apply flex h-full justify-center items-center bg-black ;
   @apply hover:text-black dark:text-white hover:bg-white hover:bg-opacity-40;
-  @apply py-2 px-4 text-white text-base md:text-lg font-light;
+  @apply py-2 px-2 md:px-4 text-white text-base md:text-lg font-light;
   @apply transition-colors duration-300;
 }
 

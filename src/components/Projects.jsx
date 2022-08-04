@@ -143,22 +143,20 @@ export default function Projects() {
   }
 
   return (
-    <div className="flex w-full h-full justify-center items-center">
-      <div className="z-10 mt-16 max-w-3xl bg-gradient-to-tl from-green-400 via-yellow-500 to-indigo-700 p-[2px] rounded-lg mr-12">
-        <div className="w-full rounded-md text-left bg-zinc-700">
-          <div className="topography text-center px-2 rounded-lg flex flex-col">
-            <h2 className="text-2xl text-white pt-1">Pinned Repository READMEs</h2>
-            {pinnedReposQuery.data ? (
-              <Carousel showThumbs={false} axis="horizontal" infiniteLoop={true} stopOnHover={true} swipeable={true} showStatus={false}>
-                {pinnedReposQuery?.data?.map((repo) => {
-                  return <ProjectItem data={repo} />;
-                })}
-              </Carousel>
-            ) : (
-              <></>
-            )}
+    <div className="h-full px-3 max-w-full grid grid-flow-row md:grid-flow-col gap-4 w-min m-auto mt-24 overflow-scroll">
+      <div className="z-10 h-fit bg-gradient-to-tl from-green-400 via-yellow-500 to-indigo-700 p-[2px] rounded-lg">
+          <div className="rounded-lg h-[450px] md:h-[700px] text-center pt-2 bg-black max-w-2xl overflow-scroll">
+              <h2 className="text-2xl text-white">Pinned Repositories</h2>
+              {pinnedReposQuery.data ? (
+                <Carousel showThumbs={false} axis="horizontal" infiniteLoop={true} stopOnHover={true} swipeable={true} showStatus={false}>
+                  {pinnedReposQuery?.data?.map((repo) => {
+                    return <ProjectItem data={repo} />;
+                  })}
+                </Carousel>
+              ) : (
+                <></>
+              )}
           </div>
-        </div>
       </div>
       <div className="z-10">
         <div className="p-[2px] bg-gradient-to-bl from-blue-700 to-indigo-800 via-fuchsia-700 rounded-lg">
