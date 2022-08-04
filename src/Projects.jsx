@@ -144,8 +144,8 @@ export default function Projects() {
 
   return (
     <div className="flex w-full h-full justify-center items-center">
-      <div className="max-w-3xl bg-gradient-to-tl from-green-400 via-yellow-500 to-indigo-700 p-[2px] rounded-lg mr-12">
-        <div className="w-full rounded text-left bg-zinc-700">
+      <div className="z-10 mt-16 max-w-3xl bg-gradient-to-tl from-green-400 via-yellow-500 to-indigo-700 p-[2px] rounded-lg mr-12">
+        <div className="w-full rounded-md text-left bg-zinc-700">
           <div className="topography text-center px-2 rounded-lg flex flex-col">
             <h2 className="text-2xl text-white pt-1">Pinned Repository READMEs</h2>
             {pinnedReposQuery.data ? (
@@ -160,27 +160,27 @@ export default function Projects() {
           </div>
         </div>
       </div>
-      <div>
-        <div className="w-full flex justify-center items-center flex-col ">
-          <a
-            href="https://skyline.github.com/keithfrazier98/2021"
-            target={"_blank"}
-            className="w-full border border-blue-600 text-center p-1 rounded-full my-1 hover:bg-blue-400 hover:bg-opacity-20"
-          >
-            Checkout my commit history!
-          </a>{" "}
-          <a
-            href="https://github.com/keithfrazier98"
-            className="w-full border border-blue-600 text-center p-1 rounded-full my-1 hover:bg-blue-400 hover:bg-opacity-20"
-            target={"_blank"}
-          >
-            Checkout my GitHub!
-          </a>
-        </div>
-
-        <div className=" p-[2px] bg-gradient-to-bl from-blue-700 to-indigo-800 via-fuchsia-700 rounded-lg">
+      <div className="z-10">
+        <div className="p-[2px] bg-gradient-to-bl from-blue-700 to-indigo-800 via-fuchsia-700 rounded-lg">
           <div className="rounded-lg bg-zinc-700 text-white p-2 text-center">
             <h3 className="w-full text-center bg-zinc-900 p-1 rounded">GitHub Repositories ({allReposQuery?.data?.length})</h3>
+            <div className="w-full flex justify-center items-center">
+              <a
+                href="https://skyline.github.com/keithfrazier98/2021"
+                target={"_blank"}
+                className="text-xs mx-1 w-full border border-blue-600 text-center p-1 rounded-full my-1 hover:bg-blue-400 hover:bg-opacity-20"
+              >
+                3D Commit History
+              </a>{" "}
+              <a
+                href="https://github.com/keithfrazier98"
+                className="text-xs mx-1 w-full border border-blue-600 text-center p-1 rounded-full my-1 hover:bg-blue-400 hover:bg-opacity-20"
+                target={"_blank"}
+              >
+                GitHub!
+              </a>
+            </div>
+
             <ul className="max-h-96 overflow-scroll hide-scrollbar max-w-sm my-1 text-left">
               {allReposQuery.data?.map((data) => {
                 if (!data.isPrivate) {

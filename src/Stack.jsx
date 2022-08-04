@@ -1,7 +1,7 @@
 import css3 from "./images/css3.png";
 import bootstrap from "./images/Bootstrap_logo.svg.png";
 import dbeaver from "./images/DBeaver.png";
-import expressjs from "./images/ExpressJS.png";
+import expressjs from "./images/express.png";
 import git from "./images/git.png";
 import github from "./images/github.png";
 import heroku from "./images/heroku.png";
@@ -32,7 +32,7 @@ export default function stack() {
     DSA: dsa,
     Puppeteer: pup,
     ESLint:eslint,
-    Typescript:ts,
+    TypeScript:ts,
     JavaScript: js,
     CSS: css3,
     Bootstrap: bootstrap,
@@ -56,7 +56,7 @@ export default function stack() {
 
   const frontend = ["HTML", "CSS", "React", "Tailwind", "Bootstrap", "React-Query", "Puppeteer"];
   const backend = ["PostgresSQL", "Express", "DSA", "Knex"];
-  const frontAndBack = ["Typescript", "JavaScript", "Node", "ESLint", "Jest", "GraphQL", "GraphQL-Tools"];
+  const frontAndBack = ["TypeScript", "JavaScript", "Node", "ESLint", "Jest", "GraphQL", "GraphQL-Tools"];
   const tools = ["Vercel", "Git", "GitHub", "GitHub Actions", "Digital Ocean", "Heroku"];
   const stack = [
     ["Frontend", frontend],
