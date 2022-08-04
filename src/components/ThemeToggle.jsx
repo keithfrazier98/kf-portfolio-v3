@@ -6,15 +6,13 @@ export default function ThemeToggle() {
   const { setTheme, theme } = useContext(ThemeContext);
   useEffect(() => {
     const pref = localStorage.getItem("theme");
-    if (pref === "light") {
+    console.log(pref, theme);
+    if (pref === "light" | theme === "dark") {
       toggleDark(false);
     } else {
       toggleDark(true);
     }
 
-    if(theme === "regular"){
-        toggleDark(true)
-    }
   }, []);
 
   const [darkEnabled, setDarkEnabled] = useState(false);
@@ -36,14 +34,14 @@ export default function ThemeToggle() {
       <button
       className="text-white"
         onClick={() => {
-          if (theme === "regular") {
+          if (theme === "dark") {
             console.log("setting rainboq theme")
             setTheme("rainbow");
             toggleDark(false);
           } else {
             console.log("setting refular theme")
 
-            setTheme("regular");
+            setTheme("dark");
             toggleDark(true);
           }
         }}

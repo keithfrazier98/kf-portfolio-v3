@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOMClient from "react-dom/client";
 import "./styles/index.css";
-import App from "./App";
+import App from "./components/App";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import ThemeProvider from "./Context";
+import ThemeProvider from "./components/Context";
 
 const container = document.querySelector("body");
 const root = ReactDOMClient.createRoot(container);
