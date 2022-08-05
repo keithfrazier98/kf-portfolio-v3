@@ -77,12 +77,12 @@ export default function Stack() {
   //TODO: pick a part of my stack every 5 seconds until the user engages with the screen
   return (
     <>
-      <div className="w-full h-full flex flex-col justify-center items-center px-32 dark:text-white text-black overflow-scroll z-10">
-        <div className="z-[2]">
-          <div className="w-full flex items-center justify-start pl-4">
-            <BsStarFill className="text-xs text-yellow-300 mr-2" />: Most Experience
+      <div className="w-full h-full flex flex-col justify-center items-center px-32 dark:text-white text-black overflow-scroll z-10 transition-all duration-1000">
+        <div className="z-[2] bg-opacity-30 bg-black dark:bg-white dark:bg-opacity-10 p-10 rounded-lg">
+          <div className="w-full flex items-center justify-start pl-4 ">
+            <BsStarFill className="text-xs text-yellow-400 dark:text-yellow-300 mr-2" />: Most Experience
           </div>
-          <div className="grid grid-flow-row md:grid-flow-col gap-12 bg-opacity-10 bg-black dark:bg-white dark:bg-opacity-10 p-10 rounded-lg">
+          <div className="grid grid-flow-row md:grid-flow-col gap-12 ">
             {stack.map((subStack) => (
               <div>
                 <h4>{subStack[0]}</h4>
@@ -90,7 +90,7 @@ export default function Stack() {
                 <ul className="grid grid-flow-row gap-3">
                   {subStack[1].map((item, index) => (
                     <li key={subStack[0] + "_item_" + index} className={`flex item-center ${!topSkills.includes(item) ? "pl-5" : ""}`}>
-                      {topSkills.includes(item) ? <BsStarFill className="text-xs text-yellow-300 mr-2" /> : <></>}
+                      {topSkills.includes(item) ? <BsStarFill className="text-xs text-yellow-400 dark:text-yellow-300 mr-2" /> : <></>}
                       <img src={pics[item]} className={`w-4 h-4 mr-3 ${["Vercel", "GitHub", "GraphQL", "GitHub Actions"].includes(item) & (theme === "dark") ? "invert" : ""}`} />
                       <span>{item}</span>
                     </li>
