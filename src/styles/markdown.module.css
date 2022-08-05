@@ -1,9 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/*bg-[#22272D]*/
 .reactMarkDown {
-  @apply bg-[#22272D] overflow-scroll rounded-lg py-4 px-2 md:px-8 mx-8 mb-10 my-2 whitespace-normal break-words text-white text-left;
+  @apply  bg-zinc-700 overflow-scroll rounded-lg py-4 px-2 md:px-8 mx-8 mb-10 my-2 whitespace-normal break-words text-white text-left;
   height: 585px !important
 }
 
@@ -44,7 +44,7 @@
 }
 
 .reactMarkDown ol {
-  @apply list-decimal px-6 bg-[#000000] py-3 rounded;
+  @apply list-decimal px-6 bg-[#181818] py-3 rounded;
 }
 
 .reactMarkDown ol li {

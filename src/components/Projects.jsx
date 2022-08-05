@@ -65,7 +65,7 @@ export default function Projects() {
       repositoryOwner(login:"keithfrazier98"){
       login
       id
-      repositories(last:100, orderBy:{direction: DESC, field:UPDATED_AT} ){
+      repositories(last:100, orderBy:{direction: DESC, field:UPDATED_AT},  privacy: PUBLIC ){
       nodes{
       ${nodes}
             }

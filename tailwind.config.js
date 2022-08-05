@@ -18,6 +18,10 @@ module.exports = {
           "0%": { transform: "translateX(100%)" },
           "100%": { transform: "translateX(0%)" },
         },
+        transitionDuration: {
+          '0': '0ms',
+          '2000': '2000ms',
+        }
       },
     },
   },

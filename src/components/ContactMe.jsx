@@ -100,7 +100,7 @@ export default function ContactMe() {
               </div>
             </div>
           </div>
-          <div className="rainbow-bwds p-[2px] rounded-lg min-w-full md:min-w-[30rem] shadow-2xl">
+          <div className="z-[2] rainbow-bwds p-[2px] rounded-lg min-w-full md:min-w-[30rem] shadow-2xl">
             <div className="rounded-lg bg-black w-full mg:w-auto">
               <form onSubmit={handleSubmit} className="flex flex-col topography md:w-auto w-full pb-4 px-4 pt-2 rounded-lg">
                 <p className="text-white w-full text-center font-semibold mb-2">Email me right away!</p>
@@ -118,11 +118,11 @@ export default function ContactMe() {
             </div>
           </div>
         </div>
-        <div className="pb-12 xl:pb-0 w-full md:w-auto px-2">
+        <div className="z-[2] pb-12 xl:pb-0 w-full md:w-auto px-2">
           <div className={`rounded-lg p-[2px] redBlue transition-opacity duration-500 ${fadeInContent ? "opacity-100" : "opacity-0"}`}>
             <div className="bg-black rounded-lg">
               <div className="flex flex-col items-center rounded-lg topography p-4">
-                <p className="pb-2 text-xl font-bold text-white">My Locality</p>
+                <p className="pb-2 text-xl font-bold text-white">My Whereabouts</p>
                 <div className="rainbow-sdws p-[2px] rounded-lg w-full">
                   <div className="bg-black rounded-lg">
                     <div className="topography rounded-lg">

@@ -35,12 +35,12 @@ export default function Header({ pathname, setPathname }) {
     return `${colors[Math.floor(Math.random() * colors.length)]}-${hues[Math.floor(Math.random() * hues.length)]}`;
   }
 
-  const letterTheme = (colorClass) => (theme === "rainbow" ? "hover:" + colorClass : "");
+  const letterTheme = (colorClass) => (theme !== "dark" ? "hover:" + colorClass : "");
 
   return (
-    <div className="fixed z-30 w-full ">
+    <div className="fixed z-30 w-full transition-colors duration-1000">
       <header className="flex flex-col md:flex-row justify-between pt-4 px-1 md:px-8 bg-black">
-        <div className="flex items-center px-4 justify-between">
+        <div className="flex items-center px-4 justify-between transition-none">
           <h1 className="text-5xl font-sans pb-2">
             <span className={`${letterTheme("text-blue-400")} ${stdSpanStyle}`}>K</span>
             <span className={`${letterTheme("text-yellow-600")} ${stdSpanStyle}`}>e</span>
@@ -61,24 +61,21 @@ export default function Header({ pathname, setPathname }) {
           </div>
         </div>
 
-        <div className="grid grid-flow-col gap-4 ">
-          <nav className={`grid grid-cols-4 gap-[2px] rounded-t-xl px-[2px] pt-[2px] ${theme === "rainbow" ? "rainbow" : "bg-gray-500"}`}>
+        <div className="grid grid-flow-col gap-4 transition-colors duration-1000">
+          <nav className={`grid grid-cols-4 gap-[2px] rounded-t-xl px-[2px] pt-[2px] ${theme !== "dark" ? "rainbow" : "bg-gray-500"}`}>
             <Link to="/bio" className={`rounded-tl-xl ${activeTabCondition("/my-little-bio")}`}>
               home
-            </Link>
-            <Link to="/contact-me" className={`rounded-none ${activeTabCondition("/say-whats-up")}`}>
-              contact
             </Link>
             <OutsideClickHandler onOutsideClick={() => setOpenExpMenu(false)}>
               <button onClick={() => setOpenExpMenu(!openExpMenu)} className={`btn rounded-none relative ${activeTabCondition("/check-it-out")}`}>
                 experience <BsChevronDown className={`hidden md:block transition-transform transform ${openExpMenu ? "rotate-180" : "rotate-0"} text-xs ml-2`} />
                 {openExpMenu ? (
-                  <div className="absolute top-full right-0 left-0 text-sm grid grid-flow-row bg-black text-left text-white expTab">
-                    <Link onClick={() => setOpenExpMenu(!false)} to="/experience/resume">
-                      <span className="hidden md:block">Online</span> Resume
+                  <div className="absolute top-full right-0 left-0 text-sm grid grid-flow-row dark:bg-white dark:bg-opacity-10 bg-black text-left text-white expTab">
+                    <Link className="flex" onClick={() => setOpenExpMenu(!false)} to="/experience/resume">
+                      <span className="hidden md:block mr-1">Online</span> Resume
                     </Link>
-                    <Link onClick={() => setOpenExpMenu(!false)} to="/experience/projects">
-                      <span className="hidden md:block">Personal</span> Projects
+                    <Link className="flex" onClick={() => setOpenExpMenu(!false)} to="/experience/projects">
+                      <span className="hidden md:block mr-1">Personal</span> Projects
                     </Link>
                   </div>
                 ) : (
@@ -86,16 +83,19 @@ export default function Header({ pathname, setPathname }) {
                 )}
               </button>
             </OutsideClickHandler>
-            <Link to="/stack" className={`rounded-tr-xl ${activeTabCondition("/my-stack")}`}>
+            <Link to="/stack" className={`${activeTabCondition("/my-stack")}`}>
               stack
+            </Link>{" "}
+            <Link to="/contact-me" className={`rounded-tr-xl ${activeTabCondition("/say-whats-up")}`}>
+              contact
             </Link>
           </nav>
-          <div className="hidden md:block">
+          <div className="hidden md:block self-center">
             <ThemeToggle />
           </div>
         </div>
       </header>
-      <div className={`${theme === "rainbow" ? "rainbow" : "bg-gray-500"} w-full h-[2px] aboslute`} />
+      <div className={`${theme !== "dark" ? "rainbow" : "bg-gray-500"} w-full h-[2px] aboslute transition-colors duration-1000`} />
     </div>
   );
 }

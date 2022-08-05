@@ -13,26 +13,29 @@ import reactlogo from "../images/react.svg";
 import sql from "../images/sql.png";
 import vercel from "../images/vercel.png";
 import vscode from "../images/vscode.png";
-import tailwind from "../images/tailwind.png"
-import jest from "../images/jest.png"
-import graphql from "../images/graphql.png"
-import react_query from "../images/react-query.png"
-import js from "../images/js.png"
-import ts from "../images/ts.png"
-import eslint from "../images/eslint.png"
-import knex from "../images/knex.png"
-import gqlTools from "../images/graphql-tools.png"
-import dsa from "../images/dsa.jpg"
-import pup from "../images/pup.png"
-import DO  from "../images/DO.png"
+import tailwind from "../images/tailwind.png";
+import jest from "../images/jest.png";
+import graphql from "../images/graphql.png";
+import react_query from "../images/react-query.png";
+import js from "../images/js.png";
+import ts from "../images/ts.png";
+import eslint from "../images/eslint.png";
+import knex from "../images/knex.png";
+import gqlTools from "../images/graphql-tools.png";
+import dsa from "../images/dsa.jpg";
+import pup from "../images/pup.png";
+import DO from "../images/DO.png";
+import { useContext } from "react";
+import { ThemeContext } from "./Context";
+import { BsStarFill } from "react-icons/bs";
 
-export default function stack() {
+export default function Stack() {
   const pics = {
     "Digital Ocean": DO,
     DSA: dsa,
     Puppeteer: pup,
-    ESLint:eslint,
-    TypeScript:ts,
+    ESLint: eslint,
+    TypeScript: ts,
     JavaScript: js,
     CSS: css3,
     Bootstrap: bootstrap,
@@ -46,14 +49,15 @@ export default function stack() {
     PostgresSQL: postgressql,
     React: reactlogo,
     Vercel: vercel,
-    Tailwind:tailwind,
-    Jest:jest,
+    Tailwind: tailwind,
+    Jest: jest,
     GraphQL: graphql,
-    "React-Query": react_query, 
+    "React-Query": react_query,
     Knex: knex,
-    "GraphQL-Tools": gqlTools
+    "GraphQL-Tools": gqlTools,
   };
 
+  const { theme } = useContext(ThemeContext);
   const frontend = ["HTML", "CSS", "React", "Tailwind", "Bootstrap", "React-Query", "Puppeteer"];
   const backend = ["PostgresSQL", "Express", "DSA", "Knex"];
   const frontAndBack = ["TypeScript", "JavaScript", "Node", "ESLint", "Jest", "GraphQL", "GraphQL-Tools"];
@@ -64,6 +68,7 @@ export default function stack() {
     ["Front & Back (end)", frontAndBack],
     ["Tools", tools],
   ];
+  const topSkills = ["React", "Tailwind", "TypeScript", "JavaScript", "Git", "GitHub", "Vercel", "GraphQL"];
 
   //TODO: remove marquee and put tool icons next to tools in the table
   //TODO: make each item a button and display paragraph on my history in each item
@@ -72,24 +77,25 @@ export default function stack() {
   //TODO: pick a part of my stack every 5 seconds until the user engages with the screen
   return (
     <>
-        <div className="w-full h-full flex justify-center items-center px-32 dark:text-white text-black overflow-scroll z-10">
-          <div className="grid grid-flow-row md:grid-flow-col gap-12 z-20">
-            {stack.map((subStack) => (
-              <div>
-                <h4 className="mt-3">{subStack[0]}</h4>
-                <div className="w-full h-[1px] bg-gray-500 mb-3" />
-                <ul className="grid grid-flow-row gap-3">
-                  {subStack[1].map((item, index) => (
-                    <li key={subStack[0] + "_item_" + index} className="flex item-center">
-                      <img src={pics[item]} className="w-4 h-4 mr-3"/>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+      <div className="w-full h-full flex justify-center items-center px-32 dark:text-white text-black overflow-scroll z-10">
+        <div className="grid grid-flow-row md:grid-flow-col gap-12 z-20 bg-opacity-10 bg-black dark:bg-white dark:bg-opacity-10 p-10 rounded-lg">
+          {stack.map((subStack) => (
+            <div>
+              <h4 >{subStack[0]}</h4>
+              <div className="w-full h-[1px] bg-gray-500 mb-3" />
+              <ul className="grid grid-flow-row gap-3">
+                {subStack[1].map((item, index) => (
+                  <li key={subStack[0] + "_item_" + index} className={`flex item-center ${!topSkills.includes(item) ? "pl-5" : ""}`}>
+                    {topSkills.includes(item) ? <BsStarFill className="text-xs text-yellow-300 mr-2" /> : <></>}
+                    <img src={pics[item]} className={`w-4 h-4 mr-3 ${["Vercel", "GitHub", "GraphQL", "GitHub Actions"].includes(item) & (theme === "dark") ? "invert" : ""}`} />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
+      </div>
     </>
   );
 }

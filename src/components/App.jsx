@@ -10,13 +10,20 @@ import Projects from "./Projects";
 import Stack from "./Stack";
 import ReactGA from "react-ga4";
 import { useEffect } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "./Context";
 
 function App() {
-  const [pathname, setPathname] = useState("my-little-bio");
+  const {theme} = useContext(ThemeContext)
+  const [pathname, setPathname] = useState("/bio");
 
   useEffect(() => {
     ReactGA.initialize("G-2M76FPRN8T");
   });
+
+  useEffect(()=>{
+    console.log("theme is", theme)
+  }, [theme])
 
   return (
     <div className="relative w-full h-full overflow-hidden">
