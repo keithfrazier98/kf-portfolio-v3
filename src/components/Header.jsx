@@ -16,7 +16,6 @@ export default function Header({ pathname, setPathname }) {
 
   useEffect(() => {
     setPathname(location.pathname);
-    console.log(theme);
   }, [location]);
 
   useEffect(() => {

@@ -18,12 +18,10 @@ function App() {
   const [pathname, setPathname] = useState("/bio");
 
   useEffect(() => {
-    ReactGA.initialize("G-2M76FPRN8T");
+    ReactGA.initialize(process.env.REACT_APP_GA_ID);
+    window[`ga-disable-${process.env.REACT_APP_GA_ID}`] = true
   });
 
-  useEffect(()=>{
-    console.log("theme is", theme)
-  }, [theme])
 
   return (
     <div className="relative w-full h-full overflow-hidden">

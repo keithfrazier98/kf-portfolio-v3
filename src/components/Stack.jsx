@@ -68,7 +68,7 @@ export default function Stack() {
     ["Front & Back (end)", frontAndBack],
     ["Tools", tools],
   ];
-  const topSkills = ["React", "Tailwind", "TypeScript", "JavaScript", "Git", "GitHub", "Vercel", "GraphQL"];
+  const topSkills = ["React", "Tailwind", "Puppeteer", "Jest", "TypeScript", "JavaScript", "Git", "GitHub", "Vercel"];
 
   //TODO: remove marquee and put tool icons next to tools in the table
   //TODO: make each item a button and display paragraph on my history in each item
@@ -77,24 +77,29 @@ export default function Stack() {
   //TODO: pick a part of my stack every 5 seconds until the user engages with the screen
   return (
     <>
-      <div className="w-full h-full flex justify-center items-center px-32 dark:text-white text-black overflow-scroll z-10">
-        <div className="grid grid-flow-row md:grid-flow-col gap-12 z-20 bg-opacity-10 bg-black dark:bg-white dark:bg-opacity-10 p-10 rounded-lg">
-          {stack.map((subStack) => (
-            <div>
-              <h4 >{subStack[0]}</h4>
-              <div className="w-full h-[1px] bg-gray-500 mb-3" />
-              <ul className="grid grid-flow-row gap-3">
-                {subStack[1].map((item, index) => (
-                  <li key={subStack[0] + "_item_" + index} className={`flex item-center ${!topSkills.includes(item) ? "pl-5" : ""}`}>
-                    {topSkills.includes(item) ? <BsStarFill className="text-xs text-yellow-300 mr-2" /> : <></>}
-                    <img src={pics[item]} className={`w-4 h-4 mr-3 ${["Vercel", "GitHub", "GraphQL", "GitHub Actions"].includes(item) & (theme === "dark") ? "invert" : ""}`} />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+      <div className="w-full h-full flex flex-col justify-center items-center px-32 dark:text-white text-black overflow-scroll z-10">
+        <div className="z-[2]">
+          <div className="w-full flex items-center justify-start pl-4">
+            <BsStarFill className="text-xs text-yellow-300 mr-2" />: Most Experience
+          </div>
+          <div className="grid grid-flow-row md:grid-flow-col gap-12 bg-opacity-10 bg-black dark:bg-white dark:bg-opacity-10 p-10 rounded-lg">
+            {stack.map((subStack) => (
+              <div>
+                <h4>{subStack[0]}</h4>
+                <div className="w-full h-[1px] bg-gray-500 mb-3" />
+                <ul className="grid grid-flow-row gap-3">
+                  {subStack[1].map((item, index) => (
+                    <li key={subStack[0] + "_item_" + index} className={`flex item-center ${!topSkills.includes(item) ? "pl-5" : ""}`}>
+                      {topSkills.includes(item) ? <BsStarFill className="text-xs text-yellow-300 mr-2" /> : <></>}
+                      <img src={pics[item]} className={`w-4 h-4 mr-3 ${["Vercel", "GitHub", "GraphQL", "GitHub Actions"].includes(item) & (theme === "dark") ? "invert" : ""}`} />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>{" "}
       </div>
     </>
   );

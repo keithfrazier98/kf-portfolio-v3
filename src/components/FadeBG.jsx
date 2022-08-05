@@ -35,11 +35,6 @@ export default function FadeBG({ pathname }) {
     setOuterActive(!outerActive);
   }, [pathname]);
 
-  useEffect(() => {
-    console.log("theme is", theme);
-  }, [theme]);
-
-  console.log("theme is", theme);
   return (
     <>
       <div className={`z-[1] bg-black opacity-0 dark:opacity-100 duration-1000 transition-opacity absolute top-0 w-full h-full`} />
