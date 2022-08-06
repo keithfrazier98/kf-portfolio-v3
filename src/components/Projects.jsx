@@ -95,9 +95,9 @@ export default function Projects() {
           )}
         </div>
       </div>
-      <div className="z-10">
+      <div className="z-10 w-96">
         <div className="p-[2px] bg-gradient-to-bl from-blue-700 to-indigo-800 via-fuchsia-700 ">
-          <div className=" bg-zinc-700 text-white p-2 text-center">
+          <div className="bg-zinc-700 text-white p-2 text-center">
             <h3 className="w-full text-center bg-zinc-900 p-1">GitHub Repositories ({allReposQuery?.data?.length})</h3>
             <div className="w-full flex justify-center items-center">
               <a
@@ -116,14 +116,21 @@ export default function Projects() {
               </a>
             </div>
 
-            <ul className="max-h-96 overflow-scroll hide-scrollbar max-w-sm my-1 text-left">
-              {allReposQuery.data?.map((data) => {
-                if (!data.isPrivate) {
-                  return <RepoItem data={data} />;
-                }
-              })}
-            </ul>
-            <span className="text-zinc-400">Powered by GitHub GraphQL API</span>
+            {!allReposQuery.isLoading ? (
+              <div className="w-full h-[490px] flex justify-center items-center">
+                <MoonLoader color="white" size={48} />
+              </div>
+            ) : (
+              <ul className="max-h-96 overflow-scroll hide-scrollbar max-w-sm my-1 text-left transition-height duration-150">
+                {allReposQuery.data.map((data) => {
+                  if (!data.isPrivate) {
+                    return <RepoItem data={data} />;
+                  }
+                })}
+              </ul>
+            )}
+
+            <span className="text-zinc-400  ">Powered by GitHub GraphQL API</span>
           </div>
         </div>
         <div className="w-full flex flex-col text-center mt-4 text-black dark:text-white">

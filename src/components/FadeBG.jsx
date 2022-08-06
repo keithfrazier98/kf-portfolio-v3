@@ -25,7 +25,8 @@ export default function FadeBG({ pathname }) {
       case "/contact-me":
         outerActive ? setInner(contact) : setOuter(contact);
         break;
-      case "/experience/projects" | "/experience/resume":
+      case "/experience/projects":
+      case "/experience/resume":
         outerActive ? setInner(projects) : setOuter(projects);
         break;
       default:
