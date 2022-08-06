@@ -6,7 +6,7 @@ import Cookies from "./Cookies";
 import FadeBG from "./FadeBG";
 import Home from "./Home";
 import Header from "./Header";
-import Projects from "./Projects";
+import Projects from "./Projects"; 
 import Stack from "./Stack";
 import ReactGA from "react-ga4";
 import { useEffect } from "react";

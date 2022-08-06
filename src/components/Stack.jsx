@@ -78,7 +78,7 @@ export default function Stack() {
   return (
     <>
       <div className="w-full h-full flex flex-col justify-center items-center px-32 dark:text-white text-black overflow-scroll z-10 transition-all duration-1000">
-        <div className="z-[2] bg-opacity-30 bg-black dark:bg-white dark:bg-opacity-10 p-10 rounded-lg">
+        <div className="z-[2] bg-opacity-30 bg-black dark:bg-white dark:bg-opacity-10 p-10">
           <div className="w-full flex items-center justify-start pl-4 ">
             <BsStarFill className="text-xs text-yellow-400 dark:text-yellow-300 mr-2" />: Most Experience
           </div>

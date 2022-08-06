@@ -28,7 +28,7 @@ export default function ThemeToggle() {
   }
   return (
       <button
-      className="text-white"
+      className="text-white w-full h-full btn"
         onClick={() => {
           if (theme !== "dark") {
             setTheme("dark");
