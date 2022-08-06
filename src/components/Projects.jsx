@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+import { BsArrowUpRightSquare } from "react-icons/bs";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { MoonLoader } from "react-spinners";
@@ -103,20 +104,20 @@ export default function Projects() {
               <a
                 href="https://skyline.github.com/keithfrazier98/2021"
                 target={"_blank"}
-                className="text-xs mr-1 w-full border border-blue-600 text-center p-1 my-1 hover:bg-blue-400 hover:bg-opacity-20"
+                className="flex justify-center items-center text-xs mr-1 w-full border border-blue-600 text-center p-1 my-1 hover:bg-blue-400 hover:bg-opacity-20"
               >
-                3D Commit History
+               <span className="mr-2 pt-2px">3D Commit History</span> <BsArrowUpRightSquare />
               </a>{" "}
               <a
                 href="https://github.com/keithfrazier98"
-                className="text-xs ml-1 w-full border border-blue-600 text-center p-1 my-1 hover:bg-blue-400 hover:bg-opacity-20"
+                className="flex justify-center items-center text-xs ml-1 w-full border border-blue-600 text-center p-1 my-1 hover:bg-blue-400 hover:bg-opacity-20"
                 target={"_blank"}
               >
-                GitHub!
+               <span className="mr-2 pt-2px">GitHub</span> <BsArrowUpRightSquare />
               </a>
             </div>
 
-            {!allReposQuery.isLoading ? (
+            {allReposQuery.isLoading ? (
               <div className="w-full h-[490px] flex justify-center items-center">
                 <MoonLoader color="white" size={48} />
               </div>

@@ -28,7 +28,7 @@ header > * {
   @apply transform transition-height overflow-hidden
 }
 .expTab > a {
-  @apply py-2 px-4 hover:bg-white hover:bg-opacity-25 bg-opacity-100;
+  @apply py-2 px-4 hover:bg-[#232323] ;
 }
 
 html {

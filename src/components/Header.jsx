@@ -63,20 +63,19 @@ export default function Header({ pathname, setPathname }) {
         <Link to="/bio" className={activeTabCondition("/bio")}>
           home
         </Link>
-        <div className="w-max">
+        <div className="w-max bg-black">
           <OutsideClickHandler onOutsideClick={() => setOpenExpMenu(false)}>
             <button onClick={() => setOpenExpMenu(!openExpMenu)} className={`btn relative ${activeTabCondition("/experience")}`}>
               experience <BsChevronDown className={`hidden md:block transition-transform transform ${openExpMenu ? "rotate-180" : "rotate-0"} text-xs ml-2`} />
-              <div
-                className={`expTab ${
-                  openExpMenu ? "h-22" : "h-0"
-                }`}
-              >
-                <Link className="flex items-center" onClick={() => setOpenExpMenu(!false)} to="/experience/resume">
+              <div className={`expTab bg-black ${openExpMenu ? "h-28" : "h-0"}`}>
+                <Link className="flex items-center bg-black" onClick={() => setOpenExpMenu(!false)} to="/experience/resume">
                   <span className="hidden md:block mr-1">Online</span> Resume
                 </Link>
-                <Link className="flex items-center" onClick={() => setOpenExpMenu(!false)} to="/experience/projects">
-                  <span className="hidden md:block mr-1">Personal</span> Projects
+                <Link className="flex items-center bg-black" onClick={() => setOpenExpMenu(!false)} to="/experience/github">
+                  <span className="hidden md:block mr-1">GitHub</span> Overview
+                </Link>
+                <Link className="flex items-center bg-black" onClick={() => setOpenExpMenu(!false)} to="/experience/featured">
+                  <span className="hidden md:block mr-1">Featured</span> Projects
                 </Link>
               </div>
             </button>
@@ -88,7 +87,7 @@ export default function Header({ pathname, setPathname }) {
         <Link to="/contact-me" className={activeTabCondition("/contact-me")}>
           contact
         </Link>
-          <ThemeToggle />
+        <ThemeToggle />
       </nav>
     </div>
   );

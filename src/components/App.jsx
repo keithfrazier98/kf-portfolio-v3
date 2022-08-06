@@ -10,11 +10,8 @@ import Projects from "./Projects";
 import Stack from "./Stack";
 import ReactGA from "react-ga4";
 import { useEffect } from "react";
-import { useContext } from "react";
-import { ThemeContext } from "./Context";
 
 function App() {
-  const {theme} = useContext(ThemeContext)
   const [pathname, setPathname] = useState("/bio");
 
   useEffect(() => {
@@ -32,7 +29,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/bio" element={<Home />} />
           <Route path="/contact-me" element={<ContactMe />} />
-          <Route path="/experience/projects" element={<Projects />} />
+          <Route path="/experience/github" element={<Projects />} />
           <Route path="/stack" element={<Stack />} />
         </Routes>
       </Router>
