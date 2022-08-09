@@ -58,7 +58,7 @@ export default function Stack() {
   };
 
   const { theme } = useContext(ThemeContext);
-  const frontend = ["HTML", "CSS", "React", "Tailwind", "Bootstrap", "React-Query", "Puppeteer"];
+  const frontend = ["HTML", "CSS", "React", "Tailwind", "React-Query", "Puppeteer"];
   const backend = ["PostgresSQL", "Express", "DSA", "Knex"];
   const frontAndBack = ["TypeScript", "JavaScript", "Node", "ESLint", "Jest", "GraphQL", "GraphQL-Tools"];
   const tools = ["Vercel", "Git", "GitHub", "GitHub Actions", "Digital Ocean", "Heroku"];
