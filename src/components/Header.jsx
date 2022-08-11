@@ -65,7 +65,7 @@ export default function Header({ pathname, setPathname }) {
         </Link>
         <div className="w-max bg-black">
           <OutsideClickHandler onOutsideClick={() => setOpenExpMenu(false)}>
-            <button onClick={() => setOpenExpMenu(!openExpMenu)} className={`btn relative ${activeTabCondition("/experience")}`}>
+            <button onClick={() => setOpenExpMenu(!openExpMenu)} className={`btn hover:text-white hover:bg-opacity-10 relative ${activeTabCondition("/experience")}`}>
               experience <BsChevronDown className={`hidden md:block transition-transform transform ${openExpMenu ? "rotate-180" : "rotate-0"} text-xs ml-2`} />
               <div className={`expTab bg-black ${openExpMenu ? "h-28" : "h-0"}`}>
                 <Link className="flex items-center bg-black" onClick={() => setOpenExpMenu(!false)} to="/experience/resume">

@@ -13,6 +13,8 @@
     "graphql": "^16.5.0",
     "graphql-request": "^4.3.0",
     "react": "^18.0.0",
+    "react-router-dom": "^6.2.2",
+    "react-scripts": "^5.0.1",
     "react-dom": "^18.0.0",
     "react-ga4": "^1.4.1",
     "react-icons": "^4.3.1",
@@ -20,8 +22,6 @@
     "react-outside-click-handler": "^1.3.0",
     "react-pdf": "^5.7.2",
     "react-responsive-carousel": "^3.2.23",
-    "react-router-dom": "^6.2.2",
-    "react-scripts": "^5.0.1",
     "react-spinners": "^0.13.4",
     "react-syntax-highlighter": "^15.5.0",
     "rehype-raw": "^6.1.1",
@@ -29,6 +29,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "copy-cmaps": "node ./scripts/copy-cmaps.js",
+    "copy-standard-fonts": "node ./scripts/copy-standard-fonts.js",
+    "copy-worker": "node ./scripts/copy-worker.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
