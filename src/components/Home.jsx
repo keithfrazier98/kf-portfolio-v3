@@ -26,3 +26,7 @@ export default function Home() {
     </p>
   );
 }
+
+//TODO: Add a secttion here that allows the user to scroll down and readmore about why I code, what my coding philosophy is, and my career goals.
+//TODO: have a small mouse animation at the bottom of the screen to signal that the page can be scrolled and have it auto scroll and frame
+//TODO: on scroll event. This section is mainly supposed to look good, and be visually impressive, nobody will likely ever read it
