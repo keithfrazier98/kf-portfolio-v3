@@ -74,9 +74,9 @@ export default function Header({ pathname, setPathname }) {
                 <Link className="flex items-center bg-black" onClick={() => setOpenExpMenu(!false)} to="/experience/github">
                   <span className="hidden md:block mr-1">GitHub</span> Overview
                 </Link>
-                <Link className="flex items-center bg-black" onClick={() => setOpenExpMenu(!false)} to="/experience/featured">
+                {/* <Link className="flex items-center bg-black" onClick={() => setOpenExpMenu(!false)} to="/experience/featured">
                   <span className="hidden md:block mr-1">Featured</span> Projects
-                </Link>
+                </Link> */}
               </div>
             </button>
           </OutsideClickHandler>
