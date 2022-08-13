@@ -30,7 +30,7 @@ The resume section uses react-pdf to render the resume, and a has a download lin
 The stack sections is a simple list of everything I had had the pleasure of learning about in my journey so far. The starred items are where I am most confident in my abilities and have had the most experience.
 ## Contact
 
-The contact section has a small email form and links to all of my main accounts, or buttons to copy my user tags.The email form uses form spree for react, and intereaction with anything on the left side of the page will trigger a small snackbar to confirm that something was copied, sent, or an error occured (hopefully not). The map on the right is a simple google `<iframe>` that you can copy directly from google maps and inject in your site, no need for an API. Did you know you can do that? I definately didn't, made my day after pondering Google API integration. 
+The contact section has a small email form and links to all of my main accounts, or buttons to copy my user tags.The email form uses formspree for react, and intereaction with anything on the left side of the page will trigger a small snackbar to confirm that something was copied, sent, or an error occured (hopefully not). The map on the right is a simple google `<iframe>` that you can copy directly from google maps and inject in your site, no need for an API. Did you know you can do that? I definately didn't, made my day after pondering Google API integration. 
 
 ![Contact me](./src/images/contact_me.png)
 
