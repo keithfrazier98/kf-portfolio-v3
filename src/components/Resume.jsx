@@ -17,7 +17,7 @@ export default function Resume() {
         <div className="w-full mb-4 m-auto">
           <div className="p-1px redBlue">
             <a href={pdf} download="Keith-Frazier-Resume" target="_blank" className="text-xl py-2 bg-black flex text-white justify-center hover:bg-opacity-50">
-              <span className="mr-3">Download</span> <BsDownload size={20} />
+              <span className="mr-3">Download</span> <BsDownload size={24} />
             </a>
           </div>
         </div>

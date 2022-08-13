@@ -7,7 +7,7 @@ import { MoonLoader } from "react-spinners";
 import { fetchAllRepos, fetchPinnedRepos } from "../requests/graphql";
 import ReadmeItem from "./ReadmeItem";
 import RepoItem from "./RepoItem";
-export default function Projects() {
+export default function GitHub() {
   const [languagePercent, setLanguagePercent] = useState({
     colors: null,
     percentages: null,

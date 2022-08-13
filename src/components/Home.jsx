@@ -19,30 +19,10 @@ export default function Home() {
       }`}
     >
       <span className="transition-colors duration-1000">
-        I am a developer with a long-time interest in learning all things computer; web development has been a natural interest of mine. I also like to tinker with product
-        engineering, love to cook, and love spending time with my family. Check out my
+        I am a web developer with a long time interest in creating amazing things with computers. With a focus on front-end engineering, I also like to dabble with producing music,
+        graphic design, and creating 3D models for printing or machining. Feel free to check out my experience and stack through the links above, or contact me if you'd like to
+        chat!
       </span>{" "}
-      <span>
-        {" "}
-        <Link className="text-cyan-600 hover:text-blue-700" to="/check-it-out">
-          projects
-        </Link>
-      </span>{" "}
-      <span className="transition-colors duration-1000">and</span>{" "}
-      <span>
-        {" "}
-        <Link className="text-orange-600 hover:text-yellow-200" to="/peep-my-stack">
-          stack
-        </Link>
-      </span>{" "}
-      <span className="transition-colors duration-1000">through the navigation links above, and feel free to reach out via my </span>
-      <span>
-        {" "}
-        <Link className="text-green-600 hover:text-purple-700" to="/say-whats-up">
-          contact
-        </Link>
-      </span>{" "}
-      <span className="transition-colors duration-1000">links.</span>
     </p>
   );
 }

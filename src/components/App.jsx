@@ -6,7 +6,7 @@ import Cookies from "./Cookies";
 import FadeBG from "./FadeBG";
 import Home from "./Home";
 import Header from "./Header";
-import Projects from "./Projects"; 
+import GitHub from "./GitHub"; 
 import Stack from "./Stack";
 import ReactGA from "react-ga4";
 import { useEffect } from "react";
@@ -30,7 +30,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/bio" element={<Home />} />
           <Route path="/contact-me" element={<ContactMe />} />
-          <Route path="/experience/github" element={<Projects />} />
+          <Route path="/experience/github" element={<GitHub />} />
           <Route path="/experience/resume" element={<Resume/>} />
           <Route path="/stack" element={<Stack />} />
         </Routes>
