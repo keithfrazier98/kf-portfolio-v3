@@ -28,7 +28,7 @@ export default function Cookies() {
     >
       <div className="w-full h-full bg-black flex items-center justify-center md pt-2">
         <div className="grid grid-flow-col px-12 gap-3 bg-black text-white text-xs m-auto ">
-          <p>Hello, it's great to see you here! FYI, this website uses google analytics to collect insights on visitation, and only page views are recorded.</p>
+          <p>Hello, it's great to see you here! FYI, this website uses google analytics to collect insights on visitation, only page views are recorded.</p>
           <button
             className="h-fit self-center text-xs px-4 pt-[2px] border border-green-400 hover:bg-green-700 bg-green-200 bg-opacity-25 "
             onClick={thatsOkayHandler}
