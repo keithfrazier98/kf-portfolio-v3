@@ -170,7 +170,7 @@ td {
 
 .Example__container__document .react-pdf__Page {
   max-width: calc(100% - 2em);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.5); */
   margin: 1em;
 }
 
@@ -182,8 +182,4 @@ td {
 .Example__container__document .react-pdf__message {
   padding: 20px;
   color: white;
-}
-
-.react-pdf__Page__annotations.annotationLayer{
-  display: hidden !important;
 }

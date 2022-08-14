@@ -79,12 +79,12 @@ export default function GitHub() {
   }
 
   return (
-    <div className="h-full px-3 max-w-full grid grid-flow-row md:grid-flow-col gap-4 w-min m-auto mt-24 overflow-scroll">
-      <div className="z-10 h-fit bg-gradient-to-tl from-green-400 via-yellow-500 to-indigo-700 p-[2px] ">
-        <div className="h-[450px] md:h-[700px] text-center pt-2 bg-black max-w-2xl w-[42rem] overflow-scroll">
+    <div className="h-full px-3 max-w-full flex flex-col md:flex-row w-min m-auto mt-24 overflow-scroll pb-48">
+      <div className="z-10 h-fit max-w-full bg-gradient-to-tl from-green-400 via-yellow-500 to-indigo-700 p-[2px] mb-4 md:mr-4">
+        <div className="h-[700px] text-center pt-2 bg-black md:max-w-2xl max-w-full md:w-[42rem] overflow-hidden" >
           <h2 className="text-2xl text-white">Pinned Repositories</h2>
           {pinnedReposQuery.data ? (
-            <Carousel showThumbs={false} axis="horizontal" infiniteLoop={true} stopOnHover={true} swipeable={true} showStatus={false}>
+            <Carousel showThumbs={false} axis="horizontal" infiniteLoop={true} stopOnHover={true} swipeable={false} showStatus={false}>
               {pinnedReposQuery?.data?.map((repo) => {
                 return <ReadmeItem data={repo} />;
               })}
@@ -96,7 +96,7 @@ export default function GitHub() {
           )}
         </div>
       </div>
-      <div className="z-10 w-96">
+      <div className="z-10 w-full max-w-full md:w-96">
         <div className="p-[2px] bg-gradient-to-bl from-blue-700 to-indigo-800 via-fuchsia-700 ">
           <div className="bg-zinc-700 text-white p-2 text-center">
             <h3 className="w-full text-center bg-zinc-900 p-1">GitHub Repositories ({allReposQuery?.data?.length})</h3>
