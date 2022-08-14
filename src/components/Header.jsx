@@ -37,8 +37,8 @@ export default function Header({ pathname, setPathname }) {
   const letterTheme = (colorClass) => (theme !== "dark" ? "hover:" + colorClass : "");
 
   return (
-    <div className="fixed z-30 w-full transition-colors duration-1000 rainbow pb-1px flex">
-      <header className="flex h-auto bg-black items-center justify-between transition-none w-max">
+    <div className="fixed z-30 w-full transition-colors duration-1000 rainbow pb-1px flex flex-col md:flex-row">
+      <header className="flex h-auto bg-black items-center justify-between transition-none w-full md:w-max mb-1px md:mb-0">
         <h1 className="text-4xl font-sans w-max px-8 pt-1 ">
           <span className={`${letterTheme("text-blue-400")} ${stdSpanStyle}`}>K</span>
           <span className={`${letterTheme("text-yellow-600")} ${stdSpanStyle}`}>e</span>
@@ -54,16 +54,14 @@ export default function Header({ pathname, setPathname }) {
           <span className={`${letterTheme("text-green-400")} ${stdSpanStyle}`}>e</span>
           <span className={`${letterTheme("text-yellow-300")} ${stdSpanStyle}`}>r</span>
         </h1>
-        <div className="md:hidden">
-          <ThemeToggle />
-        </div>
+
       </header>
       <div className="h-auto bg-black flex-grow mx-1px" />
-      <nav className={`grid grid-flow-col bg-transparent w-max gap-1px`}>
+      <nav className={`grid grid-flow-col bg-transparent w-full md:w-max gap-1px `}>
         <Link to="/bio" className={activeTabCondition("/bio")}>
           home
         </Link>
-        <div className="w-max bg-black">
+        <div className="w-full md:w-max bg-black">
           <OutsideClickHandler onOutsideClick={() => setOpenExpMenu(false)}>
             <button onClick={() => setOpenExpMenu(!openExpMenu)} className={`btn hover:text-white hover:bg-opacity-10 relative ${activeTabCondition("/experience")}`}>
               experience <BsChevronDown className={`hidden md:block transition-transform transform ${openExpMenu ? "rotate-180" : "rotate-0"} text-xs ml-2`} />

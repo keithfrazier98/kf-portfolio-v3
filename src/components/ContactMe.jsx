@@ -34,9 +34,9 @@ export default function ContactMe() {
   }, [notification]);
 
   return (
-    <div className="h-full w-full flex items-center">
+    <div className="h-full w-full flex items-center overflow-y-scroll pt-96 md:pt-0">
       <div className="text-black dark:text-white w-full items-end flex justify-around flex-col xl:flex-row">
-        <div className={`transition-opacity duration-300 flex flex-col items-center justify-center xl:pt-0 w-full md:w-auto px-2`}>
+        <div className={`transition-opacity duration-300 flex flex-col items-center justify-center xl:pt-0 mb-12 md:mb-0 w-full md:w-auto px-2`}>
           <div className="pb-2 z-10 relative">
             <div
               className={`absolute top-0 left-0 -translate-y-full ${notification ? "block" : "hidden"} ${
@@ -56,14 +56,14 @@ export default function ContactMe() {
                     <FaLinkedin className="w-16 h-16 hover:text-blue-500 transition-colors duration-300 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-30" />
                   </a>
                   <a href="https://github.com/keithfrazier98" target="_blank" className="relative group mx-6">
-                    <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-12 h-14 transition-colors duration-300 group-hover:bg-gray-800 dark:group-hover:bg-white -full" />
+                    <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-12 h-14 transition-colors duration-300 group-hover:bg-gray-800 dark:group-hover:bg-white rounded-full" />
                     <FaGithub className="w-14 h-16 hover:text-white dark:hover:text-gray-800 transition-colors duration-300 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-30" />
                   </a>
                 </div>
               </div>
               <div className="h-48 flex flex-col items-center  pt-4">
                 <span>or</span>
-                <div className="w-1 h-24 rounded-full transition-colors  bg-black dark:bg-gray-100 my-6" />
+                <div className="w-1 h-24 rounded-full transition-colors bg-black dark:bg-gray-100 my-6" />
                 <span>or</span>
               </div>
               <div className="flex flex-col items-center">
@@ -100,7 +100,7 @@ export default function ContactMe() {
             </div>
           </div>
           <div className="z-[2] rainbow-bwds p-1px  min-w-full md:min-w-[30rem] shadow-2xl">
-            <div className=" bg-black w-full mg:w-auto">
+            <div className="bg-black w-full md:w-auto">
               <form onSubmit={handleSubmit} className="flex flex-col topography md:w-auto w-full pb-4 px-4 pt-2 ">
                 <p className="text-white w-full text-center font-semibold mb-2">Email me right away!</p>
                 <input id="email" className="mb-4 p-2  text-black" type="email" name="email" placeholder="email address" />
@@ -123,13 +123,13 @@ export default function ContactMe() {
           <div className={`p-1px redBlue transition-opacity duration-500`}>
             <div className="bg-black ">
               <div className="flex flex-col items-center topography p-4">
-                <p className="pb-2 text-xl font-bold text-white">My Whereabouts</p>
+                <p className="pb-2 text-xl font-bold text-white">Whereabouts</p>
                 <div className="p-1px w-full">
                   <div className="bg-black relative h-[300px] lg:w-[600px] lg:h-[450px]">
                     <div className="absolute z-0 first-line:flex top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                       <MoonLoader color="white" speedMultiplier={0.5} />
                     </div>
-                    <div className="z-10 absolute">
+                    <div className="z-10 relative">
                       <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d845781.5973462377!2d-118.17143572126591!3d34.09938342269121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xdbd6107807ace273!2zMzTCsDA1JzU3LjgiTiAxMTfCsDM2JzQwLjEiVw!5e0!3m2!1sen!2sus!4v1648765505015!5m2!1sen!2sus"
                         className="border-0 w-full z-10 h-[300px] lg:w-[600px] lg:h-[450px]"
