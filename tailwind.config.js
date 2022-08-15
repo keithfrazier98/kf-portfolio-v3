@@ -19,20 +19,13 @@ module.exports = {
         width: "width",
         height: "height",
       },
-      keyframes: {
-        marquee: {
-          "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-100%)" },
-        },
-        marquee2: {
-          "0%": { transform: "translateX(100%)" },
-          "100%": { transform: "translateX(0%)" },
-        },
-        transitionDuration: {
-          0: "0ms",
-          2000: "2000ms",
-        },
+      boxShadow: {
+        solid: "2px 2px 0px 0px black",
+        "0-click": "-2px -2px 0px 0px black",
       },
+      backgroundImage:{
+        pic:"url('/src/images/keith.jpg')"
+      }
     },
   },
   plugins: [],

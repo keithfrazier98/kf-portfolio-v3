@@ -3,14 +3,14 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ContactMe from "./ContactMe";
 import Cookies from "./Cookies";
-import FadeBG from "./FadeBG";
-import Home from "./Home";
+import Bio from "./Bio";
 import Header from "./Header";
 import GitHub from "./GitHub"; 
 import Stack from "./Stack";
 import ReactGA from "react-ga4";
 import { useEffect } from "react";
 import Resume from "./Resume";
+import Home from "./Home";
 
 function App() {
   const [pathname, setPathname] = useState("/bio");
@@ -22,20 +22,18 @@ function App() {
 
 
   return (
-    <div className="relative w-full h-full overflow-hidden">
-      <FadeBG pathname={pathname} />
+    <div className="relative w-full h-full">
       <Router>
         <Header pathname={pathname} setPathname={setPathname} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/bio" element={<Home />} />
           <Route path="/contact-me" element={<ContactMe />} />
           <Route path="/experience/github" element={<GitHub />} />
           <Route path="/experience/resume" element={<Resume/>} />
           <Route path="/stack" element={<Stack />} />
         </Routes>
       </Router>
-      <Cookies />
+      {/* <Cookies /> */}
       <ReactQueryDevtools initialIsOpen={false} />
     </div>
   );

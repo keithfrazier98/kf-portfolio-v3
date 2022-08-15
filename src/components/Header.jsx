@@ -1,92 +1,57 @@
-import { useContext } from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import OutsideClickHandler from "react-outside-click-handler";
-import { Link, useLocation } from "react-router-dom";
-import { ThemeContext } from "./Context";
+import { Link } from "react-router-dom";
+import OffsetBorder from "./OffsetBorder";
 import ThemeToggle from "./ThemeToggle";
 
-export default function Header({ pathname, setPathname }) {
-  const { theme } = useContext(ThemeContext);
-  const activeTabStyle = "text-black dark:text-white bg-white dark:bg-black bg-opacity-75 dark:bg-opacity-50";
-  const location = useLocation();
-  const activeTabCondition = (path) => (path === pathname ? activeTabStyle : "");
-  const [transition, setTransition] = useState(false);
+export default function Header() {
   const [openExpMenu, setOpenExpMenu] = useState(false);
 
-  useEffect(() => {
-    setPathname(location.pathname);
-  }, [location]);
-
-  useEffect(() => {
-    setTransition(true);
-    setTimeout(() => {
-      setTransition(false);
-    }, 1000);
-  }, [location]);
-
-  const colors = ["red", "green", "orange", "blue", "yellow", "purple", "cyan", "pink", "rose", "violet"];
-  const hues = ["500", "600", "700", "800", "900"];
-  const stdSpanStyle = "text-white transition-colors duration-400";
-
-  function getColor() {
-    console.log(`${colors[Math.floor(Math.random() * colors.length)]}-${hues[Math.floor(Math.random() * hues.length)]}`);
-    return `${colors[Math.floor(Math.random() * colors.length)]}-${hues[Math.floor(Math.random() * hues.length)]}`;
-  }
-
-  const letterTheme = (colorClass) => (theme !== "dark" ? "hover:" + colorClass : "");
+  const links = [
+    ["home", "/"],
+    [
+      "experience",
+      [
+        ["GitHub Overview", "/experience/github"],
+        ["Resume", "/resume"],
+      ],
+    ],
+    ["skills", "/skills"],
+  ];
 
   return (
-    <div className="fixed z-30 w-full transition-colors duration-1000 rainbow pb-1px flex flex-col md:flex-row">
-      <header className="flex h-auto bg-black items-center justify-between transition-none w-full md:w-max mb-1px md:mb-0">
-        <h1 className="text-4xl font-sans w-max px-8 pt-1 ">
-          <span className={`${letterTheme("text-blue-400")} ${stdSpanStyle}`}>K</span>
-          <span className={`${letterTheme("text-yellow-600")} ${stdSpanStyle}`}>e</span>
-          <span className={`${letterTheme("text-red-900")} ${stdSpanStyle}`}>i</span>
-          <span className={`${letterTheme("text-violet-600")} ${stdSpanStyle}`}>t</span>
-          <span className={`${letterTheme("text-green-700")} ${stdSpanStyle}`}>h</span>
-          <span className={`${letterTheme("text-blue-700")} ${stdSpanStyle}`}> </span>
-          <span className={`${letterTheme("text-purple-600")} ${stdSpanStyle}`}>F</span>
-          <span className={`${letterTheme("text-pink-400")} ${stdSpanStyle}`}>r</span>
-          <span className={`${letterTheme("text-rose-700")} ${stdSpanStyle}`}>a</span>
-          <span className={`${letterTheme("text-orange-600")} ${stdSpanStyle}`}>z</span>
-          <span className={`${letterTheme("text-cyan-500")} ${stdSpanStyle}`}>i</span>
-          <span className={`${letterTheme("text-green-400")} ${stdSpanStyle}`}>e</span>
-          <span className={`${letterTheme("text-yellow-300")} ${stdSpanStyle}`}>r</span>
-        </h1>
-
-      </header>
-      <div className="h-auto bg-black flex-grow mx-1px" />
-      <nav className={`grid grid-flow-col bg-transparent w-full md:w-max gap-1px `}>
-        <Link to="/bio" className={activeTabCondition("/bio")}>
-          home
-        </Link>
-        <div className="w-full md:w-max bg-black">
-          <OutsideClickHandler onOutsideClick={() => setOpenExpMenu(false)}>
-            <button onClick={() => setOpenExpMenu(!openExpMenu)} className={`btn w-full hover:text-white hover:bg-opacity-10 relative ${activeTabCondition("/experience")}`}>
-              experience <BsChevronDown className={`transition-transform transform ${openExpMenu ? "rotate-180" : "rotate-0"} text-xs ml-2`} />
-              <div className={`expTab bg-black ${openExpMenu ? "h-28" : "h-0"}`}>
-                <Link className="flex items-center bg-black" onClick={() => setOpenExpMenu(!false)} to="/experience/resume">
-                  <span className="hidden md:block mr-1">Online</span> Resume
-                </Link>
-                <Link className="flex items-center bg-black" onClick={() => setOpenExpMenu(!false)} to="/experience/github">
-                  <span className="hidden md:block mr-1">GitHub</span> Overview
-                </Link>
-                {/* <Link className="flex items-center bg-black" onClick={() => setOpenExpMenu(!false)} to="/experience/featured">
-                  <span className="hidden md:block mr-1">Featured</span> Projects
-                </Link> */}
+    <header className="items-center justify-around transition-none w-full fixed flex flex-col md:flex-row p-2 z-20">
+      <div className="absolute top-0 bottom-0 left-0 right-0 backdrop-blur-sm border-b" />
+      <div className="text-white h-7 w-7 text-center bg-black relative">
+        <span className="m-auto text-white relative z-10">kf</span>
+        <OffsetBorder offsetPx={"2"} shadow={false} />
+      </div>
+      <nav className={`flex`}>
+        {links.map((link, index) => {
+          if (Array.isArray(link[1])) {
+            return (
+              <div className="group btnReg relative">
+                <span>experience</span>
+                <div className="hidden group-hover:block absolute -left-1px -right-1px top-full text-xs bg-white border-black border-x border-b">
+                  {link[1].map((embed) => (
+                    <Link key={`nav_link_${index}`} to={embed[1]} className="flex flex-col py-3 px-1 hover:bg-black hover:bg-opacity-10">
+                      {embed[0]}
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </button>
-          </OutsideClickHandler>
-        </div>
-        <Link to="/stack" className={activeTabCondition("/stack")}>
-          stack
-        </Link>
-        <Link to="/contact-me" className={activeTabCondition("/contact-me")}>
-          contact
-        </Link>
+            );
+          } else {
+            return (
+              <Link key={`nav_link_${index}`} to={link[1]}>
+                {link[0]}
+              </Link>
+            );
+          }
+        })}
         <ThemeToggle />
       </nav>
-    </div>
+    </header>
   );
 }
