@@ -4,26 +4,23 @@
 @tailwind components;
 @tailwind utilities;
 
-
-nav > a, .btnReg{
- @apply px-4 bg-white py-1 mx-3 border border-black relative shadow-solid hover:shadow-none active:shadow-0-click transition-all duration-100
+nav > a,
+.btnReg {
+  @apply px-4 border relative py-1 first-line:transition-all duration-100;
+  @apply bg-white border-black shadow-solid active:shadow-0-click hover:shadow-none ;
+  @apply dark:border-white dark:bg-black dark:shadow-solid-w dark:active:shadow-0-click dark:hover:shadow-none;
 }
 
-.expTab{
-  @apply absolute top-full right-0 left-0  grid grid-flow-row ;
-  @apply text-sm dark:bg-white dark:bg-opacity-10 bg-black text-left text-white ; 
-  @apply transform transition-height overflow-hidden
-}
 .expTab > a {
-  @apply py-2 px-4 hover:bg-[#232323] ;
+  @apply py-2 px-4 hover:bg-[#232323];
 }
 
 html {
-  @apply h-screen dark:text-gray-50 dark:bg-black text-black bg-gray-100;
+  @apply h-screen;
 }
 body,
 #root {
-  @apply w-full h-full font-sans font-light;
+  @apply w-full h-full font-sans font-light  dark:text-gray-50 dark:bg-black text-black bg-gray-100;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

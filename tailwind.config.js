@@ -21,7 +21,10 @@ module.exports = {
       },
       boxShadow: {
         solid: "2px 2px 0px 0px black",
+        "solid-w": "2px 2px 0px 0px white",
         "0-click": "-2px -2px 0px 0px black",
+        "0-click-w": "-2px -2px 0px 0px white",
+
       },
       backgroundImage:{
         pic:"url('/src/images/keith.jpg')"

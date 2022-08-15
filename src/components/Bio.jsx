@@ -4,7 +4,7 @@ import OffsetBorder from "./OffsetBorder";
 
 export default function Bio() {
   return (
-    <div className="bg-white py-24 flex justify-center items-center border-y-black border-t">
+    <div className="bg-white dark:bg-black py-24 flex justify-center items-center dark:border-white border-black border-y">
       <p className="max-w-2xl h-fit mr-12">
         I am a web developer with a long time interest in creating amazing things with computers. With a focus on front-end engineering, I also like to dabble with producing music,
         graphic design, and creating 3D models for printing or machining. Feel free to check out my experience and stack through the links above, or contact me if you'd like to

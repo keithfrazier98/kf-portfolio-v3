@@ -1,25 +1,20 @@
-import { useContext, useEffect, useState } from "react";
-import { BsRainbow, BsMoonStarsFill, BsMoon, BsSun } from "react-icons/bs";
-import { ThemeContext } from "./Context";
+import { useEffect } from "react";
+import { BsMoon, BsSun } from "react-icons/bs";
 
 export default function ThemeToggle() {
-  const { setTheme, theme } = useContext(ThemeContext);
   useEffect(() => {
     const pref = localStorage.getItem("theme");
-    if (pref === "dark" | theme === "dark") {
+    if (pref === "dark") {
       toggleDark(true);
-      setTheme("dark")
     } else {
       toggleDark(false);
-      setTheme("light")
     }
+  }, []);
 
-  }, [theme]);
-
-  function toggleDark(force) {
+  function toggleDark() {
     const htmlElement = document.querySelector("html");
-    console.log(htmlElement?.classList)
-    if (force === false) {
+
+    if (htmlElement.classList.contains("dark")) {
       htmlElement?.classList.remove("dark");
       localStorage.setItem("theme", "light");
     } else {
@@ -28,20 +23,10 @@ export default function ThemeToggle() {
     }
   }
 
+  console.log(document.querySelector("html").classList)
   return (
-      <button
-      className="text-black btnReg relative z-20"
-        onClick={() => {
-          if (theme !== "dark") {
-            setTheme("dark");
-            toggleDark(true);
-          } else {
-            setTheme(null);
-            toggleDark(false);
-          }
-        }}
-      >
-        {theme !== "dark" ? <BsMoon size={16} /> : <BsSun size={16} />}
-      </button>
+    <button className="btnReg relative z-20 mx-2" onClick={toggleDark}>
+      {document.querySelector("html").classList.contains("dark") ? <BsMoon size={16} /> : <BsSun size={16} />}
+    </button>
   );
 }

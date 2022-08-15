@@ -1,4 +1,5 @@
 import Bio from "./Bio";
+import ContactMe from "./ContactMe";
 import Hero from "./Hero";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <>
       <Hero />
       <Bio />
+      <ContactMe/>
     </>
   );
 }

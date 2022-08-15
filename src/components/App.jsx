@@ -6,7 +6,7 @@ import Cookies from "./Cookies";
 import Bio from "./Bio";
 import Header from "./Header";
 import GitHub from "./GitHub"; 
-import Stack from "./Stack";
+import Stack from "./Skills";
 import ReactGA from "react-ga4";
 import { useEffect } from "react";
 import Resume from "./Resume";
@@ -22,7 +22,7 @@ function App() {
 
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full bg-gray-100 dark:bg-zinc-900">
       <Router>
         <Header pathname={pathname} setPathname={setPathname} />
         <Routes>

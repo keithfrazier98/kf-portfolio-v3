@@ -26,7 +26,6 @@ import dsa from "../images/dsa.jpg";
 import pup from "../images/pup.png";
 import DO from "../images/DO.png";
 import { useContext } from "react";
-import { ThemeContext } from "./Context";
 import { BsStarFill } from "react-icons/bs";
 
 export default function Stack() {
@@ -57,7 +56,6 @@ export default function Stack() {
     "GraphQL-Tools": gqlTools,
   };
 
-  const { theme } = useContext(ThemeContext);
   const frontend = ["HTML", "CSS", "React", "Tailwind", "React-Query", "Puppeteer"];
   const backend = ["PostgresSQL", "Express", "DSA", "Knex"];
   const frontAndBack = ["TypeScript", "JavaScript", "Node", "ESLint", "Jest", "GraphQL", "GraphQL-Tools"];
@@ -91,7 +89,7 @@ export default function Stack() {
                   {subStack[1].map((item, index) => (
                     <li key={subStack[0] + "_item_" + index} className={`flex item-center ${!topSkills.includes(item) ? "pl-5" : ""}`}>
                       {topSkills.includes(item) ? <BsStarFill className="text-xs text-yellow-400 dark:text-yellow-300 mr-2" /> : <></>}
-                      <img src={pics[item]} className={`w-4 h-4 mr-3 ${["Vercel", "GitHub", "GraphQL", "GitHub Actions"].includes(item) & (theme === "dark") ? "invert" : ""}`} />
+                      <img src={pics[item]} className={`w-4 h-4 mr-3`} />
                       <span>{item}</span>
                     </li>
                   ))}
