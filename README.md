@@ -1,6 +1,5 @@
 # Personal Portfolio V2
-
-Stack:
+:high_vo
 
 - react
 - react-query

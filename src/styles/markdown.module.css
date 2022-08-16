@@ -3,8 +3,7 @@
 @tailwind utilities;
 /*bg-[#22272D]*/
 .reactMarkDown {
-  @apply  bg-zinc-700 overflow-scroll py-4 px-2 md:px-8 mx-8 mb-10 my-2 whitespace-normal break-words text-white text-left;
-  height: 585px !important;
+  @apply bg-gray-100 dark:bg-black border border-black text-black py-4 px-2 md:px-8 mx-8 mb-10 my-2 whitespace-normal break-words text-left;
 }
 
 .reactMarkDown ul {
@@ -22,7 +21,7 @@
   @apply text-blue-500 active:text-green-700 hover:text-red-600 focus:text-pink-400;
 }
 .reactMarkDown h3 {
-  @apply text-base text-blue-300 md:text-xl my-3;
+  @apply text-base text-black md:text-xl my-3;
 }
 
 .reactMarkDown h1 {

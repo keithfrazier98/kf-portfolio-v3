@@ -36,7 +36,7 @@ export default function ContactMe() {
 
   return (
     <>
-      <div id="contact" className="h-2/3 w-full flex items-center overflow-y-scroll pt-96 md:pt-0 dark:bg-zinc-800 bg-gray-100">
+      <div id="contact" className="h-3/4 w-full flex items-center overflow-y-scroll pt-96 md:pt-0 dark:bg-zinc-800 bg-gray-100">
         <div className="text-black dark:text-white w-full items-end flex justify-around flex-col xl:flex-row">
           <div className={`transition-opacity duration-300 flex flex-col items-center justify-center xl:pt-0 mb-12 md:mb-0 w-full md:w-auto px-2`}>
             <div

@@ -6,7 +6,7 @@ import Cookies from "./Cookies";
 import Bio from "./Bio";
 import Header from "./Header";
 import GitHub from "./GitHub"; 
-import Stack from "./Skills";
+import Skills from "./Skills";
 import ReactGA from "react-ga4";
 import { useEffect } from "react";
 import Resume from "./Resume";
@@ -29,8 +29,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/contact-me" element={<ContactMe />} />
           <Route path="/experience/github" element={<GitHub />} />
-          <Route path="/experience/resume" element={<Resume/>} />
-          <Route path="/stack" element={<Stack />} />
+          <Route path="/resume" element={<Resume/>} />
+          <Route path="/stack" element={<Skills />} />
         </Routes>
       </Router>
       {/* <Cookies /> */}

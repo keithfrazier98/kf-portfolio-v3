@@ -74,3 +74,7 @@ export async function fetchAllRepos() {
   console.log(response)
   return response.repositoryOwner.repositories.nodes;
 }
+
+
+
+//TODO: Contribution data
