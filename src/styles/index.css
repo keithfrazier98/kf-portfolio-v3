@@ -16,7 +16,7 @@ nav > a,
 }
 
 html {
-  @apply h-screen;
+  @apply h-screen scroll-smooth;
 }
 body,
 #root {

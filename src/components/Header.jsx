@@ -3,9 +3,8 @@ import OffsetBorder from "./OffsetBorder";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
-
   const links = [
-    ["home", "/"],
+    ["about", "/#about"],
     [
       "experience",
       [
@@ -14,7 +13,7 @@ export default function Header() {
       ],
     ],
     ["skills", "/#skills"],
-    ["contact", "#contact"]
+    ["contact", "/#contact"],
   ];
 
   return (
@@ -32,13 +31,19 @@ export default function Header() {
                 <span>experience</span>
                 <div className="hidden group-hover:block absolute -left-1px -right-1px top-full text-xs bg-white dark:bg-black dark:border-white border-black border-x border-b">
                   {link[1].map((embed) => (
-                    <Link key={`nav_link_${index}`} to={embed[1]} className="flex flex-col py-3 px-1 hover:bg-black dark:hover:bg-white dark:hover:bg-opacity-10 hover:bg-opacity-10">
+                    <Link
+                      key={`nav_link_${index}`}
+                      to={embed[1]}
+                      className="flex flex-col py-3 px-1 hover:bg-black dark:hover:bg-white dark:hover:bg-opacity-10 hover:bg-opacity-10"
+                    >
                       {embed[0]}
                     </Link>
                   ))}
                 </div>
               </div>
             );
+          } else if (index >= 2 || index === 0) {
+            return <a href={link[1]} className="mx-2">{link[0]}</a>;
           } else {
             return (
               <Link key={`nav_link_${index}`} to={link[1]} className="mx-2">

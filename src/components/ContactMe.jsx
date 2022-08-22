@@ -36,7 +36,7 @@ export default function ContactMe() {
 
   return (
     <>
-      <div id="contact" className="h-3/4 w-full flex items-center overflow-y-scroll pt-96 md:pt-0 dark:bg-zinc-800 bg-gray-100">
+      <div id="contact" className="h-3/4 w-full flex items-center pt-96 md:pt-0 dark:bg-zinc-800 bg-gray-100 overflow-hidden">
         <div className="text-black dark:text-white w-full items-end flex justify-around flex-col xl:flex-row">
           <div className={`transition-opacity duration-300 flex flex-col items-center justify-center xl:pt-0 mb-12 md:mb-0 w-full md:w-auto px-2`}>
             <div
@@ -94,11 +94,11 @@ export default function ContactMe() {
             <div className="z-[2] my-4  p-1px  min-w-full md:min-w-[30rem] shadow-2xl relative">
               <form
                 onSubmit={handleSubmit}
-                className="grid grid-flow-row gap-4 md:w-auto w-full p-4 border bg-gray-100 relative z-10 dark:bg-zinc-900 border-black dark:border-white"
+                className="grid grid-flow-row gap-4 md:w-auto w-full p-4 border bg-gray-100 relative z-10 dark:bg-zinc-900 border-black dark:border-gray-400"
               >
-                <input id="email" className="mb-4 p-2 dark:bg-black border border-black dark:border-white" type="email" name="email" placeholder="email address" />
+                <input id="email" className="mb-4 p-2 dark:bg-black border border-black dark:border-gray-400" type="email" name="email" placeholder="email address" />
                 <ValidationError prefix="Email" field="email" errors={state.errors} />
-                <textarea id="message" className="p-2 border dark:bg-black  border-black dark:border-white" name="message" rows="5" placeholder="a lovely message" />
+                <textarea id="message" className="p-2 border dark:bg-black  border-black dark:border-gray-400" name="message" rows="5" placeholder="a lovely message" />
                 <ValidationError prefix="Message" field="message" errors={state.errors} />
                 <button className="btnReg" disabled={state.submitting}>
                   <div className="p-2 w-full h-full flex justify-center items-centerm-0">

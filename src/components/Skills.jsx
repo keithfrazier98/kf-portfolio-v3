@@ -68,13 +68,8 @@ export default function Skills() {
   ];
   const topSkills = ["React", "Tailwind", "Puppeteer", "Jest", "TypeScript", "JavaScript", "Git", "GitHub", "Vercel"];
 
-  //TODO: remove marquee and put tool icons next to tools in the table
-  //TODO: make each item a button and display paragraph on my history in each item
-  //TODO: rate reach item in comfortability and display somehow in the UI (maybe stars)
-  //TODO: index each item with a counter and make a unique ID, have a setinterval randomly
-  //TODO: pick a part of my stack every 5 seconds until the user engages with the screen
   return (
-    <div className="m-auto my-32 w-min">
+    <div id="skills" className="m-auto py-32 w-min">
       <div className="w-min">
         <h3  className= "text-3xl">Skills</h3>
         <div className="w-[200%] h-1px bg-black my-2"/>
@@ -92,7 +87,7 @@ export default function Skills() {
                 {subStack[1].map((item, index) => (
                   <li key={subStack[0] + "_item_" + index} className={`flex item-center ${!topSkills.includes(item) ? "pl-5" : ""}`}>
                     {topSkills.includes(item) ? <BsStarFill className="text-xs text-yellow-400 dark:text-yellow-300 mr-2" /> : <></>}
-                    <img src={pics[item]} className={`w-4 h-4 mr-3`} />
+                    <img src={pics[item]} className={`w-4 h-4 mr-3 ${["Vercel", "GitHub", "GraphQL", "GitHub Actions"].includes(item) ? "dark:invert" : ""}`} />
                     <span>{item}</span>
                   </li>
                 ))}
