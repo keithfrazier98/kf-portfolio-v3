@@ -92,13 +92,13 @@ export default function GitHub() {
         <h2 className="text-3xl">Repositorys</h2>
         <div className="relative h-full border border-black">
           <div className="relative z-10 h-full bg-gray-100">
-            <div className="absolute z-10 top-0 left-0 right-0 bottom-[95%] bg-gradient-to-b from-gray-100 to-transparent" />
-            <div className="grid grid-flow-row grid-cols-1  md:grid-cols-2 xl:grid-cols-3 m-auto gap-8 h-full overflow-y-scroll p-6">
+            <div className="absolute z-10 top-0 left-0 right-0 bottom-[95%] bg-gradient-to-b dark:from-zinc-900 from-gray-100 to-transparent" />
+            <div className="bg-zinc-900 bg-zinc-100 grid grid-flow-row grid-cols-1  md:grid-cols-2 xl:grid-cols-3 m-auto gap-8 h-full overflow-y-scroll p-6">
               {allReposQuery?.data?.map((repo) => (
                 <RepoItem data={repo} />
               ))}
             </div>
-            <div className="absolute z-10 top-[95%] left-0 right-0 bottom-0 bg-gradient-to-t from-gray-100 to-transparent" />
+            <div className="absolute z-10 top-[95%] left-0 right-0 bottom-0 bg-gradient-to-t dark:from-zinc-900 from-gray-100 to-transparent" />
           </div>
           <OffsetBorder offsetPx="12" shadow="blur" />
         </div>

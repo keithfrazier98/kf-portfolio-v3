@@ -23,7 +23,7 @@ export default function RepoItem({ data }) {
 
   return (
     <li className="border border-black relative flex">
-      <div className="relative z-10 p-4 w-full flex flex-col justify-between bg-white">
+      <div className="relative z-10 p-4 w-full flex flex-col justify-between bg-white dark:bg-black">
         <div className="flex justify-between">
           <a href={data.url} target="_blank" className=" mr-4 flex justify-between items-center max-w-[60%] text-xl text-purple-400 hover:text-red-400 active:text-green-500 ">
             {data.name}
