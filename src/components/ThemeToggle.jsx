@@ -25,7 +25,7 @@ export default function ThemeToggle() {
 
   console.log(document.querySelector("html").classList)
   return (
-    <button className="btnReg relative z-20 mx-2" onClick={toggleDark}>
+    <button className="btnReg relative z-10 mx-2 mt-2" onClick={toggleDark}>
       {document.querySelector("html").classList.contains("dark") ? <BsMoon size={16} /> : <BsSun size={16} />}
     </button>
   );

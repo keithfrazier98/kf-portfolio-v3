@@ -3,7 +3,7 @@
 @tailwind utilities;
 /*bg-[#22272D]*/
 .reactMarkDown {
-  @apply bg-gray-100 dark:bg-black border border-black text-black py-4 px-2 md:px-8 mx-8 mb-10 my-2 whitespace-normal break-words text-left;
+  @apply bg-gray-100 relative z-10 dark:bg-black border border-black text-black py-4 px-2 md:px-8 whitespace-normal break-words text-left;
 }
 
 .reactMarkDown ul {
@@ -29,7 +29,7 @@
 }
 
 .reactMarkDown h2 {
-  @apply text-base md:text-xl font-semibold text-gray-200 my-3
+  @apply text-base md:text-xl font-semibold text-black my-3
 }
 
 .reactMarkDown p {
@@ -46,7 +46,7 @@
 }
 
 .reactMarkDown ol {
-  @apply list-decimal px-6 bg-[#181818] py-3 ;
+  @apply list-decimal px-6 bg-zinc-200 py-3 ;
 
 }
 
