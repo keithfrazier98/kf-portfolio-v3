@@ -1,5 +1,17 @@
 import OffsetBorder from "./OffsetBorder";
 
+
+//TODO: BG - EFFECT diagonal lines accross entire background 
+/** Bg effect description
+ * Diagonal lines approx 15-20px apart all a light gray
+ * When cursor is over the lines they turn to a darker 
+ * black in a 30px radius around the users cursor
+ * 
+ * Lagg effect makes previous position fade slowly
+ * (possible just transisiton color or opacity duration)
+ */
+
+
 export default function Hero() {
   return (
     <div id="" className="w-full h-full flex items-center justify-center">

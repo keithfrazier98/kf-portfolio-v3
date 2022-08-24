@@ -1,20 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 /*bg-[#22272D]*/
 .reactMarkDown {
   @apply bg-gray-100 relative z-10 dark:bg-black border border-black text-black py-4 px-2 md:px-8 whitespace-normal break-words text-left;
 }
 
+:global(.dark) .reactMarkDown {
+  @apply bg-zinc-900 text-white border-white;
+}
+
 .reactMarkDown ul {
   @apply my-2 list-disc list-outside p-2;
-
 }
 
 .reactMarkDown ul li {
   @apply ml-8 list-item;
   text-align: -webkit-match-parent;
-
 }
 
 .reactMarkDown a {
@@ -23,13 +26,20 @@
 .reactMarkDown h3 {
   @apply text-base text-black md:text-xl my-3;
 }
+:global(.dark) .reactMarkDown h3 {
+  @apply text-white;
+}
 
 .reactMarkDown h1 {
-  @apply text-base md:text-2xl text-green-400 my-3
+  @apply text-base md:text-2xl text-green-400 my-3;
 }
 
 .reactMarkDown h2 {
-  @apply text-base md:text-xl font-semibold text-black my-3
+  @apply text-base md:text-xl font-semibold text-black my-3;
+}
+
+:global(.dark) .reactMarkDown h2 {
+  @apply text-white;
 }
 
 .reactMarkDown p {
@@ -40,25 +50,31 @@
   @apply text-xl font-bold;
 }
 
-.reactMarkDown pre, .reactMarkDown code {
+.reactMarkDown pre,
+.reactMarkDown code {
   @apply min-w-full whitespace-normal bg-opacity-50 p-1 my-2 text-xs md:text-sm;
-
 }
 
 .reactMarkDown ol {
-  @apply list-decimal px-6 bg-zinc-200 py-3 ;
+  @apply list-decimal px-6 bg-zinc-200 py-3;
+}
 
+:global(.dark) .reactMarkDown ol {
+  @apply bg-black;
+}
+
+:global(.dark) .reactMarkDown code {
+  @apply text-gray-400
 }
 
 .reactMarkDown ol li {
- @apply my-2 max-w-full;
-
+  @apply my-2 max-w-full;
 }
 
 .reactMarkDown blockquote {
-  @apply  px-4;
+  @apply px-4;
 }
 
 .reactMarkDown blockquote p {
-  @apply  p-2;
+  @apply p-2;
 }
