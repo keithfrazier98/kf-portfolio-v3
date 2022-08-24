@@ -27,7 +27,7 @@ export default function Hero() {
           <h1 className="text-5xl font-bold">Keith Frazier</h1>
           <h2>Web Developer</h2>
         </div>
-        <OffsetBorder offsetPx={"20"} shadow={"blur"} />
+        <OffsetBorder offsetPx={"12"} shadow={"blur"} />
       </div>
     </div>
   );

@@ -27,6 +27,7 @@ import pup from "../images/pup.png";
 import DO from "../images/DO.png";
 import { useContext } from "react";
 import { BsStarFill } from "react-icons/bs";
+import OffsetBorder from "./OffsetBorder";
 
 export default function Skills() {
   const pics = {
@@ -69,32 +70,38 @@ export default function Skills() {
   const topSkills = ["React", "Tailwind", "Puppeteer", "Jest", "TypeScript", "JavaScript", "Git", "GitHub", "Vercel"];
 
   return (
-    <div id="skills" className="m-auto py-32 w-min">
-      <div className="w-min">
-        <h3  className= "text-3xl">Skills</h3>
-        <div className="w-[200%] h-1px bg-black my-2"/>
-      </div>
-      <div className="z-[2] w-max relative bg-opacity-10 bg-black dark:bg-white dark:bg-opacity-10 p-10 md:h-auto flex md:block flex-col justify-center">
-        <div className="w-full flex items-center justify-start pl-4 ">
-          <BsStarFill className="text-xs text-yellow-400 dark:text-yellow-300 mr-2" />: Most Experience
+    <div id="skills" className="m-auto py-32 max-w-full overflow-x-hidden flex flex-col items-center">
+      <div className="w-full pl-12">
+        <div className="w-min">
+          {" "}
+          <h3 className="text-3xl">Skills</h3>
+          <div className="w-[200%] h-1px bg-black my-2" />
+          <div className="flex items-center justify-start ml-4 w-max">
+            <BsStarFill className="text-xs text-yellow-400 dark:text-yellow-300 mr-2 w-max" />: Most Experience
+          </div>
         </div>
-        <div className="grid grid-flow-row md:grid-flow-col grid-cols-2 gap-12 ">
-          {stack.map((subStack) => (
-            <div>
+      </div>
+      {/* <div className="z-[2] mx-auto flex flex-col"> */}
+      <div className="flex flex-wrap items-center justify-center">
+        {stack.map((subStack) => (
+          <div className="w-max relative border border-black dark:border-white bg-white dark:bg-black p-8 m-4 text-2xl">
+            <div className="relative z-10">
               <h4>{subStack[0]}</h4>
               <div className="w-full h-[1px] bg-gray-500 mb-3" />
               <ul className="grid grid-flow-row gap-3">
                 {subStack[1].map((item, index) => (
                   <li key={subStack[0] + "_item_" + index} className={`flex item-center ${!topSkills.includes(item) ? "pl-5" : ""}`}>
                     {topSkills.includes(item) ? <BsStarFill className="text-xs text-yellow-400 dark:text-yellow-300 mr-2" /> : <></>}
-                    <img src={pics[item]} className={`w-4 h-4 mr-3 ${["Vercel", "GitHub", "GraphQL", "GitHub Actions"].includes(item) ? "dark:invert" : ""}`} />
+                    <img src={pics[item]} className={`w-8 h-8 mr-3 ${["Vercel", "GitHub", "GraphQL", "GitHub Actions"].includes(item) ? "dark:invert" : ""}`} />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
-          ))}
-        </div>
+            <OffsetBorder offsetPx={8} shadow="solid" />
+          </div>
+        ))}
+        {/* </div> */}
       </div>{" "}
     </div>
   );
