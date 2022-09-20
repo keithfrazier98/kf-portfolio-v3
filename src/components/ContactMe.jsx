@@ -36,12 +36,12 @@ export default function ContactMe() {
 
   return (
     <>
-      <div id="contact" className="h-3/4 w-full flex items-center pt-64 md:pt-0 dark:bg-zinc-800 bg-gray-100 overflow-hidden">
-        <div className="text-black dark:text-white w-full xl:items-end flex justify-around flex-col xl:flex-row">
-          <div className="relative my-10 xl:m-0 mx-4">
+      <div id="contact" className="w-full flex items-center pt-64 md:pt-0 dark:bg-zinc-800 bg-gray-100 overflow-hidden">
+        <div className="text-black dark:text-white w-full xl:items-end flex justify-around items-center flex-col xl:flex-row">
+          <div className="relative w-min my-10 xl:m-0 mx-4">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d845781.5973462377!2d-118.17143572126591!3d34.09938342269121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xdbd6107807ace273!2zMzTCsDA1JzU3LjgiTiAxMTfCsDM2JzQwLjEiVw!5e0!3m2!1sen!2sus!4v1648765505015!5m2!1sen!2sus"
-              className="border w-full relative z-10 shadow-lg border-black h-[300px] lg:w-[600px] lg:h-[450px]"
+              className="border w-full relative z-10 shadow-lg border-black dark:border-white h-[300px] lg:w-[600px] lg:h-[450px]"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
