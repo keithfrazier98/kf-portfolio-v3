@@ -25,7 +25,7 @@ export default function RepoItem({ data }) {
     <li className="border border-black relative flex">
       <div className="relative z-10 p-4 w-full flex flex-col justify-between bg-white dark:bg-black">
         <div className="flex justify-between">
-          <a href={data.url} target="_blank" className=" mr-4 flex justify-between items-center max-w-[60%] text-xl text-purple-400 hover:text-red-400 active:text-green-500 ">
+          <a href={data.url} target="_blank" className="flex justify-between items-center text-xl text-purple-400 hover:text-red-400 active:text-green-500 ">
             {data.name}
           </a>
           <div className="flex items-center">
@@ -35,14 +35,20 @@ export default function RepoItem({ data }) {
             <img src={data.owner.avatarUrl} className="w-6 h-6" />
           </div>
         </div>
-        <p>{data.description || "No description ☹️"}</p>
+        <p className="mt-4">{data.description || "No description ☹️"}</p>
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mt-4">
           <div className="flex items-center">
             <div className={`w-2 h-2 mr-2`} style={{ backgroundColor: color }} />
             <span>{data.primaryLanguage?.name}</span>
           </div>
           <span className="text-zinc-400">{formatTime(data.createdAt)} </span>{" "}
+        </div>
+
+        <div className="flex flex-wrap">
+          {data.repositoryTopics?.nodes.map((node) => (
+            <p className="p-1 px-3 mr-1 mt-2 border border-blue-400 bg-blue-600 bg-opacity-25 text-xs dark:text-white">{node.topic?.name}</p>
+          ))}
         </div>
       </div>
       <OffsetBorder offsetPx="8" shadow="solid" />

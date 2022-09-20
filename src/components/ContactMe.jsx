@@ -87,12 +87,7 @@ export default function ContactMe() {
                         setNotification("Discord tag copied to clipboard!");
                       }}
                     >
-                      <div className="absolute left-0 -top-1/3 text-xs">
-                        <div className="relative">
-                          <BsArrow90DegDown />
-                          <div className="absolute -top-[60%] left-4">Preferred!</div>
-                        </div>
-                      </div>
+                     
                       <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-10 h-8 transition-colors duration-300 group-hover:bg-white" />
                       <BsDiscord className="w-14 h-16 hover:text-indigo-600 transition-colors duration-300 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-30" />
                     </button>

@@ -17,6 +17,7 @@ export default function ReadmeItem({ data }) {
   return (
     <ReactMarkdown
       className={style.reactMarkDown}
+      escapeHtml={false}
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}
       components={{

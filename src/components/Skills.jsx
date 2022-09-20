@@ -67,7 +67,6 @@ export default function Skills() {
     ["Front & Back (end)", frontAndBack],
     ["Tools", tools],
   ];
-  const topSkills = ["React", "Tailwind", "Puppeteer", "Jest", "TypeScript", "JavaScript", "Git", "GitHub", "Vercel"];
 
   return (
     <div id="skills" className="m-auto py-32 max-w-full overflow-x-hidden flex flex-col items-center">
@@ -76,9 +75,7 @@ export default function Skills() {
           {" "}
           <h3 className="text-3xl">Skills</h3>
           <div className="w-[200%] h-1px bg-black my-2" />
-          <div className="flex items-center justify-start ml-4 w-max">
-            <BsStarFill className="text-xs text-yellow-400 dark:text-yellow-300 mr-2 w-max" />: Most Experience
-          </div>
+          
         </div>
       </div>
       {/* <div className="z-[2] mx-auto flex flex-col"> */}
@@ -90,8 +87,7 @@ export default function Skills() {
               <div className="w-full h-[1px] bg-gray-500 mb-3" />
               <ul className="grid grid-flow-row gap-3">
                 {subStack[1].map((item, index) => (
-                  <li key={subStack[0] + "_item_" + index} className={`flex item-center ${!topSkills.includes(item) ? "pl-5" : ""}`}>
-                    {topSkills.includes(item) ? <BsStarFill className="text-xs text-yellow-400 dark:text-yellow-300 mr-2" /> : <></>}
+                  <li key={subStack[0] + "_item_" + index} className={`flex item-center`}>
                     <img src={pics[item]} className={`w-8 h-8 mr-3 ${["Vercel", "GitHub", "GraphQL", "GitHub Actions"].includes(item) ? "dark:invert" : ""}`} />
                     <span>{item}</span>
                   </li>

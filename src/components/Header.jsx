@@ -20,10 +20,10 @@ export default function Header() {
     <header className="items-center justify-around backdrop-blur-sm transition-none w-full fixed flex p-2 z-30 border-b">
       {/* <div className="absolute top-0 bottom-0 left-0 right-0 backdrop-blur-sm border-b" /> */}
       <nav className={`flex flex-wrap`}>
-      <div className="px-4 py-2 mx-2 text-center bg-black dark:bg-white relative">
+      <Link to={"/"} className="px-4 py-2 mx-2 text-center bg-black dark:bg-white relative">
         <span className="m-auto relative z-10 text-white dark:text-black">kf</span>
         <OffsetBorder offsetPx={"3"} shadow={false} />
-      </div>
+      </Link>
         {links.map((link, index) => {
           if (Array.isArray(link[1])) {
             return (

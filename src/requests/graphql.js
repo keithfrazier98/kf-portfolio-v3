@@ -36,7 +36,7 @@ export async function fetchPinnedRepos() {
   `;
 
   const response = await client.request(query);
-  console.log(response)
+  console.log(response);
   return response.user.pinnedItems.nodes;
 }
 
@@ -49,6 +49,13 @@ export async function fetchAllRepos() {
         id
         repositories(last: 100, orderBy: { direction: DESC, field: UPDATED_AT }, privacy: PUBLIC) {
           nodes {
+            repositoryTopics(first: 4) {
+              nodes {
+                topic {
+                  name
+                }
+              }
+            }
             name
             createdAt
             description
@@ -71,10 +78,8 @@ export async function fetchAllRepos() {
   `;
   // (githubUrl, body, config)
   const response = await client.request(query);
-  console.log(response)
+  console.log(response);
   return response.repositoryOwner.repositories.nodes;
 }
-
-
 
 //TODO: Contribution data
