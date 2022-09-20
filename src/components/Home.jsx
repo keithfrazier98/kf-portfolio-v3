@@ -8,8 +8,11 @@ export default function Home() {
     <>
       <Hero />
       <Bio />
-      <Skills/>
-      <ContactMe/>
+      <Skills />
+      <ContactMe />
+      <footer className="py-7 flex w-full justify-center dark:bg-zinc-800">
+        <span> © Keith Frazier 2022 </span>
+      </footer>
     </>
   );
 }
