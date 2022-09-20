@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-nav > a,
+
 .btnReg {
   @apply px-4 border relative py-1 first-line:transition-all duration-100;
   @apply bg-white border-black shadow-solid active:shadow-0-click hover:shadow-none ;

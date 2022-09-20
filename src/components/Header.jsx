@@ -20,10 +20,10 @@ export default function Header() {
     <header className="items-center justify-around backdrop-blur-sm transition-none w-full fixed flex p-2 z-30 border-b">
       {/* <div className="absolute top-0 bottom-0 left-0 right-0 backdrop-blur-sm border-b" /> */}
       <nav className={`flex flex-wrap`}>
-      <Link to={"/"} className="px-4 py-2 mx-2 text-center bg-black dark:bg-white relative">
-        <span className="m-auto relative z-10 text-white dark:text-black">kf</span>
-        <OffsetBorder offsetPx={"3"} shadow={false} />
-      </Link>
+        <a href={"#top"} className="px-4 py-2 mx-2 text-center border border-white dark:border-black bg-black dark:bg-white relative">
+          <span className="m-auto relative z-10 text-white dark:text-black">kf</span>
+          <OffsetBorder offsetPx={"3"} shadow={"blur"} />
+        </a>
         {links.map((link, index) => {
           if (Array.isArray(link[1])) {
             return (
@@ -43,10 +43,14 @@ export default function Header() {
               </div>
             );
           } else if (index >= 2 || index === 0) {
-            return <a href={link[1]} className="mx-2 mt-2">{link[0]}</a>;
+            return (
+              <a href={link[1]} className="mx-2 mt-2 btnReg">
+                {link[0]}
+              </a>
+            );
           } else {
             return (
-              <Link key={`nav_link_${index}`} to={link[1]} className="mx-2 mt-2">
+              <Link key={`nav_link_${index}`} to={link[1]} className="mx-2 mt-2 btnReg">
                 {link[0]}
               </Link>
             );
