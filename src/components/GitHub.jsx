@@ -84,7 +84,7 @@ export default function GitHub() {
 
   return (
     <div className="w-full h-full flex flex-col m-auto pt-24">
-      <section className="mx-4 lg:mx-16 relative my-12">
+      <section className="mx-4 lg:mx-24 relative my-12">
         <ReadmeItem data={{ name: "keithfrazier98", owner: { login: "keithfrazier98" } }} />
         <OffsetBorder shadow="solid" offsetPx={12}/>
       </section>
