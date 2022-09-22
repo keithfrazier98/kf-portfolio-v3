@@ -5,18 +5,25 @@ const githubAuth = {
   headers: { Authorization: `Bearer ${process.env.REACT_APP_GITHUB_BEARER}` },
 };
 
-export async function fetchPinnedRepos() {
+export async function fetchPinnedRepos(amount = 6) {
   const client = new GraphQLClient(githubUrl, githubAuth);
   const query = gql`
-    query {
+    query ($AMOUNT: Int!) {
       user(login: "keithfrazier98") {
-        pinnedItems(first: 6, types: REPOSITORY) {
+        pinnedItems(first: $AMOUNT, types: REPOSITORY) {
           nodes {
             ... on Repository {
               name
               createdAt
               description
               homepageUrl
+              repositoryTopics(first: 4) {
+                nodes {
+                  topic {
+                    name
+                  }
+                }
+              }
               owner {
                 avatarUrl
                 url
@@ -35,7 +42,7 @@ export async function fetchPinnedRepos() {
     }
   `;
 
-  const response = await client.request(query);
+  const response = await client.request(query, { AMOUNT: amount });
   console.log(response);
   return response.user.pinnedItems.nodes;
 }
@@ -45,8 +52,9 @@ export async function fetchAllRepos() {
   const query = gql`
     query {
       repositoryOwner(login: "keithfrazier98") {
+        avatarUrl
+        url
         login
-        id
         repositories(last: 100, orderBy: { direction: DESC, field: UPDATED_AT }, privacy: PUBLIC) {
           nodes {
             repositoryTopics(first: 4) {
@@ -76,10 +84,43 @@ export async function fetchAllRepos() {
       }
     }
   `;
-  // (githubUrl, body, config)
+
   const response = await client.request(query);
   console.log(response);
-  return response.repositoryOwner.repositories.nodes;
+  return response.repositoryOwner;
 }
 
 //TODO: Contribution data
+export async function getContributionData() {
+  const client = new GraphQLClient(githubUrl, githubAuth);
+  const oneYearAgo = new Date(Date.now() - 3.156e10);
+  const today = new Date();
+  const query = gql`
+    query ($ONEYEARAGO: DateTime!, $TODAY: DateTime!) {
+      viewer {
+        contributionsCollection(from: $ONEYEARAGO, to: $TODAY) {
+          contributionCalendar {
+            totalContributions
+            weeks {
+              contributionDays {
+                contributionCount
+                color
+                contributionLevel
+                date
+                weekday
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const {
+    viewer: {
+      contributionsCollection: { contributionCalendar },
+    },
+  } = await client.request(query, { ONEYEARAGO: oneYearAgo, TODAY: today });
+
+  return contributionCalendar;
+}

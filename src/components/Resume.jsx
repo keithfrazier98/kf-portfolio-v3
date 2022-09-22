@@ -13,7 +13,7 @@ export default function Resume() {
   }
 
   return (
-    <div className="relative z-20 flex flex-col h-full w-full max-h-full items-center pt-24 overflow-x-hidden">
+    <div className="relative z-20 flex flex-col items-center pt-24">
       <div>
         <div className="w-full mb-4 m-auto px-4">
           <div className="p-1px">
