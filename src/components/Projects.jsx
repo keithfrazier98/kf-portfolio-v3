@@ -13,11 +13,11 @@ export default function Projects() {
       <div>
         <h1 className="text-3xl">Projects</h1>
         <p className="max-w-md">
-          To get a better idea of what I have worked on you can checkout my{" "}
+          Here are the top 3 side-projects I have been working on recently! To get a better idea of my work, checkout my{" "}
           <Link className="text-blue-500 hover:text-red-500" to="/experience/github">
             GitHub Overview
           </Link>
-          , but here are the side-projects I have been working on recently!
+          , which displays the READMEs of all my pinned repositories and more!
         </p>
       </div>
       <div className="mt-6">

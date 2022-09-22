@@ -1,5 +1,6 @@
 import { BsArrowUpRightSquare } from "react-icons/bs";
 import OffsetBorder from "./OffsetBorder";
+import Topics from "./Topics";
 
 export default function ProjectItem({ project }) {
   return (
@@ -19,6 +20,7 @@ export default function ProjectItem({ project }) {
           </a>
         </div>
         <p className="mt-2">{project.description}</p>
+        <Topics data={project} />
       </div>
       <OffsetBorder offsetPx={6} shadow="solid" />
     </article>

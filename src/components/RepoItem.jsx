@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 import OffsetBorder from "./OffsetBorder";
+import Topics from "./Topics";
 
 export default function RepoItem({ data }) {
   const [color, setColor] = useState("#2b7489");
@@ -45,13 +46,7 @@ export default function RepoItem({ data }) {
           <span className="text-zinc-400">{formatTime(data.createdAt)} </span>{" "}
         </div>
 
-        <div className="flex flex-wrap">
-          {data.repositoryTopics?.nodes.map((node, index) => (
-            <p key={data.name + index} className="p-1 px-3 mr-1 mt-2 border border-blue-400 bg-blue-600 bg-opacity-25 text-xs dark:text-white">
-              {node.topic?.name}
-            </p>
-          ))}
-        </div>
+        <Topics data={data} />
       </div>
       <OffsetBorder offsetPx="8" shadow="solid" />
     </li>

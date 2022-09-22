@@ -8,8 +8,7 @@ const githubAuth = {
 export async function fetchPinnedRepos(amount = 6) {
   const client = new GraphQLClient(githubUrl, githubAuth);
   const query = gql`
-    query ($AMOUNT: Int!)
-     {
+    query ($AMOUNT: Int!) {
       user(login: "keithfrazier98") {
         pinnedItems(first: $AMOUNT, types: REPOSITORY) {
           nodes {
@@ -18,6 +17,13 @@ export async function fetchPinnedRepos(amount = 6) {
               createdAt
               description
               homepageUrl
+              repositoryTopics(first: 4) {
+                nodes {
+                  topic {
+                    name
+                  }
+                }
+              }
               owner {
                 avatarUrl
                 url
