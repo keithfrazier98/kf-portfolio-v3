@@ -4,10 +4,10 @@ import Topics from "./Topics";
 
 export default function ProjectItem({ project }) {
   return (
-    <article className="border dark:border-white relative my-6">
+    <article className="border dark:border-white relative my-6 ">
       <div className="relative p-4 z-10 bg-gray-50 dark:bg-zinc-800">
         <div className="relative">
-          <img src={`${process.env.REACT_APP_GITHUB_URL}${project.name}/main/thumbnail.jpg`} className="w-96 relative z-10" alt={project.name + "_thumbnail"} />
+          <img src={`${process.env.REACT_APP_GITHUB_URL}${project.name}/main/thumbnail.jpg`} className="relative z-10" alt={project.name + "_thumbnail"} />
           <OffsetBorder offsetPx={3} shadow="blur" />
         </div>
         <h2 className="text-3xl font-semibold mt-4">{project.name}</h2>

@@ -9,7 +9,7 @@ export default function Projects() {
   console.log(data);
 
   return (
-    <section className="m-auto py-24 w-min">
+    <section className="m-auto py-24 max-w-md">
       <div>
         <h1 className="text-3xl">Projects</h1>
         <p className="max-w-md">
