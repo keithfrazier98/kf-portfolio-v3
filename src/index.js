@@ -4,7 +4,7 @@ import "./styles/index.css";
 import App from "./components/App";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
-const container = document.querySelector("body");
+const container = document.getElementById("root");
 const root = ReactDOMClient.createRoot(container);
 
 const queryClient = new QueryClient();

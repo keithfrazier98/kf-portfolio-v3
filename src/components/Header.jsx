@@ -8,8 +8,9 @@ export default function Header() {
     [
       "experience",
       [
-        ["GitHub Overview", "/experience/github"],
-        ["Resume", "/resume"],
+        ["GitHub overview", "/experience/github"],
+        ["resume", "/resume"],
+        ["projects", "/projects"],
       ],
     ],
     ["skills", "/#skills"],
@@ -27,12 +28,12 @@ export default function Header() {
         {links.map((link, index) => {
           if (Array.isArray(link[1])) {
             return (
-              <div className="group btnReg mx-2 mt-2 relative">
+              <div key={"nav_link_menu_" + index} className="group btnReg mx-2 mt-2 relative">
                 <span>{link[0]}</span>
                 <div className="hidden z-20 group-hover:block absolute -left-1px -right-1px top-full text-xs bg-white dark:bg-black dark:border-white border-black border-x border-b">
                   {link[1].map((embed) => (
                     <Link
-                      key={`nav_link_${index}`}
+                      key={`nav_sub_link_${embed[1]}_${index}`}
                       to={embed[1]}
                       className="flex flex-col py-3 px-1 hover:bg-black dark:hover:bg-white dark:hover:bg-opacity-10 hover:bg-opacity-10"
                     >
@@ -44,7 +45,7 @@ export default function Header() {
             );
           } else if (index >= 2 || index === 0) {
             return (
-              <a href={link[1]} className="mx-2 mt-2 btnReg">
+              <a key={"nav_link_" + index} href={link[1]} className="mx-2 mt-2 btnReg">
                 {link[0]}
               </a>
             );

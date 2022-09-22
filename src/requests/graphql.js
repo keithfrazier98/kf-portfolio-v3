@@ -45,8 +45,9 @@ export async function fetchAllRepos() {
   const query = gql`
     query {
       repositoryOwner(login: "keithfrazier98") {
+        avatarUrl
+        url
         login
-        id
         repositories(last: 100, orderBy: { direction: DESC, field: UPDATED_AT }, privacy: PUBLIC) {
           nodes {
             repositoryTopics(first: 4) {
@@ -79,7 +80,40 @@ export async function fetchAllRepos() {
   // (githubUrl, body, config)
   const response = await client.request(query);
   console.log(response);
-  return response.repositoryOwner.repositories.nodes;
+  return response.repositoryOwner;
 }
 
 //TODO: Contribution data
+export async function getContributionData() {
+  const client = new GraphQLClient(githubUrl, githubAuth);
+  const oneYearAgo = new Date(Date.now() - 3.156e10);
+  const today = new Date();
+  const query = gql`
+    query ($ONEYEARAGO: DateTime!, $TODAY: DateTime!) {
+      viewer {
+        contributionsCollection(from: $ONEYEARAGO, to: $TODAY) {
+          contributionCalendar {
+            totalContributions
+            weeks {
+              contributionDays {
+                contributionCount
+                color
+                contributionLevel
+                date
+                weekday
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const {
+    viewer: {
+      contributionsCollection: { contributionCalendar },
+    },
+  } = await client.request(query, { ONEYEARAGO: oneYearAgo, TODAY: today });
+
+  return contributionCalendar
+}

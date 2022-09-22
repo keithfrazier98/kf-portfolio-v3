@@ -9,15 +9,13 @@ import { getReadme } from "../requests/axios";
 import { useEffect } from "react";
 
 export default function ReadmeItem({ data }) {
-  const { data: response, isLoading } = useQuery([`${data.name}_readme`, {data}], getReadme, { staleTime: 30000 });
+  const { data: response, isLoading } = useQuery([`${data.name}_readme`, { data }], getReadme, { staleTime: 30000 });
 
-  useEffect(()=>{
-    console.log(response)
-  }, [isLoading])
   return (
     <ReactMarkdown
       className={style.reactMarkDown}
       escapeHtml={false}
+      transformImageUri={(uri) => `${process.env.REACT_APP_GITHUB_URL}/${data.name}/main/${uri}`}
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}
       components={{
