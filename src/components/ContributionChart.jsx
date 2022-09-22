@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
-import { getContributionData } from "../requests/graphql";
+import { getContributionData } from "../utils/graphql-requests";
 
 export default function ContributionChart() {
   const queryOptions = { staleTime: 300000, cacheTime: 300000 };
@@ -66,7 +66,6 @@ export default function ContributionChart() {
     dataLabels: {
       enabled: false,
     },
-    colors: ["#00fbde"],
     title: {
       show: false,
     },
@@ -90,9 +89,23 @@ export default function ContributionChart() {
         shadeIntensity: 1,
       },
       colorScale: {
-        
-        min: 0,
-        max: 10,
+        ranges: [
+          {
+            from: 0,
+            to: 0,
+            color: "#F3F4F6",
+            foreColor: "#F3F4F6",
+            name: "No Contributions",
+          },
+          {
+            from: 1,
+            to: 2,
+            color: "#a981c1",
+            foreColor: "#a981c1",
+            name: "No Contributions",
+          },
+        ],
+
       },
     },
     grid: {
@@ -111,7 +124,7 @@ export default function ContributionChart() {
       <div className="flex items-center">
         <div className="grid h-full grid-rows-7 grid-cols-1 text-xs text-right">
           {["Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday"].map((day, index) => (
-            <p className={`${index % 2 === 0  ? "text-gray-100": ""}`}>{day}</p>
+            <p className={`${index % 2 === 0 ? "text-gray-100" : ""}`}>{day}</p>
           ))}
         </div>
         <div className="flex-grow">

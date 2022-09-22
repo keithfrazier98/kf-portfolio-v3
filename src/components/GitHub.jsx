@@ -1,12 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { BsArrowUpRightSquare } from "react-icons/bs";
-import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { MoonLoader } from "react-spinners";
-import { getReadme } from "../requests/axios";
-import { fetchAllRepos, fetchPinnedRepos, getContributionData } from "../requests/graphql";
-import ContributionChart from "./ContributionChart";
+import { fetchAllRepos, fetchPinnedRepos } from "../utils/graphql-requests";
+import { makeLanguageChart, parseLanguageData } from "../utils/utils";
 import OffsetBorder from "./OffsetBorder";
 import ReadmeItem from "./ReadmeItem";
 import RepoItem from "./RepoItem";
@@ -17,78 +15,18 @@ export default function GitHub() {
     total: 0,
   });
   const [showPin, setShowPin] = useState(0);
-
   const options = { staleTime: 300000, cacheTime: 300000 };
-  const pinnedReposQuery = useQuery(["pinned_repos"], fetchPinnedRepos, options);
+  const pinnedReposQuery = useQuery(["pinned_repos"], () => fetchPinnedRepos(6), options);
   const { data: allReposQuery, isLoading } = useQuery(["all_repos"], fetchAllRepos, options);
 
   useEffect(() => {
-    const langCount = {};
-    const langColor = {};
-    const langPerc = {};
-    if (allReposQuery?.repositories?.nodes?.length > 0) {
-      allReposQuery?.repositories?.nodes?.forEach((repo) => {
-        const langObject = repo.primaryLanguage;
-        if (langObject) {
-          const color = langObject.color;
-          const name = langObject.name;
-          if (langCount[name]) {
-            langCount[name] = langCount[name] + 1;
-          } else {
-            langCount[name] = 1;
-            langColor[name] = color;
-          }
-        }
-      });
+    if (allReposQuery?.repositories?.nodes) {
+      const parsedData = parseLanguageData(allReposQuery?.repositories?.nodes);
+      console.log(parsedData);
 
-      let totalPerc = 0;
-      for (let [language, value] of Object.entries(langCount)) {
-        const percentage = (value / allReposQuery?.repositories?.nodes?.length) * 100;
-        langPerc[language] = percentage;
-        totalPerc += percentage;
-      }
-
-      setLanguagePercent({
-        ...{
-          colors: langColor,
-          total: totalPerc,
-          percentages: langPerc,
-        },
-      });
+      setLanguagePercent({ ...parsedData });
     }
-  }, [isLoading, allReposQuery?.repositories?.length]);
-
-  function makeLanguageChart() {
-    if (!languagePercent || !languagePercent.percentages) return;
-    let elements = [];
-    let totalPerc = 0;
-    let totalLang = 0;
-
-    for (let [language, percent] of Object.entries(languagePercent.percentages)) {
-      totalPerc += percent;
-      totalLang += 1;
-    }
-
-    const offset = (100 - totalPerc) / totalLang;
-
-    for (let [language, percent] of Object.entries(languagePercent.percentages)) {
-      elements.push(
-        <div
-          className={`h-full group relative overflow-visible`}
-          key={"language_stat_" + language}
-          style={{ backgroundColor: languagePercent.colors[language], width: `${percent + offset}%` }}
-        >
-          <div className="absolute overflow-visible -bottom-6 left-1/2 transform -translate-x-1/2 hidden opacity-0 group-hover:opacity-100 duration-300 transition-opacity group-hover:block z-30">
-            <p className="w-max">
-              {language} {Math.floor(percent)}%
-            </p>
-          </div>
-        </div>
-      );
-    }
-
-    return elements;
-  }
+  }, [isLoading, allReposQuery?.repositories?.nodes?.length]);
 
   return (
     <div className="w-full h-full flex flex-col m-auto pt-12">
@@ -103,18 +41,20 @@ export default function GitHub() {
           <div className="w-full flex flex-col mt-4 text-black dark:text-white overflow-visible">
             <p>Language Analysis</p>
             <p className="text-xs text-gray-500">{"(hover to see language)"}</p>
-            <div className="w-full h-5 p-[2px] border border-black relative overflow-visible mr-4">
-              <div className="w-full h-full flex relative z-10 bg-gray-100">{languagePercent.percentages ? makeLanguageChart()?.map((element) => element) : <></>}</div>
-              {/* <OffsetBorder offsetPx={2} />s */}
+            <div className="w-full h-5 p-[2px] border border-black relative overflow-visible mr-4  shadow-md">
+              <div className="w-full h-full flex relative z-10 bg-gray-100">
+                {languagePercent?.percentages ? makeLanguageChart(languagePercent)?.map((element) => element) : <></>}
+              </div>
+              {/* <OffsetBorder offsetPx={2} /> */}
             </div>
           </div>{" "}
         </div>
-        <div >
+        <div>
           <div className="relative h-fit my-4 ml-4">
             <ReadmeItem data={{ name: "keithfrazier98", owner: { login: "keithfrazier98" } }} />
             <OffsetBorder shadow="solid" offsetPx={12} />
           </div>
-          <ContributionChart />
+          {/* <ContributionChart /> */}
         </div>
       </section>
       <section className="mb-12 px-4 lg:px-24 h-full">

@@ -5,7 +5,7 @@ import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import style from "../styles/markdown.module.css";
 import rehypeRaw from "rehype-raw";
 import { useQuery } from "@tanstack/react-query";
-import { getReadme } from "../requests/axios";
+import { getReadme } from "../utils/axios-requests";
 import { useEffect } from "react";
 
 export default function ReadmeItem({ data }) {

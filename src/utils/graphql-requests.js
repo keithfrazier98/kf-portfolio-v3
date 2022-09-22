@@ -5,12 +5,13 @@ const githubAuth = {
   headers: { Authorization: `Bearer ${process.env.REACT_APP_GITHUB_BEARER}` },
 };
 
-export async function fetchPinnedRepos() {
+export async function fetchPinnedRepos(amount = 6) {
   const client = new GraphQLClient(githubUrl, githubAuth);
   const query = gql`
-    query {
+    query ($AMOUNT: Int!)
+     {
       user(login: "keithfrazier98") {
-        pinnedItems(first: 6, types: REPOSITORY) {
+        pinnedItems(first: $AMOUNT, types: REPOSITORY) {
           nodes {
             ... on Repository {
               name
@@ -35,7 +36,7 @@ export async function fetchPinnedRepos() {
     }
   `;
 
-  const response = await client.request(query);
+  const response = await client.request(query, { AMOUNT: amount });
   console.log(response);
   return response.user.pinnedItems.nodes;
 }
@@ -77,7 +78,7 @@ export async function fetchAllRepos() {
       }
     }
   `;
-  // (githubUrl, body, config)
+
   const response = await client.request(query);
   console.log(response);
   return response.repositoryOwner;
@@ -115,5 +116,5 @@ export async function getContributionData() {
     },
   } = await client.request(query, { ONEYEARAGO: oneYearAgo, TODAY: today });
 
-  return contributionCalendar
+  return contributionCalendar;
 }
