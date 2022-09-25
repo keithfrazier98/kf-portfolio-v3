@@ -7,10 +7,9 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Bio />
+      <div id="about" className="h-full w-full bg-transparent" />
       <Skills />
       <ContactMe />
-
     </>
   );
 }

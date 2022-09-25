@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <>
       <a name="top" id="top"></a>
-      <div className="w-full h-full flex items-center justify-center relative bg-shapes">
+      <div className="w-full h-full flex items-center justify-center relative bg-shapes overflow-hidden">
         <svg viewBox="0 0 50 50">
           <polygon points="25,0 50,50 0,50" />
         </svg>

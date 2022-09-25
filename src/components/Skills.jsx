@@ -69,36 +69,37 @@ export default function Skills() {
   ];
 
   return (
-    <div id="skills" className="m-auto py-32 max-w-full overflow-x-hidden flex flex-col items-center">
-      <div className="w-full pl-12">
-        <div className="w-min">
-          {" "}
-          <h3 className="text-3xl">Skills</h3>
-          <div className="w-[200%] h-1px bg-black my-2" />
-          
-        </div>
-      </div>
-      {/* <div className="z-[2] mx-auto flex flex-col"> */}
-      <div className="flex flex-wrap items-center justify-center">
-        {stack.map((subStack) => (
-          <div className="w-max relative border border-black dark:border-white bg-white dark:bg-black p-8 m-4 text-2xl">
-            <div className="relative z-10">
-              <h4>{subStack[0]}</h4>
-              <div className="w-full h-[1px] bg-gray-500 mb-3" />
-              <ul className="grid grid-flow-row gap-3">
-                {subStack[1].map((item, index) => (
-                  <li key={subStack[0] + "_item_" + index} className={`flex item-center`}>
-                    <img src={pics[item]} className={`w-8 h-8 mr-3 ${["Vercel", "GitHub", "GraphQL", "GitHub Actions"].includes(item) ? "dark:invert" : ""}`} />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <OffsetBorder offsetPx={8} shadow="solid" />
+    <div className="relative w-full h-full bg-gray-100 dark:bg-zinc-900">
+      <div id="skills" className="m-auto py-32 max-w-full overflow-x-hidden flex flex-col items-center bg-gray-100 dark:bg-zinc-900">
+        <div className="w-full pl-12">
+          <div className="w-min">
+            {" "}
+            <h3 className="text-3xl">Skills</h3>
+            <div className="w-[200%] h-1px bg-black my-2" />
           </div>
-        ))}
-        {/* </div> */}
-      </div>{" "}
+        </div>
+        {/* <div className="z-[2] mx-auto flex flex-col"> */}
+        <div className="flex flex-wrap items-center justify-center">
+          {stack.map((subStack) => (
+            <div className="w-max relative border border-black dark:border-white bg-white dark:bg-black p-8 m-4 text-2xl">
+              <div className="relative z-10">
+                <h4>{subStack[0]}</h4>
+                <div className="w-full h-[1px] bg-gray-500 mb-3" />
+                <ul className="grid grid-flow-row gap-3">
+                  {subStack[1].map((item, index) => (
+                    <li key={subStack[0] + "_item_" + index} className={`flex item-center`}>
+                      <img src={pics[item]} className={`w-8 h-8 mr-3 ${["Vercel", "GitHub", "GraphQL", "GitHub Actions"].includes(item) ? "dark:invert" : ""}`} />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <OffsetBorder offsetPx={8} shadow="solid" />
+            </div>
+          ))}
+          {/* </div> */}
+        </div>{" "}
+      </div>
     </div>
   );
 }

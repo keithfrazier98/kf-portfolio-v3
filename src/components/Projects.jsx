@@ -9,6 +9,7 @@ export default function Projects() {
   console.log(data);
 
   return (
+    <div className="relative bg-gray-100 dark:bg-zinc-900">
     <section className="m-auto py-24 max-w-md">
       <div>
         <h1 className="text-3xl">Projects</h1>
@@ -26,5 +27,6 @@ export default function Projects() {
         ))}
       </div>
     </section>
+    </div>
   );
 }

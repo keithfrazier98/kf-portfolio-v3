@@ -22,11 +22,21 @@ function App() {
   });
 
   return (
-    <div className="relative w-full h-full bg-gray-100 dark:bg-zinc-900">
+    <>
       <Router>
         <Header pathname={pathname} setPathname={setPathname} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <Bio />
+                <div className="relative w-full h-full bg-gray-100 dark:bg-zinc-900">
+                  <Home />
+                </div>
+              </>
+            }
+          />
           <Route path="/contact-me" element={<ContactMe />} />
           <Route path="/experience/github" element={<GitHub />} />
           <Route path="/experience/projects" element={<Projects />} />
@@ -39,7 +49,7 @@ function App() {
       <footer className="py-7 flex w-full justify-center dark:bg-zinc-900">
         <span> © Keith Frazier 2022 </span>
       </footer>
-    </div>
+    </>
   );
 }
 
