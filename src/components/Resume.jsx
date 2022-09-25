@@ -13,6 +13,8 @@ export default function Resume() {
   }
 
   return (
+    <div className="relative bg-gray-100 dark:bg-zinc-900">
+
     <div className="relative z-20 flex flex-col items-center pt-24">
       <div>
         <div className="w-full mb-4 m-auto px-4">
@@ -28,6 +30,7 @@ export default function Resume() {
           </Document>
         </div>
       </div>
+    </div>
     </div>
   );
 }

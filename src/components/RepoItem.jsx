@@ -26,7 +26,7 @@ export default function RepoItem({ data }) {
     <li className="border border-black relative flex">
       <div className="relative z-10 p-4 w-full grid grid-cols-1 grid-rows-3 bg-white dark:bg-black">
         <div className="grid grid-cols-2 gap-4 items-start">
-          <a href={data.url} target="_blank" className="text-xl text-purple-400 hover:text-red-400 active:text-green-500 ">
+          <a href={data.url} target="_blank" className="text-xl overflow-ellipsis text-purple-400 hover:text-red-400 active:text-green-500 ">
             {data.name}
           </a>
           <div className="flex items-center justify-end">

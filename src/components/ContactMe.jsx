@@ -35,7 +35,7 @@ export default function ContactMe() {
   }, [notification]);
 
   return (
-    <>
+    <div className="relative w-full h-full bg-gray-100 dark:bg-zinc-900">
       <div id="contact" className="w-full flex items-center pt-64 md:pt-0 dark:bg-zinc-900 bg-gray-100 overflow-hidden">
         <div className="text-black dark:text-white w-full xl:items-end flex justify-around items-center flex-col xl:flex-row my-12">
           <div className="relative w-min my-10 xl:m-0 mx-4">
@@ -87,7 +87,6 @@ export default function ContactMe() {
                         setNotification("Discord tag copied to clipboard!");
                       }}
                     >
-                     
                       <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-10 h-8 transition-colors duration-300 group-hover:bg-white" />
                       <BsDiscord className="w-14 h-16 hover:text-indigo-600 transition-colors duration-300 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-30" />
                     </button>
@@ -115,7 +114,6 @@ export default function ContactMe() {
           </div>
         </div>
       </div>{" "}
-
-    </>
+    </div>
   );
 }
