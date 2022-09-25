@@ -69,7 +69,7 @@ export default function Skills() {
   ];
 
   return (
-    <div className="relative w-full h-full bg-gray-100 dark:bg-zinc-900">
+    <div className="relative bg-gray-100 dark:bg-zinc-900">
       <div id="skills" className="m-auto py-32 max-w-full overflow-x-hidden flex flex-col items-center bg-gray-100 dark:bg-zinc-900">
         <div className="w-full pl-12">
           <div className="w-min">
