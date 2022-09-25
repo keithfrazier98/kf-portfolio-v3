@@ -1,0 +1,60 @@
+.bg-shapes svg:nth-child(1) {
+  offset-path: path("m-400,-400 c0,500 1000,800 800,600");
+}
+
+.bg-shapes svg:nth-child(2) {
+  offset-path: path("m0,-300 c300,-500 500,-500 400,400");
+}
+
+.bg-shapes svg:nth-child(3) {
+  offset-path: path("m-600,-300 c100,500 900,-500 300,100");
+}
+
+.bg-shapes svg:nth-child(4) {
+  offset-path: path("m600,300 c-100,500 -900,-500 -300,100");
+}
+
+.bg-shapes svg:nth-child(5) {
+  offset-path: path("m600,-300 c-100,500 -900,-500 -300,100");
+}
+
+.bg-shapes svg:nth-child(6) {
+  offset-path: path("m-600,300 c-100,-500 -700,-500 -100,-300");
+}
+
+.bg-shapes svg:nth-child(7) {
+  offset-path: path("m-650,0 c-0,-500 -100,-700 100,-500");
+}
+
+.bg-shapes svg:nth-child(8) {
+  offset-path: path("m0,400 c-0,-500 -100,-700 100,-500");
+}
+
+.bg-shapes svg:nth-child(9) {
+  offset-path: path("m700,0 c-0,-500 -100,-700 100,-500");
+}
+
+
+.bg-shapes > svg {
+  @apply absolute dark:fill-white w-4 h-4;
+  animation: move 100000ms infinite alternate ease-in-out, spin 50000ms infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+    /* offset-rotate: 50%; */
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
