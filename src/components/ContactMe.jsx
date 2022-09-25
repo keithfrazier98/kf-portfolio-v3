@@ -93,7 +93,7 @@ export default function ContactMe() {
                 </div>
               </div>
             </div>
-            <div className="z-[2] my-4  p-1px  min-w-full md:min-w-[30rem] shadow-2xl relative">
+            <div className="z-[2] my-4 p-1px min-w-full md:min-w-[30rem] shadow-2xl relative">
               <form
                 onSubmit={handleSubmit}
                 className="grid grid-flow-row gap-4 md:w-auto w-full p-4 border bg-gray-100 relative z-10 dark:bg-zinc-900 border-black dark:border-gray-400"

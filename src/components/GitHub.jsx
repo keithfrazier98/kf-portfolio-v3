@@ -30,7 +30,7 @@ export default function GitHub() {
 
   return (
     <div className="relative bg-gray-100 dark:bg-zinc-900">
-      <div className="w-full h-full flex flex-col m-auto pt-12">
+      <div className="w-full flex flex-col m-auto pt-12">
         <section className="mx-4 lg:mx-24 relative my-12 flex items-center flex-col md:flex-row">
           <div className="w-full md:w-auto flex items-center md:items-start flex-col">
             {allReposQuery?.avatarUrl ? <img src={allReposQuery?.avatarUrl} alt="avatar" className="max-w-[17rem] rounded-full md:mr-12"></img> : <></>}
@@ -63,7 +63,7 @@ export default function GitHub() {
           <div className="relative h-full border border-black dark:border-white">
             <div className="relative z-10 h-full bg-gray-100">
               <div className="absolute z-20 top-0 left-0 right-0 bottom-[95%] bg-gradient-to-b dark:from-zinc-900 from-gray-100 to-transparent" />
-              <div className="dark:bg-zinc-900 bg-zinc-100 grid grid-flow-row grid-cols-1  md:grid-cols-2 xl:grid-cols-3 m-auto gap-8 h-full overflow-y-scroll p-6">
+              <div className="dark:bg-zinc-900 bg-zinc-100 grid grid-flow-row grid-cols-1  md:grid-cols-2 xl:grid-cols-3 m-auto gap-8 h-full overflow-y-scroll  max-h-[38rem] p-6">
                 {allReposQuery?.repositories?.nodes?.map((repo, index) => (
                   <RepoItem key={"repo_item_" + index} data={repo} />
                 ))}
