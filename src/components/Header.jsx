@@ -28,7 +28,7 @@ export default function Header() {
         {links.map((link, index) => {
           if (Array.isArray(link[1])) {
             return (
-              <div key={"nav_link_menu_" + index} className="group btnReg mx-2 mt-2 relative">
+              <div key={"nav_link_menu_" + index} className="group btnReg mx-2 mt-2 relative cursor-pointer">
                 <span>{link[0]}</span>
                 <div className="hidden z-20 group-hover:block absolute -left-1px -right-1px top-full text-xs bg-white dark:bg-black dark:border-white border-black border-x border-b">
                   {link[1].map((embed) => (

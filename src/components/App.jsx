@@ -36,7 +36,7 @@ function App() {
       </Router>
       {/* <Cookies /> */}
       <ReactQueryDevtools initialIsOpen={false} />
-      <footer className="py-7 flex w-full justify-center dark:bg-zinc-800">
+      <footer className="py-7 flex w-full justify-center dark:bg-zinc-900">
         <span> © Keith Frazier 2022 </span>
       </footer>
     </div>

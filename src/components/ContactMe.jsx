@@ -36,7 +36,7 @@ export default function ContactMe() {
 
   return (
     <>
-      <div id="contact" className="w-full flex items-center pt-64 md:pt-0 dark:bg-zinc-800 bg-gray-100 overflow-hidden">
+      <div id="contact" className="w-full flex items-center pt-64 md:pt-0 dark:bg-zinc-900 bg-gray-100 overflow-hidden">
         <div className="text-black dark:text-white w-full xl:items-end flex justify-around items-center flex-col xl:flex-row my-12">
           <div className="relative w-min my-10 xl:m-0 mx-4">
             <iframe
