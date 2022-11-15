@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import OffsetBorder from "./OffsetBorder";
 import ThemeToggle from "./ThemeToggle";
 
@@ -58,13 +59,13 @@ export default function Header({ scrollingDown }) {
             );
           } else if (index >= 2 || index === 0) {
             return (
-              <a
+              <HashLink
                 key={"nav_link_" + index}
-                href={link[1]}
+                to={link[1]}
                 className="mx-2 mt-2 btnReg"
               >
                 {link[0]}
-              </a>
+              </HashLink>
             );
           } else {
             return (
