@@ -8,6 +8,7 @@ import { makeLanguageChart, parseLanguageData } from "../utils/utils";
 import OffsetBorder from "./OffsetBorder";
 import ReadmeItem from "./ReadmeItem";
 import RepoItem from "./RepoItem";
+import ContributionChart from "./ContributionChart"
 export default function GitHub() {
   const [languagePercent, setLanguagePercent] = useState({
     colors: null,
@@ -16,8 +17,16 @@ export default function GitHub() {
   });
   const [showPin, setShowPin] = useState(0);
   const options = { staleTime: 300000, cacheTime: 300000 };
-  const pinnedReposQuery = useQuery(["pinned_repos"], () => fetchPinnedRepos(6), options);
-  const { data: allReposQuery, isLoading } = useQuery(["all_repos"], fetchAllRepos, options);
+  const pinnedReposQuery = useQuery(
+    ["pinned_repos"],
+    () => fetchPinnedRepos(6),
+    options
+  );
+  const { data: allReposQuery, isLoading } = useQuery(
+    ["all_repos"],
+    fetchAllRepos,
+    options
+  );
 
   useEffect(() => {
     if (allReposQuery?.repositories?.nodes) {
@@ -28,35 +37,64 @@ export default function GitHub() {
     }
   }, [isLoading, allReposQuery?.repositories?.nodes?.length]);
 
+  const getSkeleton = (className) => {
+    return (
+      <div
+        className={`${className} animate-pulse bg-slate-200 dark:bg-slate-800`}
+      />
+    );
+  };
+
   return (
     <div className="relative bg-gray-100 dark:bg-zinc-900">
       <div className="w-full flex flex-col m-auto pt-12">
         <section className="mx-4 lg:mx-24 relative my-12 flex items-center flex-col md:flex-row">
           <div className="w-full md:w-auto flex items-center md:items-start flex-col">
-            {allReposQuery?.avatarUrl ? <img src={allReposQuery?.avatarUrl} alt="avatar" className="max-w-[17rem] rounded-full md:mr-12"></img> : <></>}
+            {allReposQuery?.avatarUrl ? (
+              <img
+                src={allReposQuery?.avatarUrl}
+                alt="avatar"
+                className="max-w-[17rem] rounded-full md:mr-12"
+              ></img>
+            ) : (
+              getSkeleton("w-[17rem] h-[17rem] rounded-full")
+            )}
             <p className="font-bold text-3xl mt-4">Keith Frazier</p>
-            <a href={allReposQuery?.url} className="flex items-center text-blue-500 hover:text-red-500">
+            <a
+              href={allReposQuery?.url}
+              className="flex items-center text-blue-500 hover:text-red-500"
+            >
               {allReposQuery?.login}
               <BsArrowUpRightSquare className="ml-2 w-3" />
             </a>
             <div className="w-full flex flex-col mt-4 text-black dark:text-white overflow-visible">
               <p>Language Analysis</p>
-              <p className="text-xs text-gray-500">{"(hover to see language)"}</p>
+              <p className="text-xs text-gray-500">
+                {"(hover to see language)"}
+              </p>
               <div className="w-full h-5 p-[2px] border border-black relative overflow-visible mr-4  shadow-md">
                 <div className="w-full h-full flex relative z-10 bg-gray-100">
-                  {languagePercent?.percentages ? makeLanguageChart(languagePercent)?.map((element) => element) : <></>}
+                  {languagePercent?.percentages
+                    ? makeLanguageChart(languagePercent)?.map(
+                        (element) => element
+                      )
+                    : getSkeleton("w-full h-full")}
                 </div>
-                {/* <OffsetBorder offsetPx={2} /> */}
               </div>
             </div>{" "}
           </div>
-          <div>
+          {/* <div> */}
             <div className="relative h-fit my-4 ml-4">
-              <ReadmeItem data={{ name: "keithfrazier98", owner: { login: "keithfrazier98" } }} />
+              <ReadmeItem
+                data={{
+                  name: "keithfrazier98",
+                  owner: { login: "keithfrazier98" },
+                }}
+              />
               <OffsetBorder shadow="solid" offsetPx={12} />
             </div>
             {/* <ContributionChart /> */}
-          </div>
+          {/* </div> */}
         </section>
         <section className="mb-12 px-4 lg:px-24 h-full">
           <h2 className="text-3xl">Repositories</h2>
@@ -64,9 +102,13 @@ export default function GitHub() {
             <div className="relative z-10 h-full bg-gray-100">
               <div className="absolute z-20 top-0 left-0 right-0 bottom-[95%] bg-gradient-to-b dark:from-zinc-900 from-gray-100 to-transparent" />
               <div className="dark:bg-zinc-900 bg-zinc-100 grid grid-flow-row grid-cols-1  md:grid-cols-2 xl:grid-cols-3 m-auto gap-8 h-full overflow-y-scroll  max-h-[38rem] p-6">
-                {allReposQuery?.repositories?.nodes?.map((repo, index) => (
-                  <RepoItem key={"repo_item_" + index} data={repo} />
-                ))}
+                {allReposQuery?.repositories
+                  ? allReposQuery.repositories?.nodes?.map((repo, index) => (
+                      <RepoItem key={"repo_item_" + index} data={repo} />
+                    ))
+                  : ["", "", ""].map((_, i) => {
+                      <RepoItem key={"skeleton" + i} skeleton={getSkeleton}/>;
+                    })}
               </div>
               <div className="absolute z-10 top-[95%] left-0 right-0 bottom-0 bg-gradient-to-t dark:from-zinc-900 from-gray-100 to-transparent" />
             </div>
@@ -78,7 +120,11 @@ export default function GitHub() {
           <div className="flex my-4 flex-wrap">
             {pinnedReposQuery.data ? (
               pinnedReposQuery?.data.map((repo, index) => (
-                <button key={"pinned_repo_btn_" + index} onClick={() => setShowPin(index)} className="btnReg mr-2 py-1 my-1">
+                <button
+                  key={"pinned_repo_btn_" + index}
+                  onClick={() => setShowPin(index)}
+                  className="btnReg mr-2 py-1 my-1"
+                >
                   {repo.name}
                 </button>
               ))

@@ -3,7 +3,7 @@ import { BsBoxArrowUpRight } from "react-icons/bs";
 import OffsetBorder from "./OffsetBorder";
 import Topics from "./Topics";
 
-export default function RepoItem({ data }) {
+export default function RepoItem({ data, getSkeleton }) {
   const [color, setColor] = useState("#2b7489");
 
   useEffect(() => {
@@ -26,11 +26,18 @@ export default function RepoItem({ data }) {
     <li className="border border-black relative flex">
       <div className="relative z-10 p-4 w-full grid grid-cols-1 grid-rows-3 bg-white dark:bg-black">
         <div className="grid grid-cols-2 gap-4 items-start">
-          <a href={data.url} target="_blank" className="text-xl overflow-ellipsis text-purple-400 hover:text-red-400 active:text-green-500 ">
+          <a
+            href={data.url}
+            target="_blank"
+            className="text-xl overflow-ellipsis text-purple-400 hover:text-red-400 active:text-green-500 "
+          >
             {data.name}
           </a>
           <div className="flex items-center justify-end">
-            <a href={data.owner.url} className="mr-2 text-blue-500 hover:text-green-400 active:text-red-500 ">
+            <a
+              href={data.owner.url}
+              className="mr-2 text-blue-500 hover:text-green-400 active:text-red-500 "
+            >
               {data.owner.login}
             </a>
             <img src={data.owner.avatarUrl} className="w-6 h-6" />
@@ -40,7 +47,10 @@ export default function RepoItem({ data }) {
 
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <div className={`w-2 h-2 mr-2`} style={{ backgroundColor: color }} />
+            <div
+              className={`w-2 h-2 mr-2`}
+              style={{ backgroundColor: color }}
+            />
             <span>{data.primaryLanguage?.name}</span>
           </div>
           <span className="text-zinc-400">{formatTime(data.createdAt)} </span>{" "}
