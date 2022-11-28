@@ -33,7 +33,7 @@ function App() {
           />
           <Route path="/experience/github" element={<GitHub />} />
           <Route path="/experience/projects" element={<Projects />} />
-          <Route path="/resume" element={<Resume />} />
+          {/* <Route path="/resume" element={<Resume />} /> */}
         </Routes>
       </Router>
       {/* <Cookies /> */}

@@ -11,7 +11,7 @@ export default function Header({ scrollingDown }) {
       "experience",
       [
         ["GitHub overview", "/experience/github"],
-        ["resume", "/resume"],
+        // ["resume", "/resume"],
         ["projects", "/experience/projects"],
       ],
     ],
