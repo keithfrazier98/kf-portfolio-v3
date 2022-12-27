@@ -39,7 +39,7 @@ function App() {
       {/* <Cookies /> */}
       <ReactQueryDevtools initialIsOpen={false} />
       <footer className="py-7 flex w-full justify-center dark:bg-zinc-900">
-        <span> © Keith Frazier 2022 </span>
+        <span> © Keith Frazier 2023 </span>
       </footer>
     </>
   );

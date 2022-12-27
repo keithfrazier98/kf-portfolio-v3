@@ -14,7 +14,7 @@ export default function Projects() {
       <div>
         <h1 className="text-3xl">Projects</h1>
         <p className="max-w-md">
-          Here are the top 3 side-projects I have been working on recently! To get a better idea of my work, checkout my{" "}
+          Here are the 3 most recent projects I have pinned on GitHub. To get a better idea of my work, checkout my{" "}
           <Link className="text-blue-500 hover:text-red-500" to="/experience/github">
             GitHub Overview
           </Link>
